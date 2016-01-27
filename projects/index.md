@@ -39,6 +39,6 @@ This project is an experimental prototype for the real-time customization and an
 
 During my medical studies at the University of Marburg, I created this project as part of an elective course on "Simulation Methods in Physiology and Neurobiology". It is a real-time 3D simulation of the <a href="https://en.wikipedia.org/wiki/Hypothalamic%E2%80%93pituitary%E2%80%93adrenal_axis" target="_blank">hypothalamic-pituitary-adrenal (HPA) axis</a>, a part of the human neuro-endocrine system, that controls reactions to stress and regulates many body processes, including digestion, the immune system, mood and emotions, sexuality, and energy storage and expenditure.
 
-<div><iframe width="560" height="315" src="http://www.youtube.com/embed/Me999FGPc6c" frameborder="0"> </iframe></div>
+<div><iframe width="560" height="315" src="https://www.youtube.com/embed/Me999FGPc6c" frameborder="0"> </iframe></div>
 
 ---
