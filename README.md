@@ -1,5 +1,12 @@
 # Mike Schaekermann's Portfolio
 
+Run locally using:
+
+```
+bundle exec jekyll serve
+# then open the browser and go to http://localhost:4000/
+```
+
 Deploy using:
 
 ```
