@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title:            Site Title
+title:            Mike Schaekermann
 locale:           en_US
 url:
 
@@ -15,6 +15,7 @@ sass:
   style: compressed
 gems:
   - jekyll-sitemap
+  - jekyll/scholar
 
 kramdown:
   auto_ids: true
@@ -40,23 +41,23 @@ titlecase: true
 
 # Site owner
 owner:
-  name: Your Name
-  avatar: bio-photo.jpg
-  bio: "Describe your self."
-  email:
+  name: Mike Schaekermann
+  avatar: mike-schaekermann-photo-2.jpg
+  bio: University of Waterloo Computer Science MMath candidate with a degree in Human Medicine
+  email: mikeschaekermann@gmail.com
   disqus-shortname:
   twitter: #username
   facebook: #username
   google:
     plus: #username
-    analytics:
+    analytics: UA-41409977-1
     verify:
     ad-client:
     ad-slot:
   bing-verify:
-  github: #username
+  github: mikeschaekermann
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: #username
+  linkedin: mike-schäkermann-058abb75
   xing: #username
   instagram: #username
   lastfm: #username
@@ -70,6 +71,26 @@ owner:
   weibo: #username
   flickr: #username
   codepen: #username
+
+# Bibliography
+scholar:
+  style: apa
+  locale: en
+  sort_by: none
+  order: ascending
+  group_by: none
+  group_order: ascending
+  source: ./_bibliography
+  bibliography: references.bib
+  bibliography_template: "{{reference}}"
+  replace_strings: true
+  join_strings:    true
+  use_raw_bibtex_entry: false
+  details_dir:    bibliography
+  details_layout: bibtex.html
+  details_link:   Details
+
+  query: "@*"
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

@@ -29,12 +29,17 @@ body {
 	margin-bottom: 1em;
 	float: none;
 	display: block;
+	letter-spacing: 0.09em;
 	@include font-rem(24);
 	@media #{$small} {
 		@include grid(12,2);
 		@include prefix(12,0.5);
 		@include suffix(12,0.5);
 		@include font-rem(16);
+		font-size: 0.72em;
+	}
+	@media #{$large} {
+		font-size: 1em;
 	}
 	@media #{$x-large} {
 		@include grid(12,1.5);
@@ -381,13 +386,15 @@ $button-size: 1.5rem;
 	display: none;
 	.bio-photo {
 		max-width: 110px;
-		@include rounded(150px);
 	}
 	@media #{$small} {
 		display: block;
 		@include grid(12,2);
 		@include prefix(12,0.5);
 		@include suffix(12,0.5);
+		h3 {
+			font-size: 1.35em;
+		}
 		h3,
 		p,
 		.author-social {
@@ -406,6 +413,9 @@ $button-size: 1.5rem;
 		}
 	}
 	@media #{$large} {
+		h3 {
+			font-size: 1.8em;
+		}
 		h3,
 		.bio-photo,
 		p,
@@ -429,7 +439,6 @@ $button-size: 1.5rem;
 		float: left;
 		margin-right: 25px;
 		max-width: 100px;
-		@include rounded(150px);
 	}
 	.author-social {
 		display: inline-block;

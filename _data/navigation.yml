@@ -1,10 +1,16 @@
 # Site navigation links
 
-- title: About
-  url: /about/
+- title: Bio
+  url: /bio/
 
-- title: Sample Posts
-  url: /posts/
+- title: Research
+  url: /research/
 
-- title: Theme Setup
-  url: /theme-setup/
+- title: Projects
+  url: /projects/
+
+#- title: Presentations
+#  url: /presentations/
+
+#- title: Articles
+#  url: /articles/
