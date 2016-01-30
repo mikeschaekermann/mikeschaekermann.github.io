@@ -13,15 +13,25 @@ share: false
 ## crowdEEG
 
 Framework to combine machine and human intelligence for the scalable and accurate analysis of human clinical EEG recordings.
-<a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank">CrowdEEG</a> is an active research project in professor <a href="https://hci.cs.uwaterloo.ca/faculty/elaw" target="_blank">Edith Law's</a> <a href="https://hci.cs.uwaterloo.ca/faculty/elaw/people.html" target="_blank">CrowdLab</a> at the University of Waterloo.
+<a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank">CrowdEEG</a> is an active research project in professor <a href="https://hci.cs.uwaterloo.ca/faculty/elaw" target="_blank">Edith Law's</a> <a href="https://hci.cs.uwaterloo.ca/faculty/elaw/people.html" target="_blank">CrowdLab</a> at the University of Waterloo. I am currently conducting a study investigating the effects of implicit contextual information on the agreement rates among experts in a sleep staging task. The goal of the study is to identify such contextual dependencies and make them explicit for crowdworkers to be used in a similar crowdsourcing task.
 
 <div><a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank"><img src="{{ site.url }}/images/crowdeeg_expert_annotation_interface.png"></a></div>
+
+&nbsp;
+
+The CrowdLab will also be represented at this year's <a href="https://chi2016.acm.org/wp/" target="_blank">CHI 2016</a> workshops on <a href="http://research.microsoft.com/en-us/um/people/teevan/misc/microproductivity/" target="_blank">Microproductivity</a> by <a href="http://acw.io/" target="_blank">Alex C. Williams</a> and on <a href="http://hcml2016.goldsmithsdigital.com/" target="_blank">Human-Centered Machine Learning</a> by myself with the following two paper submissions:
+
+{% bibliography --file papers %}
+
+&nbsp;
 
 ---
 
 ## Collaborative Biosignal and Gameplay Analysis
 
 A collaborative web application for annotating gameplay videos, based on biometric time series data. This tool was developed as part of my <a href="{{ site.url }}/downloads/bachelor_thesis.pdf" target="_blank">bachelor thesis</a> at Salzburg University of Applied Sciences.
+
+{% reference schaekermann_bachelorsthesis_2014 --file theses %}
 
 <div><a href="{{ site.url }}/downloads/bachelor_thesis.pdf" target="_blank"><img src="{{ site.url }}/images/collaborative_biosignal_gameplay_video_annotation_tool.png"></a></div>
 

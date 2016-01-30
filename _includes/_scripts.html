@@ -21,3 +21,16 @@
 {% if page.comments %}
   {% include _disqus_comments.html %}
 {% endif %}
+
+<script>
+$('.force-full-width-keep-aspect-ratio').each(function() {
+  var iFrame = $(this);
+  var originalWidth = $(this).width();
+  var originalHeight = $(this).height();
+  iFrame.css('width', '100%');
+  $(window).resize(function() {
+    iFrame.css('height', Math.ceil(iFrame.width() / originalWidth * originalHeight * 0.975) + 'px');
+  });
+});
+$(window).resize();
+</script>

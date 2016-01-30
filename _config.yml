@@ -1,7 +1,7 @@
 # Site wide configuration
 
 title:            Mike Schaekermann
-locale:           en_US
+locale:           en
 url:
 
 
@@ -80,15 +80,16 @@ scholar:
   order: ascending
   group_by: none
   group_order: ascending
-  source: ./_bibliography
-  bibliography: references.bib
-  bibliography_template: "{{reference}}"
+  source: _bibliography
+  bibliography: papers.bib
+  bibliography_template: bibliography
   replace_strings: true
   join_strings:    true
-  use_raw_bibtex_entry: false
-  details_dir:    bibliography
-  details_layout: bibtex.html
+  use_raw_bibtex_entry: true
+  #details_dir:    bibliography
+  #details_layout: bibtex.html
   details_link:   Details
+  repository: publications
 
   query: "@*"
 
