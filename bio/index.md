@@ -15,4 +15,4 @@ share: false
 
 -------
 
-<a href="{{ site.url }}/downloads/cv.pdf" target="_blank" class="btn pull-right">Download full CV</a>
+<a href="{{ site.url }}/downloads/cv_resume_mike_schaekermann.pdf" target="_blank" class="btn pull-right">Download full CV</a>
