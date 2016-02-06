@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for filename in notebooks/*.ipynb; do
+    tasks/notebooks/build "$filename"
+done
