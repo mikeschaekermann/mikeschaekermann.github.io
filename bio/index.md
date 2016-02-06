@@ -9,7 +9,7 @@ share: false
 ---
 
 * Graduate student at the <a href="https://cs.uwaterloo.ca/" target="_blank">David R. Cheriton School of Computer Science</a>, University of Waterloo, Canada
-* <a href="https://multimediatechnology.at/" target="_blank">MultiMediaTechnology</a> with a major in Augmented Reality and Game Development (2014, Bachelor of Science in Engineering, <a href="{{ site.url }}/downloads/bachelor_thesis.pdf" target="_blank">link to bachelor thesis</a>) at Salzburg University of Applied Sciences, Austria
+* <a href="https://multimediatechnology.at/" target="_blank">MultiMediaTechnology</a> with a major in Augmented Reality and Game Development (2014, Bachelor of Science in Engineering, <a href="{{ site.url }}/publications/schaekermann_bachelorsthesis_2014.pdf" target="_blank">link to bachelor thesis</a>) at Salzburg University of Applied Sciences, Austria
 * <a href="https://www.uni-marburg.de/fb20" target="_blank">Human Medicine</a> (2011, pre-clinical examination) at the University of Marburg, Germany
 * Co-founder and Head of IT at <a href="https://stilnest.com/en/" target="_blank">Stilnest.com</a>, online-store for 3D-printed designer accessories (2013-2015)
 

@@ -29,9 +29,9 @@ The CrowdLab will also be represented at this year's <a href="https://chi2016.ac
 
 ## Collaborative Biosignal and Gameplay Analysis
 
-A collaborative web application for annotating gameplay videos, based on biometric time series data. This tool was developed as part of my <a href="{{ site.url }}/downloads/bachelor_thesis.pdf" target="_blank">bachelor thesis</a> at Salzburg University of Applied Sciences.
+A collaborative web application for annotating gameplay videos, based on biometric time series data. This tool was developed as part of my <a href="{{ site.url }}/publications/schaekermann_bachelorsthesis_2014.pdf" target="_blank">bachelor thesis</a> at Salzburg University of Applied Sciences.
 
-<div><a href="{{ site.url }}/downloads/bachelor_thesis.pdf" target="_blank"><img src="{{ site.url }}/images/collaborative_biosignal_gameplay_video_annotation_tool.png"></a></div>
+<div><a href="{{ site.url }}/publications/schaekermann_bachelorsthesis_2014.pdf" target="_blank"><img src="{{ site.url }}/images/collaborative_biosignal_gameplay_video_annotation_tool.png"></a></div>
 
 ---
 
