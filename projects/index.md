@@ -13,7 +13,7 @@ share: false
 ## crowdEEG
 
 Framework to combine machine and human intelligence for the scalable and accurate analysis of human clinical EEG recordings.
-<a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank">CrowdEEG</a> is an active research project in professor <a href="https://hci.cs.uwaterloo.ca/faculty/elaw" target="_blank">Edith Law's</a> <a href="https://hci.cs.uwaterloo.ca/faculty/elaw/people.html" target="_blank">CrowdLab</a> at the University of Waterloo. I am currently conducting a study investigating the effects of implicit contextual information on the agreement rates among experts in a sleep staging task. The goal of the study is to identify such contextual dependencies and make them explicit for crowdworkers to be used in a similar crowdsourcing task.
+<a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank">CrowdEEG</a> is an active research project in professor <a href="http://edithlaw.ca/" target="_blank">Edith Law's</a> <a href="http://edithlaw.ca/people.html" target="_blank">CrowdLab</a> at the University of Waterloo. I am currently conducting a study investigating the effects of implicit contextual information on the agreement rates among experts in a sleep staging task. The goal of the study is to identify such contextual dependencies and make them explicit for crowdworkers to be used in a similar crowdsourcing task.
 
 <div><a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank"><img src="{{ site.url }}/images/crowdeeg_expert_annotation_interface.png"></a></div>
 
