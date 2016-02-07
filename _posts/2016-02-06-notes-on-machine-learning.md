@@ -242,17 +242,62 @@ plt.ylim(vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1)
 
 **Data**: $\{(x_1, t_1),(x_2,t_2),...,(x_N,t_N)\}$ where $x_n \in \mathbb{R}^D$ and $t_n \in \mathbb{R}$
 
-**Problem**: find linear hypothesis $h$ that maps $x$ to $t$; in other words, try to find a weight vector $w \in \mathbb{R}^{D+1}$ so that the error for $h(x,w)=w^T\overline{x}$ with $\overline{x}=<1, x>$ over all $x$ in the dataset is minimal
+**Problem**: find linear hypothesis $h$ that maps $x$ to $t$; in other words, try to find a weight vector $w \in \mathbb{R}^{D+1}$ so that the error for $h(x,w)=w^T\overline{x}$ with $\overline{x}=\begin{pmatrix} 1 \\ x \end{pmatrix}$ over all $x$ in the dataset is minimal
 
 **Solution**: $ Aw=b $ with:
+
 * $A=\sum_{n=1}^N\overline{x}_n\overline{x}_n^T$ (invertible if the training instances span $\mathbb{R}^{D+1}$)
 * $b=\sum_{n=1}^Nt_n\overline{x}_n$
 
-**Regularization**: a technique, applied to avoid a form of overfitting where small changes to the input data lead to big changes in the learned weight vector: $(\lambda I+A)w=b$. The greater $\lambda$ the smaller the magnitude of $w$ will be. 
+**Tikhonov Regularization**: a technique, applied to avoid a form of overfitting where small changes to the input data lead to big changes in the learned weight vector: $(\lambda I+A)w=b$. The greater $\lambda$ the smaller the magnitude of $w$ will be. 
  
-## Statistical Learning 
- 
-## Bayesian Learning 
+## Statistical Learning
+
+**Idea**: learning simply reduces the uncertainty in our knowledge of the world
+
+**Marginal Probability Distribution**: specification of a probability for each event in our sample space; all probabilities must sum up to $1$
+
+**Joint Probability Distribution**: specification of probabilities for all combinations of events: $Pr(A=a
+\wedge B=b)$ for all $a$, $b$
+
+**Marginalization** (sumout rule): $Pr(A=a)=\sum_bPr(A=a
+\wedge B=b)$
+
+**Conditional Probability**: fraction of worlds in which $B$ is true that also have $A$ true: $Pr(A \mid B)=\frac{Pr(A \wedge B)}{Pr(B)}$; also $Pr(A \wedge B)=Pr(A \mid B) \ Pr(B)$
+
+**Bayes' Rule**: $Pr(B \mid A)=\frac{Pr(A \mid B) \ Pr(B)}{Pr(A)}$
+
+**Bayesian Inference**: $P(H \mid e)=kP(e \mid H) \ P(H)$
+
+* $H$: hypothesis
+* $e$: evidence
+* $P(H)$: **prior** probability of $H$
+* $P(e \mid H)=\prod_nP(e_n \mid H)$: **likelihood** of observing $e$, given $H$
+* $P(H \mid e)$: **posterior** probability of $H$, given $e$
+* $k$: normalizing factor, applied so that all posteriors sum up to $1$
+
+**Bayesian Prediction**: $P(X \mid e)=\sum_iP(X \mid h_i) \ P(h_i \mid e)$
+
+**Properties of Bayesian Learning**: optimal and not prone to overfitting, but potentially intractable if the hypothesis space is large
+
+**Approximatinos of Bayesian Learning**:
+
+* **Maximum a Posteriori (MAP)**:
+  * making predictions, based on the most probable hypothesis $h_{MAP}=argmax_{h_i}P(h_i \mid e)$
+  * less accurate than Bayesian prediction, but both converge in accuracy as data increases
+  * controlled overfitting (prior can be used to penalize complex hypotheses)
+  * MAP for linear regression leads to regularized least square problem
+* **Maximum Likelihood (ML)**:
+  * MAP with uniform prior: $h_{ML}=argmax_{h_i}P(e \mid h_i)$
+  * less accurate than Bayesian and MAP prediction, but all three converge in accuracy as data increases
+  * prone to overfitting
+  * ML for linear regression leads to non-regularized least square problem
+  
+**Bias-Variance Decomposition** for linear regression: $expected \ loss = (bias)^2 + variance + noise$
+
+* bias increases with regularization parameter $\lambda$
+* variance decreases with regularization parameter $\lambda$
+* noise is constant 
  
 ## Mixture of Gaussians 
  
