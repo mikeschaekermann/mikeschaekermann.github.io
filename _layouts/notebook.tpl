@@ -8,6 +8,11 @@ tags:
     - python
     - notebook
 ---
+
+{{ '{% include _toc.html %}' }}
+
+---
+
 {%- endblock header -%}
 
 {% block in_prompt %}
@@ -33,7 +38,7 @@ tags:
 {% endblock data_jpg %} 
 
 {% block markdowncell scoped %} 
-{{ cell.source | wrap_text(80) }} 
+{{ cell.source }} 
 {% endblock markdowncell %} 
 
 {% block headingcell scoped %}
