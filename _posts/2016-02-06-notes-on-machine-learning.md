@@ -301,7 +301,7 @@ plt.ylim(vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1)
  
 ## Mixture of Gaussians
 
-**Purpose**: classification technique
+**Purpose**: linear classification technique
 
 **Assumptions**:
 
@@ -329,7 +329,7 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
  
 ## Logistic Regression
 
-**Purpose**: classification technique (can be viewed as a regression where the goal is to estimate a posterior probability which is continuous)
+**Purpose**: linear classification technique (can be viewed as a regression where the goal is to estimate a posterior probability which is continuous)
 
 **Assumption**: $Pr(x \mid C=c_k)$ are members of the exponential family: $Pr(x \mid \Theta_k)=exp(\Theta_k^TT(x)-A(\Theta_k)+B(x))$
 
@@ -350,6 +350,15 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
  
 ## Generalized Linear Models
 
- 
+**Purpose**: non-linear classification/regression
+
+**Idea**: map inputs to a different space using a set of basis functions and do linear classification/regression in that space
+
+**Common basis functions**:
+
+* Polynomial: $\theta_j(x)=x^j$
+* Gaussian: $\theta_j(x)=e^{-\frac{(x-\mu_j)^2}{2s^2}}$
+* Sigmoid: $\theta_j(x)=\sigma(\frac{(x-\mu_j)^2}{s})$
+* Fourier, Wavelets etc. 
  
 ## Artificial Neural Networks 
