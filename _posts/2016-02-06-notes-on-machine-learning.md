@@ -295,11 +295,37 @@ plt.ylim(vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1)
   
 **Bias-Variance Decomposition** for linear regression: $expected \ loss = (bias)^2 + variance + noise$
 
-* bias increases with regularization parameter $\lambda$
-* variance decreases with regularization parameter $\lambda$
+* bias increases as regularization parameter $\lambda$ increases
+* variance decreases as regularization parameter $\lambda$ increases
 * noise is constant 
  
-## Mixture of Gaussians 
+## Mixture of Gaussians
+
+**Purpose**: classification technique
+
+**Assumptions**:
+
+* $Pr(C=c_k)=\pi_k$: prior probability of class $k$
+* $Pr(x \mid C=c_k) \propto e^{-0.5(x-\mu_k)^T\Sigma^{-1}(x-\mu_k)}$: likelihood of data point $x$, given class $k$, is a Gaussian distribution with the same covariance matrix $\Sigma$ for all classes
+* $Pr(C=c_k \mid x)=kPr(x \mid C=c_k)Pr(C=c_k)$: posterior probability of class $k$, given data point $x$
+
+**For two classes $A$ and $B$** (using sigmoid):
+
+$Pr(C=A)=\sigma(w^Tx+w_0)$ where
+
+* $\sigma(a) = \frac{1}{1+e^{-a}}$ (sigmoid function)
+* $w=\Sigma^{-1}(\mu_A-\mu_B)$
+* $w_0=-0.5\mu_A^T\Sigma^{-1}\mu_A+0.5\mu_B^T\Sigma^{-1}\mu_B+ln\frac{\pi_A}{\pi_B}$
+* $\pi_k:$ fraction of training examples that belong to class $k$ (via maximum likelihood)
+* $\mu_k:$ empirical mean of all training examples that belong to class $k$ (via maximum likelihood)
+* $\Sigma=\frac{S_A+S_B}{N}$: normalized sum of covariance matrices (via maximum likelihood)
+* $S_k=\sum_{n \in c_k}(x_n-\mu_k)(x_n-\mu_k)^T$
+
+**For multiple classes** (using softmax):
+
+$Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
+
+**Prediction**: best class $k^*=argmax_kPr(c_k \mid x)$ 
  
 ## Logistic Regression 
  
