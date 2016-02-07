@@ -327,6 +327,29 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
 
 **Prediction**: best class $k^*=argmax_kPr(c_k \mid x)$ 
  
-## Logistic Regression 
+## Logistic Regression
+
+**Purpose**: classification technique (can be viewed as a regression where the goal is to estimate a posterior probability which is continuous)
+
+**Assumption**: $Pr(x \mid C=c_k)$ are members of the exponential family: $Pr(x \mid \Theta_k)=exp(\Theta_k^TT(x)-A(\Theta_k)+B(x))$
+
+**Derivation**: $Pr(C=c_k \mid x)=\sigma(w^T\overline{x})$: the posterior probability of class $k$ is a sigmoid logistic linear in $x$ (or softmax linear in $x$ for more than two classes)
+
+**Idea**: learning $Pr(C=c_k \mid x)$ directly by maximum likelihood
+
+**Implementation for binary classification**:
+
+* $y \in \{0,1\}$
+* $w^*=argmax_w\prod_n\sigma(w^T\overline{x})^{y_n}(1-\sigma(w^T\overline{x}))^{1-y_n}$
+* $ \ \ \ \ \ =argmin_w-\sum_nln(\sigma(w^T\overline{x}))+(1-y_n)ln(1-\sigma(w^T\overline{x}))$
+* Derivate $\nabla L(w)=\sum_n(\sigma(w^T\overline{x})-y_n)\overline{x}_n$
+* Solve derivative iteratively for $0$ using Newton's method: $w_{i+1}=w_i-H^{-1}\nabla L(w)$ where
+  * $H=\overline{X}R\overline{X}^T$ is the Hessian matrix
+  * $R$ is a diagonal matrix with entries of $\sigma_n(1-\sigma_n)$
+  * $\sigma_n=\sigma(w_i^T\overline{x}_n)$ 
+ 
+## Generalized Linear Models
+
+ 
  
 ## Artificial Neural Networks 
