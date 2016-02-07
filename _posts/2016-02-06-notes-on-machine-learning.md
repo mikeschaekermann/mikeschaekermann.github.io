@@ -9,7 +9,7 @@ tags:
 {% include _toc.html %}
 
 --- 
-These notes are a result of my preparation for a midterm exam in [Pascal Poupart](https://cs.uwaterloo.ca/~ppoupart)'s [course on Machine Learning](https://cs.uwaterloo.ca/~ppoupart/teaching/cs485-winter16/) at University of Waterloo in the winter 2016 term. This post is currently a **work in progress (as of February 6, 2016)**. 
+These notes are a result of my preparation for a midterm exam in [Pascal Poupart](https://cs.uwaterloo.ca/~ppoupart)'s [course on Machine Learning](https://cs.uwaterloo.ca/~ppoupart/teaching/cs485-winter16/) at University of Waterloo in the winter 2016 term. 
  
 ## Introduction
 
@@ -361,4 +361,47 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
 * Sigmoid: $\theta_j(x)=\sigma(\frac{(x-\mu_j)^2}{s})$
 * Fourier, Wavelets etc. 
  
-## Artificial Neural Networks 
+## Artificial Neural Networks
+
+**Purpose**: non-linear classification/regression
+
+**Idea**: network of units similar to neurons in a human brain
+
+**Implementation**: numerical output of unit $j$, $h(a_j)$ where
+
+* $a_j=\sum_{i}W_{ji}x_i+w_0=W_j\overline{x}$
+* $W_{ji}$ denotes the strength of the link from unit $i$ to unit $j$
+* $h(x)$ is the activation function (e.g., threshold, sigmoid, Gaussian, hyperbolic tangent, identity)
+
+**Structures**:
+
+* feed-forward network (directed acyclic graph)
+* recurrent network (directed cyclic graph)
+
+**Perceptron**: single-layer feed-forward network
+
+* **Threshold Perceptron Learning**:
+  * done separately for each unit $j$
+  * for each $(x,y)$ pair, correct weight $W_{ji}$ if incorrect output is produced:
+    * if produced is $0$ instead of $1$: $W_{ji}=W_{ji}+x_i$
+    * if produced is $1$ instead of $0$: $W_{ji}=W_{ji}-x_i$
+  * convergence if and only if the dataset is linearly separable
+* **Sigmoid Perceptron Learning**:
+  * same hypothesis space as logistic regression
+
+**Multi-layer neural networks**: flexible non-linear models by learning non-linear basis functions
+
+* examples of 2-layer feed-forward networks:
+  * $h_1$ non-linear and $h_2$ **sigmoid**: non-linear **classification**
+  * $h_1$ non-linear and $h_2$ **identity**: non-linear **regression**
+
+**Back Propagation**:
+
+* Purpose: learning by iteratively adjusting network's weights to minimze output error
+* Two phases:
+  * Forward phase: compute output $z_j$ for each unit $j$
+  * Backward phase: comput delta $\delta_j$ at each unit $j$:
+    * if $j$ is an output unit: $\delta_j=h'(a_j)(y_j-z_j)$
+    * if $j$ is a hidden unit: $\delta_j=h'(a_j)\sum_kw_{kj}\delta_k$ (recursion)
+
+ 
