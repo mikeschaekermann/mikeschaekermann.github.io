@@ -1,6 +1,7 @@
 #!/bin/sh
 
 jupyter nbconvert --to markdown "$1" --config tasks/notebooks/config.py
+sed --in-place 's/\\\#/\\\\\#/g' notebooks/*.md
 mv notebooks/*.md _posts/
 rm -f notebooks/*.md
 mv notebooks/*_files/notebooks/* images/
