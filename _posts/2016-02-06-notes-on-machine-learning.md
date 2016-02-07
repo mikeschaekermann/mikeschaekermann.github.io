@@ -17,7 +17,7 @@ Definition by Tom Mitchell (1988): "A computer program is said to learn from **e
 
 Inductive Learning: given a training set of examples of the form $(x, f(X))$, return a function $h$ (**hypothesis**) that approximates $f$ (**true underlying function**).
 
-The quality measure for hypotheses is **generalization**. A good hypothesis will generalize well, i.e., predict unseen examples correctly. **Ockham's razor** demands to prefer the simplest hypothesis consistent with the input data.
+The quality measure for hypotheses is **generalization**. A good hypothesis will generalize well, i.e., predict unseen examples correctly. **Ockham's razor** suggests to prefer the simplest hypothesis consistent with the input data.
 
 Two different types of inductive learning:
 
@@ -34,7 +34,7 @@ In general, we will observe a tradeoff between **expressiveness** (i.e., the siz
 
 **Overfitting**: given a hypothesis space $H$, a hypothesis $h \in H$ is said to overfit the training data if there exists some alternative hypothesis $h' \in H$ such that $h$ has smaller error than $h'$ over the training examples, but $h'$ has smaller error than $h$ over the entire distribution of instances.
 
-**$k$-fold cross-validation:** you run $k$ experiments, each time putting aside $\frac{1}{k}$ of the data to test on and, finally, compute the average accuracy of the experiments 
+**$k$-fold cross-validation:** run $k$ experiments, each time putting aside $\frac{1}{k}$ of the data to test on and, finally, compute the average accuracy of the experiments 
  
 ## Decision Trees
 
@@ -238,7 +238,17 @@ plt.ylim(vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1)
 ![png]({{ site.url }}/images/2016-02-06-notes-on-machine-learning_4_1.png) 
 
  
-## Linear Regression 
+## Linear Regression
+
+**Data**: $\{(x_1, t_1),(x_2,t_2),...,(x_N,t_N)\}$ where $x_n \in \mathbb{R}^D$ and $t_n \in \mathbb{R}$
+
+**Problem**: find linear hypothesis $h$ that maps $x$ to $t$; in other words, try to find a weight vector $w \in \mathbb{R}^{D+1}$ so that the error for $h(x,w)=w^T\overline{x}$ with $\overline{x}=<1, x>$ over all $x$ in the dataset is minimal
+
+**Solution**: $ Aw=b $ with:
+* $A=\sum_{n=1}^N\overline{x}_n\overline{x}_n^T$ (invertible if the training instances span $\mathbb{R}^{D+1}$)
+* $b=\sum_{n=1}^Nt_n\overline{x}_n$
+
+**Regularization**: a technique, applied to avoid a form of overfitting where small changes to the input data lead to big changes in the learned weight vector: $(\lambda I+A)w=b$. The greater $\lambda$ the smaller the magnitude of $w$ will be. 
  
 ## Statistical Learning 
  
