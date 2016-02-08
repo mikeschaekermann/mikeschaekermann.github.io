@@ -114,7 +114,7 @@ In the limit, single-attribute thresholding to construct decision trees for attr
 
 A good visualization of the decision boundaries for the two-dimensional 1-Nearest Neighbor case assuming Euclidean distance is the Voronoi diagram: 
 
-**In [5]:**
+**In [6]:**
 
 {% highlight python linenos %}
 %matplotlib inline
@@ -280,7 +280,7 @@ plt.ylim(vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1)
 
 **Properties of Bayesian Learning**: optimal and not prone to overfitting, but potentially intractable if the hypothesis space is large
 
-**Approximatinos of Bayesian Learning**:
+**Approximations of Bayesian Learning**:
 
 * **Maximum a Posteriori (MAP)**:
   * making predictions, based on the most probable hypothesis $h_{MAP}=argmax_{h_i}P(h_i \mid e)$
