@@ -203,12 +203,14 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
 * **Closed-World Assumption**: any conditions not mentioned in a state are assumed to be false (see Frame Problem)
 * **Actions**: tuples of preconditions (conjunction of function-free positive literals) and effects (description of how the state changes when the action is executed, sometimes defined as **delete- and add-lists**)
 
-**Frame Problem**: when the consequences of an action are described the frame problem poses the question what has happened to components of the world that were not mentioned in this description
-
 **Planning as Search**: planning is a specific type of search in which the search space is reduced significantly by the use of a highly structured and restriced planning language (e.g., Planning Domain Definition Language **PDDL**, a generalization of STRIPS):
 
 * Progression Planning (Forward Planning): classical search which can strongly benefit from good heuristics
 * Regression Planning (Backward Planning): **start from goal state** and find a sequence of **consistent** (i.e., must not undo any desired state), **relevant** (i.e., must achieve one of the conjuncts of the goal) actions
+
+**Frame Problem**: when the consequences of an action are described the frame problem poses the question what has happened to components of the world that were not mentioned in this description
+
+**Sussman's Anomaly**: stack-based regression planning might not work if a problem is decomposed into sub-problems that are interdependent
 
 **Planning Graphs**: a form of representation of a planning problem
 
@@ -217,7 +219,7 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
   * $A_0$ has a node for each action that could be taken in $S_0$
   * $S_i$ contains all literals that could hold given the actions taken in level $A_{i-1}$
   * $A_i$ contains all actions whose preconditions could hold in $S_i$
-* **Persistance Actions (no-op)**: literal will persist until an action negates it
+* **Persistence Actions (no-op)**: literal will persist until an action negates it
 * **Mutual Exclusion (Mutex) links**: record conflicts between actions or states that cannot occur together for one of the following reasons:
   * Inconsistent Effects (actions)
   * Interference (actions)
@@ -232,7 +234,42 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
   * Forward construction of the planning graph (in polynomial time)
   * Solution extraction (backward search through the graph, may be intractable because PSPACE-complete) 
  
-## Adversarial Search 
+## Adversarial Search
+
+**Task environment**: multi-agent
+
+**Types of Games**:
+
+||Perfect Information|Imperfect Information|
+|---|---|---|
+|**Deterministic**|Chess|Other Card Games|
+|**Stochastic**|Rolling the Dice|Poker|
+
+**Zero-sum Perfect Information Games**:
+
+* **Agents**:
+  * MAX: aims to maximize the utility of the terminal node (i.e., win the game)
+  * MIN: aims to minimize the utility of the terminal node (i.e., make MAX lose the game)
+* **Goal**: finding an optimal strategy for MAX (i.e., a strategy that leads to outcomes at least as good for MAX as any other strategy, given that MIN is playing optimally)
+* **Minimax**: a search algorithm to extract the optimal strategy
+  * Complete if tree is finite
+  * Time complexity: $O(b^m)$
+  * Space complexity: $O(bm)$ (DFS)
+* **Alpha-Beta Pruning**: elimination of large parts of the minimax search tree
+  * $\alpha$: value of best choice (highest value) we have found so far on path for MAX
+  * $\beta$: value of best choice (lowest value) we have found so far on path for MIN
+  * Prune branches that are worse than $\alpha$ or $\beta$ for MAX and MIN respectively
+* **Evaluation Functions**: compute expected utility for non-terminal states (and actual utility for terminal states) to allow for real-time decisions instead of going down the search tree for part of the search space
+
+**Stochastic Games**:
+
+* **Agents**:
+  * MIN and MAX like above
+  * CHANCE
+* **Expectiminimax**:
+  * CHANCE will compute the expected value
+  * MIN will compute the minimum
+  * MAX will compute the maximum 
  
 ## Decision Making 
  
