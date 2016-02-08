@@ -73,7 +73,7 @@ If the state space graph is cyclic the search tree will be infinite. In this cas
 
 **Heuristic function**: function $h(n)$ that estimates the cost of reaching a goal from a given state (requirement: $h(n_{goal})=0$)
 
-**Admissibility**: a heuristic is admissible if $0 \leq h(n) \leq h^*(n)$ where $h^*(n)$ is the true shortest path from node $n$ to one of the goal states
+**Admissibility**: a heuristic is admissible if $0 \leq h(n) \leq h'(n)$ where $h'(n)$ is the true shortest path from node $n$ to one of the goal states
 
 **Consistency**: a heuristic is consistent if $h(n) \leq cost(n,n')+h(n')$
 
@@ -130,7 +130,66 @@ A special subset of search problems where:
   * **Cutsets**: choose a subset $S$ of variables such that the constraint graph becomes a tree when $S$ is removed ($S$ is the cycle subset); for each possible valid assignment to the variables of $S$: remove from the domains of remaining variables all values that are inconsistent with $S$; if the remaining CSP has a solution, return it; time complexity is $O(d^c(n-c)d^2)$ where $c$ is the size of the cutset
   * **Tree Decomposition**: decompose graph into subproblems that constitute a tree structure; solve each subproblem independently; solve constraints connecting the subproblems using the tree-based algorithm; time complexity is $O(nd^w)$ where $w$ is the size of the largest subproblem 
  
-## Local Search 
+## Local Search
+
+For many problems, the search path is unimportant. Instead, oftentimes it is simply important to find a viable/good comnbinatorial solution without knowing the path to get there.
+
+**Iterative Improvement**
+
+* **Approach**:
+  * Start at some random point
+  * Generate all possible points to move to (i.e., the moveset)
+  * If the set is empty, restart
+  * If the set is not empty, choose point from it and move to it
+* **Methods**:
+  * **Hill Climbing / Gradient Descent**
+    * **Idea**: always take a step in the direction that improves the current solution value the most
+    * **Pros:**
+      * straightforward implementation
+      * low memory consumption
+    * **Cons**:
+      * not complete
+      * not optimal (can get stuck in local optima/plateaus)
+    * **Modifications**:
+      * allow sideway moves to escape plateaus
+      * random restarts to escape local optima
+      * random selection of next move, but only take the step if it improves the solution
+      * allow bad moves to escape local optima (see simulated annealing)
+  * **Simulated Annealing**
+    * **Idea**:
+      * choose random move from moveset
+      * if it improves the solution make the move
+      * if not (bad move) take it anyways with probability $p$
+      * $p=\frac{V(S_i)-V(S)}{T}$ (Boltzmann distribution)
+      * $T$ is a temperature parameter which will decrease over time:
+        * exploration phase when $T$ is high (random walk)
+        * exploitation phase when $T$ is low (randomized hill climbing)
+    * **Properties**:
+      * optimal if $T$ decreases slowly enough
+
+**Genetic Algorithms**
+
+* **Idea**: simluation of natural evolutionary processes to approach a global optimum
+* **Requirements**:
+  * **Encoding representation** of individuals (normally a bitstring)
+  * **Fitness function** to evaluate the quality of an individual
+  * **Operations**:
+    * **Selection**: selection of candidates for reproduction may be...
+      * fitness-proportionate (can lead to overcrowding)
+      * tournament-based (select two individuals at random and, with constant probability, choose the fitter one)
+      * rank-based
+      * softmax-based
+    * **Crossover**
+    * **Mutation** (normally done with a low probability)
+* **Algorithm**:
+  * Initialize population randomly
+  * Compute fitness for each individual
+  * $N$ times do:
+    * Select two parents
+    * Crossover the parents to create new child
+    * With low probability, mutate child
+    * Add child to population
+  * Return "fittest" individual in population 
  
 ## Planning 
  
