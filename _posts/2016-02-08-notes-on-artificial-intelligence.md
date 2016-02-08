@@ -271,7 +271,20 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
   * MIN will compute the minimum
   * MAX will compute the maximum 
  
-## Decision Making 
+## Decision Making
+
+A decision problem under uncertainty is $<D,S,U,P>$ where:
+
+* $D$ is a set of decisions
+* $S$ is a set of states
+* $U$ is a function that maps a real utility value to every state $\in S$ (unique up to a positive affine transformation)
+* $P$ is a probability distribution which will tell how likely it is that decision $d$ will lead to state $s$
+
+**Expected Utility**: $EU(d)=\sum_{s \in S}P_d(s)U(s)$
+
+**Solution**: any $d' \in D$ such that $EU(d') \geq EU(d)$ for all $d \in D$
+
+**Policies**: for a sequence of actions, a policy assigns an action decision to each state; policies may be obtained by bottom-up analysis of decision trees, incorporating a NATURE agent, representing probability distributions of outcomes for actions, taken in states 
  
 ## Markov Decision Processes 
  
