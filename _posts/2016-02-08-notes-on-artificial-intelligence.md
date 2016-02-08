@@ -191,7 +191,46 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
     * Add child to population
   * Return "fittest" individual in population 
  
-## Planning 
+## Planning
+
+**Purpose**: construct a sequence of actions for performing some task / reaching some goal
+
+**Stanford Research Institute Problem Solver (STRIPS)** language:
+
+* **Domain**: set of typed, concrete objects (no variables allowed)
+* **States**: conjunctions of first-order predicates over objects (no variables allowed)
+* **Goals**: conjunctions of **positive** ground literals (no negative ground literals allowed)
+* **Closed-World Assumption**: any conditions not mentioned in a state are assumed to be false (see Frame Problem)
+* **Actions**: tuples of preconditions (conjunction of function-free positive literals) and effects (description of how the state changes when the action is executed, sometimes defined as **delete- and add-lists**)
+
+**Frame Problem**: when the consequences of an action are described the frame problem poses the question what has happened to components of the world that were not mentioned in this description
+
+**Planning as Search**: planning is a specific type of search in which the search space is reduced significantly by the use of a highly structured and restriced planning language (e.g., Planning Domain Definition Language **PDDL**, a generalization of STRIPS):
+
+* Progression Planning (Forward Planning): classical search which can strongly benefit from good heuristics
+* Regression Planning (Backward Planning): **start from goal state** and find a sequence of **consistent** (i.e., must not undo any desired state), **relevant** (i.e., must achieve one of the conjuncts of the goal) actions
+
+**Planning Graphs**: a form of representation of a planning problem
+
+* **Levels**:
+  * $S_0$ has a node for each literal that holds in the initial state
+  * $A_0$ has a node for each action that could be taken in $S_0$
+  * $S_i$ contains all literals that could hold given the actions taken in level $A_{i-1}$
+  * $A_i$ contains all actions whose preconditions could hold in $S_i$
+* **Persistance Actions (no-op)**: literal will persist until an action negates it
+* **Mutual Exclusion (Mutex) links**: record conflicts between actions or states that cannot occur together for one of the following reasons:
+  * Inconsistent Effects (actions)
+  * Interference (actions)
+  * Competing Needs (actions)
+  * Inconsistent Support (states)
+* **Heuristics**:
+  * Level-cost: for a single goal literal, the level in which it appears first
+  * Max-level: $argmax_i levelcost(g_i)$
+  * Sum-level: $\sum_i levelcost(g_i)$ (may be inadmissible!)
+  * Set-level: for multiple goal literals, the level where all appear and are not mutex (dominates max-level)
+* **GraphPlan**:
+  * Forward construction of the planning graph (in polynomial time)
+  * Solution extraction (backward search through the graph, may be intractable because PSPACE-complete) 
  
 ## Adversarial Search 
  
