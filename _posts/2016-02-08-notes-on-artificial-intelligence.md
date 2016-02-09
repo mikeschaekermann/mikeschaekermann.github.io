@@ -9,7 +9,7 @@ tags:
 {% include _toc.html %}
 
 --- 
-These notes are a result of my preparation for a midterm exam in [Kate Larson](https://cs.uwaterloo.ca/~klarson/)'s introductory [course on Artificial Intelligence](https://cs.uwaterloo.ca/~klarson/teaching/W16-486/) at University of Waterloo in the winter 2016 term. 
+These notes are a result of my preparation for a midterm exam in [Kate Larson](https://cs.uwaterloo.ca/~klarson/)'s introductory [course on Artificial Intelligence](https://cs.uwaterloo.ca/~klarson/teaching/W16-486/) at University of Waterloo in the winter 2016 term. The contents are therefore based on the corresponding presentation slides available online. 
  
 ## Introduction
 
