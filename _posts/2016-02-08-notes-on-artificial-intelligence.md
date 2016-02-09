@@ -9,7 +9,7 @@ tags:
 {% include _toc.html %}
 
 --- 
-These notes are a result of my preparation for a midterm exam in [Kate Larson](https://cs.uwaterloo.ca/~klarson/)'s introductory [course on Artificial Intelligence](https://cs.uwaterloo.ca/~klarson/teaching/W16-486/) at University of Waterloo in the winter 2016 term. **This post is currently a work in progress (as of February 8th, 2016).** 
+These notes are a result of my preparation for a midterm exam in [Kate Larson](https://cs.uwaterloo.ca/~klarson/)'s introductory [course on Artificial Intelligence](https://cs.uwaterloo.ca/~klarson/teaching/W16-486/) at University of Waterloo in the winter 2016 term. 
  
 ## Introduction
 
@@ -292,8 +292,8 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 * A set of probability distributions of the next state given the current state (may be represented by as a **transition probability matrix**)
 * **History Independence (Markov Property)**: the probability of state $s_{t+1}$ does not depend on how the agent got to the current state $s_t$
-* **Discounted sum of future rewards** $U^*(s)$ of state $s$: is the sum the current reward and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $y$ being a constant discount factor with $0 < \gamma < 1$:
-  * $U^*(s_i)=r_i+\gamma(P_{i1}U^*(s_1)+...P_{in}U^*(s_n))$
+* **Discounted sum of future rewards** $U'(s)$ of state $s$: is the sum the current reward and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $y$ being a constant discount factor with $0 < \gamma < 1$:
+  * $U'(s_i)=r_i+\gamma(P_{i1}U'(s_1)+...P_{in}U'(s_n))$
   * $U=(I-\gamma P)^{-1}R$ ($P$ being the transition probability matrix and $R$ being the rewards vector)
   * This system may be solved directly by **matrix inversion** or, if this is too costly, approximated by **Value Iteration**:
     * Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $1$)
@@ -313,4 +313,26 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
     
 **Partially Observable MDP (POMDP)**: in a POMDP, the agent does not know for sure in what state it is in; therefore, it also stores a set of observations $O=\{o_1,...,o_k\}$, an observation model $P(o_t \mid s_t)$ and a belief state $b$ which is a probability distribution over all possible states; $b(s)$ is the probability assigned to state $s$; here, a policy is a mapping from a belief state to an action; generally, finding an approximately optimal policy is PSPACE-hard 
  
-## Reinforcement Learning 
+## Reinforcement Learning
+
+**Task Environment**:
+
+* Fully observable
+* Stochastic
+* Dynamic
+* Discrete
+* Single Agent
+
+**Characteristics**:
+
+* the agent learns a policy to act to maximize the resulting reinforcement signals (numerical reward)
+* the reinforcement signals may be delayed (credit assignment problem)
+* the goal is to find the optimal policy, but we start without knowing the underlying Markov Decision Process (MDP), i.e., the rewards and transition probabilities are not known
+* formally, we can describe this as the following problem: learn policy $\pi:S \mapsto A$ that maximizes $E[r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+...]$ from any starting state $\in S$
+
+**Forms of Reinforcement Learning**:
+
+||Passive|Active|
+|---|---|---|
+|**Model-based**|Adaptive Dynamic Programming (ADP): learn an MDP, based on observations|...|
+|**Model-free**|Temporal Difference: use observed transitions to adjust values of observed states so that they satisfy Bellman equations|$\{\}$| 
