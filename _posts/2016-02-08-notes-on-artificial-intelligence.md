@@ -286,6 +286,31 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 **Policies**: for a sequence of actions, a policy assigns an action decision to each state; policies may be obtained by bottom-up analysis of decision trees, incorporating a NATURE agent, representing probability distributions of outcomes for actions, taken in states 
  
-## Markov Decision Processes 
+## Markov Decision Processes
+
+**Markov Chain**:
+
+* A set of probability distributions of the next state given the current state (may be represented by as a **transition probability matrix**)
+* **History Independence (Markov Property)**: the probability of state $s_{t+1}$ does not depend on how the agent got to the current state $s_t$
+* **Discounted sum of future rewards** $U^*(s)$ of state $s$: is the sum the current reward and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $y$ being a constant discount factor with $0 < \gamma < 1$:
+  * $U^*(s_i)=r_i+\gamma(P_{i1}U^*(s_1)+...P_{in}U^*(s_n))$
+  * $U=(I-\gamma P)^{-1}R$ ($P$ being the transition probability matrix and $R$ being the rewards vector)
+  * This system may be solved directly by **matrix inversion** or, if this is too costly, approximated by **Value Iteration**:
+    * Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $1$)
+    * Use dynamic programming by computing $U^n(s)$ by the previously computed and stored values of $U^{n-1}(s)$
+
+**Markov Decision Process (MDP)**: similar to a Markov Chain, but incorporating the notion of actions. In every state $s_i$, the agent may decide to take an action $a_k$ which may lead to state $s_j$ with probability $P(s_j \mid s_i,a_k)$
+
+* **Expected discounted sum of future rewards** assuming the optimal policy and a step length of $t$, starting from state $s_i$, $V^t(s_i)$:
+  * $V^{t+1}(s_i)=max_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_i)$
+  * $V^*(s_i)$ is $V^t(s_i)$ with $t=\infty$
+* **Policy Optimization**: for every MDP, there is an optimal policy (i.e., a mapping from state to action) such that for every possible start state, there is no better option than to follow the policy; it can be found in polynomial time (in the number of states) by:
+  * **Value Iteration**: iteratively compute $V^*(s_i)$ for all $s_i$ and select the best action $k$ according to $argmax_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_i)$
+  * **Policy Iteration**:
+    * **Policy Evaluation**: given policy $\pi$, compute $V_i^\pi$ for all states $s_i$
+    * **Policy Improvement**: calculate a new policy $\pi_{i+1}$ using 1-step lookahead
+    * Repeat both steps until $V^\pi(s_i)$ converges
+    
+**Partially Observable MDP (POMDP)**: in a POMDP, the agent does not know for sure in what state it is in; therefore, it also stores a set of observations $O=\{o_1,...,o_k\}$, an observation model $P(o_t \mid s_t)$ and a belief state $b$ which is a probability distribution over all possible states; $b(s)$ is the probability assigned to state $s$; here, a policy is a mapping from a belief state to an action; generally, finding an approximately optimal policy is PSPACE-hard 
  
 ## Reinforcement Learning 
