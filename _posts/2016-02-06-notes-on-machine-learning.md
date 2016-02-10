@@ -73,7 +73,7 @@ Decision trees have the following **structure**:
 
 **Residual error for regression**:
 
-* Let $t_n = f(x_n)$ be the target for the $n^th$ example.
+* Let $t_n = f(x_n)$ be the target for the $n^{th}$ example.
 * Let $y_t$ be the value returned by leaf $\tau$.
 * Let $R_\tau$ be the set of examples in leaf $\tau$.
 * Euclidean error for leaf $\tau$: $Q_\tau=\sum_{n \in R_\tau}(t_n-y_n)^2$
@@ -87,19 +87,19 @@ Decision trees have the following **structure**:
   
 **Techniques to avoid overfitting:**
 
-* Stop learning when the curve for testing accuracy, plotted against the tree size, goes down again; this is in practice sometimes hard to achieve because the curve might exhibit high fluctuation
+* Stop learning when the curve for testing accuracy, plotted against the tree size, has reached its global peak; in practice, this is sometimes sometimes hard to achieve because the curve might exhibit high fluctuation
 * Pruning of statistically irrelevant nodes in a bottom-up fashion
   * Remove nodes that improve testing accuracy by less than some threshold
   * Regularization: add a penalty term that reflects the tree complexity (e.g., $\|T\|=$ #leaves in the tree) and remove leaves with a negative "regularized" error reduction: $Q_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}-\lambda\|T\|$ 
  
 ## K-Nearest Neighbors
 
-In the limit, single-attribute thresholding to construct decision trees for attributes with continouous inputs will lead to a full tree with one example per tree. Decision boundaries will always axis-aligned. A better approach without this restriction is $K$-Nearest Neighbors.
+In the limit, single-attribute thresholding to construct decision trees for attributes with continuous inputs will lead to a full tree with one input example per leaf. Decision boundaries will always be axis-aligned. A better approach without this restriction is $K$-Nearest Neighbors.
 
 **Approach:**
 
 * Let $knn(x)$ be the $K$ nearest neighbors of $x$ according to distance $d$
-* Label $y_x=mode(\{y_x' \ \| \ x' \in knn(x)\})$, i.e., the most frequent label among the $K$ nearest neighbors
+* Label $y_x=mode(\{y_x' \mid x' \in knn(x)\})$, i.e., the most frequent label among the $K$ nearest neighbors
 * $K$ controls the degree of smoothing and can be optimized using $k$-fold cross-validation (if $K$ is too small this will lead to overfitting; if $K$ is too high this will lead to underfitting)
 
 **Comparison of complexity** between decision trees and $K$-Nearest Neighbors with respect to:
@@ -342,10 +342,10 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
 * $y \in \{0,1\}$
 * $w^*=argmax_w\prod_n\sigma(w^T\overline{x})^{y_n}(1-\sigma(w^T\overline{x}))^{1-y_n}$
 * $ \ \ \ \ \ =argmin_w-\sum_nln(\sigma(w^T\overline{x}))+(1-y_n)ln(1-\sigma(w^T\overline{x}))$
-* Derivate $\nabla L(w)=\sum_n(\sigma(w^T\overline{x})-y_n)\overline{x}_n$
+* Derivative $\nabla L(w)=\sum_n(\sigma(w^T\overline{x})-y_n)\overline{x}_n$
 * Solve derivative iteratively for $0$ using Newton's method: $w_{i+1}=w_i-H^{-1}\nabla L(w)$ where
-  * $H=\overline{X}R\overline{X}^T$ is the Hessian matrix
-  * $R$ is a diagonal matrix with entries of $\sigma_n(1-\sigma_n)$
+  * $H=\overline{X}R\overline{X}^T$ is the Hessian matrix, $X$ being the training data matrix where each column is represents one input vector
+  * $R$ is a diagonal matrix of size $N*N$ with entries of $\sigma_n(1-\sigma_n)$
   * $\sigma_n=\sigma(w_i^T\overline{x}_n)$ 
  
 ## Generalized Linear Models
@@ -370,6 +370,7 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
 **Implementation**: numerical output of unit $j$, $h(a_j)$ where
 
 * $a_j=\sum_{i}W_{ji}x_i+w_0=W_j\overline{x}$
+* $x_i$ is the output of unit $i$
 * $W_{ji}$ denotes the strength of the link from unit $i$ to unit $j$
 * $h(x)$ is the activation function (e.g., threshold, sigmoid, Gaussian, hyperbolic tangent, identity)
 
@@ -383,8 +384,8 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
 * **Threshold Perceptron Learning**:
   * done separately for each unit $j$
   * for each $(x,y)$ pair, correct weight $W_{ji}$ if incorrect output is produced:
-    * if produced is $0$ instead of $1$: $W_{ji}=W_{ji}+x_i$
-    * if produced is $1$ instead of $0$: $W_{ji}=W_{ji}-x_i$
+    * if output produced is $0$ instead of $1$: $W_{ji}=W_{ji}+x_i$
+    * if output produced is $1$ instead of $0$: $W_{ji}=W_{ji}-x_i$
   * convergence if and only if the dataset is linearly separable
 * **Sigmoid Perceptron Learning**:
   * same hypothesis space as logistic regression
@@ -400,7 +401,7 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
 * Purpose: learning by iteratively adjusting network's weights to minimze output error
 * Two phases:
   * Forward phase: compute output $z_j$ for each unit $j$
-  * Backward phase: comput delta $\delta_j$ at each unit $j$:
+  * Backward phase: compute delta $\delta_j$ at each unit $j$:
     * if $j$ is an output unit: $\delta_j=h'(a_j)(y_j-z_j)$
     * if $j$ is a hidden unit: $\delta_j=h'(a_j)\sum_kw_{kj}\delta_k$ (recursion)
 

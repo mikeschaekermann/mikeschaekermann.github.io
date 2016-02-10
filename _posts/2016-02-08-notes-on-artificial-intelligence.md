@@ -31,7 +31,7 @@ These notes are a result of my preparation for a midterm exam in [Kate Larson](h
 * Fully observable vs Partially observable
 * Deterministic vs Stochastic
 * Episodic vs Dynamic
-* Discrete vs Continous
+* Discrete vs Continuous
 * Single agent vs Multi agent 
  
 ## Search
@@ -123,10 +123,10 @@ A special subset of search problems where:
   * **Least Constraining Value**: given a variable, choose the value that rules out the fewest values in unassigned variables
 * **Filtering**:
   * **Forward Checking**: keep track of remaining legal values for unassigned variables and terminate search if any variable has no legal values
-  * **Arc Consistency**: given two domains $D_1$ and $D_2$, an arc is consistent if, for all $x$ in $D_1$, there is a $y$ in $D_2$ such that $x$ and $y$ are consistent
+  * **Arc Consistency**: given two domains $D_1$ and $D_2$, an arc from $D_1$ to $D_2$ is consistent if, for all $x$ in $D_1$, there is a $y$ in $D_2$ such that $x$ and $y$ are consistent
 * **Structure**:
   * **Independent Subproblems**: break down constraint graph into connected components and solve them separately; can reduce time complexity from $O(d^n)$ to $O(d^c n/c)$ where $d$ is the domain size, $n$ is the total number of variables and $c$ is the average number of variables per component
-  * **Tree Structures**: perform topological sort; back to front: make consistent from children to parents; front to back: assign values consistent with parent; time complexity is $O(nd^2)$
+  * **Tree Structures**: perform topological sort; back to front: make mutually consistent between children and parents; front to back: assign values consistent with parent; time complexity is $O(nd^2)$
   * **Cutsets**: choose a subset $S$ of variables such that the constraint graph becomes a tree when $S$ is removed ($S$ is the cycle subset); for each possible valid assignment to the variables of $S$: remove from the domains of remaining variables all values that are inconsistent with $S$; if the remaining CSP has a solution, return it; time complexity is $O(d^c(n-c)d^2)$ where $c$ is the size of the cutset
   * **Tree Decomposition**: decompose graph into subproblems that constitute a tree structure; solve each subproblem independently; solve constraints connecting the subproblems using the tree-based algorithm; time complexity is $O(nd^w)$ where $w$ is the size of the largest subproblem 
  
@@ -160,7 +160,7 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
       * choose random move from moveset
       * if it improves the solution make the move
       * if not (bad move) take it anyways with probability $p$
-      * $p=\frac{V(S_i)-V(S)}{T}$ (Boltzmann distribution)
+      * $p=e^\frac{V(S_i)-V(S)}{T}$ (Boltzmann distribution)
       * $T$ is a temperature parameter which will decrease over time:
         * exploration phase when $T$ is high (random walk)
         * exploitation phase when $T$ is low (randomized hill climbing)
@@ -229,7 +229,7 @@ For many problems, the search path is unimportant. Instead, oftentimes it is sim
   * Level-cost: for a single goal literal, the level in which it appears first
   * Max-level: $argmax_i levelcost(g_i)$
   * Sum-level: $\sum_i levelcost(g_i)$ (may be inadmissible!)
-  * Set-level: for multiple goal literals, the level where all appear and are not mutex (dominates max-level)
+  * Set-level: for multiple goal literals, the first level where all appear and are not mutex (dominates max-level)
 * **GraphPlan**:
   * Forward construction of the planning graph (in polynomial time)
   * Solution extraction (backward search through the graph, may be intractable because PSPACE-complete) 
@@ -290,28 +290,28 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 **Markov Chain**:
 
-* A set of probability distributions of the next state given the current state (may be represented by as a **transition probability matrix**)
-* **History Independence (Markov Property)**: the probability of state $s_{t+1}$ does not depend on how the agent got to the current state $s_t$
-* **Discounted sum of future rewards** $U'(s)$ of state $s$: is the sum the current reward and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $y$ being a constant discount factor with $0 < \gamma < 1$:
-  * $U'(s_i)=r_i+\gamma(P_{i1}U'(s_1)+...P_{in}U'(s_n))$
+* A set of probability distributions of the next state given the current state (may be represented as a **transition probability matrix**)
+* **History Independence (Markov Property)**: the probability of reaching state $s_{t+1}$ from state $s_t$ does not depend on how the agent got to the current state $s_t$
+* **Discounted sum of future rewards** $U'(s)$ of state $s$: is the sum of the reward for state $s$ and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $y$ being a constant discount factor with $0 < \gamma < 1$:
+  * $U'(s_i)=r_i+\gamma\sum_{j=1}^nP_{ij}U'(s_j)$
   * $U=(I-\gamma P)^{-1}R$ ($P$ being the transition probability matrix and $R$ being the rewards vector)
   * This system may be solved directly by **matrix inversion** or, if this is too costly, approximated by **Value Iteration**:
-    * Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $1$)
+    * Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $n=1$)
     * Use dynamic programming by computing $U^n(s)$ by the previously computed and stored values of $U^{n-1}(s)$
 
 **Markov Decision Process (MDP)**: similar to a Markov Chain, but incorporating the notion of actions. In every state $s_i$, the agent may decide to take an action $a_k$ which may lead to state $s_j$ with probability $P(s_j \mid s_i,a_k)$
 
 * **Expected discounted sum of future rewards** assuming the optimal policy and a step length of $t$, starting from state $s_i$, $V^t(s_i)$:
-  * $V^{t+1}(s_i)=max_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_i)$
+  * $V^{t+1}(s_i)=max_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_j)$
   * $V^*(s_i)$ is $V^t(s_i)$ with $t=\infty$
 * **Policy Optimization**: for every MDP, there is an optimal policy (i.e., a mapping from state to action) such that for every possible start state, there is no better option than to follow the policy; it can be found in polynomial time (in the number of states) by:
-  * **Value Iteration**: iteratively compute $V^*(s_i)$ for all $s_i$ and select the best action $k$ according to $argmax_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_i)$
+  * **Value Iteration**: iteratively compute $V^*(s_i)$ for all $s_i$ and select the best action $k$ according to $argmax_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_j)$
   * **Policy Iteration**:
     * **Policy Evaluation**: given policy $\pi$, compute $V_i^\pi$ for all states $s_i$
     * **Policy Improvement**: calculate a new policy $\pi_{i+1}$ using 1-step lookahead
     * Repeat both steps until $V^\pi(s_i)$ converges
     
-**Partially Observable MDP (POMDP)**: in a POMDP, the agent does not know for sure in what state it is in; therefore, it also stores a set of observations $O=\{o_1,...,o_k\}$, an observation model $P(o_t \mid s_t)$ and a belief state $b$ which is a probability distribution over all possible states; $b(s)$ is the probability assigned to state $s$; here, a policy is a mapping from a belief state to an action; generally, finding an approximately optimal policy is PSPACE-hard 
+**Partially Observable MDP (POMDP)**: in a POMDP, the agent does not know for sure what state it is in; therefore, it also stores a set of observations $O=\{o_1,...,o_k\}$, an observation model $P(o_t \mid s_t)$ and a belief state $b$ which is a probability distribution over all possible states; $b(s)$ is the probability assigned to state $s$; here, a policy is a mapping from a belief state to an action; generally, finding an approximately optimal policy is PSPACE-hard 
  
 ## Reinforcement Learning
 
@@ -325,14 +325,14 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 **Characteristics**:
 
-* the agent learns a policy to act to maximize the resulting reinforcement signals (numerical reward)
+* the agent learns a policy to act with the aim maximize the resulting reinforcement signals (numerical reward)
 * the reinforcement signals may be delayed (credit assignment problem)
 * the goal is to find the optimal policy, but we start without knowing the underlying Markov Decision Process (MDP), i.e., the rewards and transition probabilities are not known
 * formally, we can describe this as the following problem: learn policy $\pi:S \mapsto A$ that maximizes $E[r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+...]$ from any starting state $\in S$
 
 **Forms of Reinforcement Learning**:
 
-||Passive|Active|
+||Passive (just learning the values of being in states)|Active (learning to act optimally)|
 |---|---|---|
 |**Model-based**|Adaptive Dynamic Programming (ADP): learn an MDP, based on observations|...|
 |**Model-free**|Temporal Difference: use observed transitions to adjust values of observed states so that they satisfy Bellman equations|$\{\}$| 
