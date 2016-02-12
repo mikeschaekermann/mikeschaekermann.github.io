@@ -332,7 +332,9 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 **Forms of Reinforcement Learning**:
 
-||Passive (just learning the values of being in states)|Active (learning to act optimally)|
+||Passive (evaluate a given policy)|Active (learning to act optimally)|
 |---|---|---|
-|**Model-based**|Adaptive Dynamic Programming (ADP): learn an MDP, based on observations|...|
-|**Model-free**|Temporal Difference: use observed transitions to adjust values of observed states so that they satisfy Bellman equations|$\{\}$| 
+|**Model-based**|Adaptive Dynamic Programming (ADP): evaluate a given policy, based on observations after running the policy a number of times|$\{\}$|
+|**Model-free**|Temporal Difference: use observed transitions to adjust values of observed states so that they satisfy Bellman equations|Q-Learning|
+
+**Reward Shaping**: consider delays in rewards and add additional rewards for "making progress" using domain knowledge about important steps for reaching the final reward; this bears the risk of the agent optimizing for the pseudo rewards 

@@ -60,16 +60,16 @@ Decision trees have the following **structure**:
 
 ||Error Frequency|Gini Index|Entropy|
 |---|---|---|---|
-|**Definition**|$Q_\tau=\\#\tau-max_k\\#k$|$Q_\tau=\sum_kp_\tau(k)(1-p_\tau(k))$|$Q_t=-\sum_kp_\tau(k) \ ld \ p_\tau(k)$|
+|**Definition**|$Q_\tau=\#\tau-max_k\#k$|$Q_\tau=\sum_kp_\tau(k)(1-p_\tau(k))$|$Q_t=-\sum_kp_\tau(k) \ ld \ p_\tau(k)$|
 |**Explanation**|Number of examples in leaf $\tau$ minus maximum number of examples in leaf $\tau$ that belong to any class $k$|Expected misclassification when choosing the class according to $p_\tau(k)$|Expected # of bits to encode the class of an instance chosen at random according to $p_\tau(k)$|
 
 **Variables:**
 
 * $\tau$: index for leaf $\tau$
 * $k$: index for class $k$
-* $\\#\tau$: number of examples in leaf $\tau$
-* $\\#k$: number of examples in leaf $\tau$ belonging to class $k$
-* $p_\tau(k) = \frac{\\#k}{\\#\tau}$
+* $\#\tau$: number of examples in leaf $\tau$
+* $\#k$: number of examples in leaf $\tau$ belonging to class $k$
+* $p_\tau(k) = \frac{\#k}{\#\tau}$
 
 **Residual error for regression**:
 
@@ -82,7 +82,7 @@ Decision trees have the following **structure**:
 
 * In leaf $\tau$, choose attribute $A$ that reduces the residual error the most when expanded:
 * $A^*=argmax_AQ_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}$, where
-  * $p_\tau(A=a)=\frac{\\#(A=a)}{\\#\tau}$ denotes the proportion of examples with value $a$ (in attribute $A$) inside node $\tau$
+  * $p_\tau(A=a)=\frac{\#(A=a)}{\#\tau}$ denotes the proportion of examples with value $a$ (in attribute $A$) inside node $\tau$
   * $\tau a$ indexes the node reached by following the edge for attribute value $a$, starting from node $\tau$
   
 **Techniques to avoid overfitting:**
