@@ -3,8 +3,14 @@
 Run locally using:
 
 ```
-bundle exec jekyll serve
+./tasks/serve
 # then open the browser and go to http://127.0.0.1:4000/
+```
+
+Build notebooks using:
+
+```
+./tasks/notebooks/build_all
 ```
 
 Deploy using:
