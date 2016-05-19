@@ -116,6 +116,3 @@ DEPENDENCIES
   jekyll-scholar
   jekyll-sitemap
   octopress (~> 3.0)
-
-BUNDLED WITH
-   1.11.2

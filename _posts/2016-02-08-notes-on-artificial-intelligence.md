@@ -292,12 +292,12 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 * A set of probability distributions of the next state given the current state (may be represented as a **transition probability matrix**)
 * **History Independence (Markov Property)**: the probability of reaching state $s_{t+1}$ from state $s_t$ does not depend on how the agent got to the current state $s_t$
-* **Discounted sum of future rewards** $U'(s)$ of state $s$: is the sum of the reward for state $s$ and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $y$ being a constant discount factor with $0 < \gamma < 1$:
+* **Discounted sum of future rewards** $U'(s)$ of state $s$: is the sum of the reward for state $s$ and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $\gamma$ being a constant discount factor with $0 < \gamma < 1$:
   * $U'(s_i)=r_i+\gamma\sum_{j=1}^nP_{ij}U'(s_j)$
   * $U=(I-\gamma P)^{-1}R$ ($P$ being the transition probability matrix and $R$ being the rewards vector)
   * This system may be solved directly by **matrix inversion** or, if this is too costly, approximated by **Value Iteration**:
     * Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $n=1$)
-    * Use dynamic programming by computing $U^n(s)$ by the previously computed and stored values of $U^{n-1}(s)$
+    * Use dynamic programming by computing $U^n(s)$ using the previously computed and stored values of $U^{n-1}(s)$
 
 **Markov Decision Process (MDP)**: similar to a Markov Chain, but incorporating the notion of actions. In every state $s_i$, the agent may decide to take an action $a_k$ which may lead to state $s_j$ with probability $P(s_j \mid s_i,a_k)$
 
@@ -325,7 +325,7 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 **Characteristics**:
 
-* the agent learns a policy to act with the aim maximize the resulting reinforcement signals (numerical reward)
+* the agent learns a policy to act with the aim to maximize the resulting reinforcement signals (numerical reward)
 * the reinforcement signals may be delayed (credit assignment problem)
 * the goal is to find the optimal policy, but we start without knowing the underlying Markov Decision Process (MDP), i.e., the rewards and transition probabilities are not known
 * formally, we can describe this as the following problem: learn policy $\pi:S \mapsto A$ that maximizes $E[r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+...]$ from any starting state $\in S$
@@ -334,7 +334,108 @@ A decision problem under uncertainty is $<D,S,U,P>$ where:
 
 ||Passive (evaluate a given policy)|Active (learning to act optimally)|
 |---|---|---|
-|**Model-based**|Adaptive Dynamic Programming (ADP): evaluate a given policy, based on observations after running the policy a number of times|$\{\}$|
-|**Model-free**|Temporal Difference: use observed transitions to adjust values of observed states so that they satisfy Bellman equations|Q-Learning|
+|**Model-based**|**Adaptive Dynamic Programming** (ADP): evaluate a given policy, based on observations after running the policy a number of times|$\{\}$|
+|**Model-free**|**Temporal Difference**: use observed transitions to adjust values of observed states so that they satisfy Bellman equations according to the following update rule: $V^\pi(s_i) \rightarrow V^\pi(s_i) + \alpha \sum_{m=i}^\infty \lambda^{m-i} [r(s_m) + \gamma V^\pi(s_{m+1} - V^\pi(s_{m})]$; empirically, $\lambda=0.7$ works well|**Q-Learning**: learn a function $Q: SxA \rightarrow R$, then, if the Q values are learned correctly, the optimal policy is defined as $\pi'(s)=\arg\!\max_aQ(s,a)$ and the expected utility is defined as $V'(s)=\max_aQ(s,a)$; algorithm: loop over the following steps: 1. select action $a$ with probability $p(a)=\frac{e^{Q(s,a)/T}}{\sum_ae^{Q(s,a)/T}}$ (Boltzmann exploration); 2. receive immediate reward $r$; 3. observe new state $s'$; 4. update according to the following update rule: $Q(s,a) = Q(s,a) + \alpha(r + \gamma \max_{a'}Q(s',a') - Q(s,a))$; 4. set $s = s'$ |
 
 **Reward Shaping**: consider delays in rewards and add additional rewards for "making progress" using domain knowledge about important steps for reaching the final reward; this bears the risk of the agent optimizing for the pseudo rewards 
+ 
+# Bayes Nets
+
+A Bayes Net (BN) is a **graphical representation** of direct dependencies over a set of variables + a set of **conditional probability distributions** (CPTs) quantifying the strength of the influences.
+
+The structure of the BN means: every $X_i$ is conditionally independent of all of its nondescendents given its parents.
+
+Determining conditional independence in a Bayes net:
+
+* **Non-descendents**: a node is conditionally independent of its non-descendents, given its parents
+
+* **Markov blanket**: a node is conditionally independent of all other nodes in the network, given its parents, its children and its children’s parents
+
+* **D-separation**: two nodes are conditionally independent from each other, given evidence E if E blocks all undirected paths P between the two nodes (E blocks p in P if there is a node z in p which is also in E and where at least one arc in p goes out of z, or if there is a node z in p two arcs in p go into with neither z nor any of its descendents being in E)
+
+**Inference in BNs**:
+
+* Forward with upstream evidence
+* Backward with downstream evidence
+
+**Variable elimination**: algorithm, representing conditional probability tables (CPTs) in BNs as factors and defining ways to answer arbitrary queries involving the variables of a given BN in an algorithmic manner. Solving queries is linear in the number of variables (i.e., nodes) in the BN and exponential in the size of the largest CPT.
+ 
+ 
+# Decision Networks
+
+Decision Networks provide a representation for decision making, consisting of:
+
+* **random variables** like in Bayes Nets
+* **decision variables** controlled by the agent, parent nodes reflect information available at time of decision; decisions are made in sequence; information available to previous decisions remains available for current decision;
+* **utility variables** stating how good certain states are, value only depends on state of parents, generally only one utility node per network
+
+**Policies**: a policy $\delta$ is a set of mappings $\delta_i$, one for each decision node $D_i$, associating a decision for each parent assignment of $D_i$. The value of a policy $\delta$ is the expected utility given that decision nodes are executed according to $\delta$.
+
+**Optimal Policy**: an optimal policy $\delta'$ is such that $EU(\delta') \geq EU(\delta) \forall \delta$; optimal policies can be constructed working from the last decision backwards
+
+**Value of Information**: information has value to the extent that it is likely to cause a change of plan and that the new plan will be better than the old plan; for any single-agent decision-theoretic scenario, the value of information is non-negative! 
+ 
+# Multiagent Systems
+
+**Game Theory**: describes how self-interested agents should behave; per definition, it is a formal way to analyze interactions among a group of rational agents that behave strategically:
+
+* **Normal form game**: also known as matrix or strategic game, assumes that agents are playing simultaneously
+  * **Ingredients**:
+    * $I$: set of agents $\{1, ..., N\}$
+    * $A_i$: set of actions for each agent $\{a_i^1, a_i^2, ..., a_i^m\}$
+    * Outcome of a game, defined by a profile: $o = (a_1, ..., a_n)$
+    * Utility functions: $u_i: O \rightarrow \mathbb{R}$
+  * **Zero-sum games**: $\sum_{i=1}^N u_i(o) = 0 \forall o$
+  * **Dominant strategies**: strategy $a_i'$ strictly dominates strategy $a_i$ if $u_i(a_i',a_{-i}) > u_i(a_i,a_{-i}) \ \forall \ a_{-i}$; dominated strategies will never be played!
+  * **Nash Equlibrium (NE)**:
+    * **Pure NE**: an action profile $a^e$ is a Nash equilibrium if $\forall \ i \ u_i(a^e_i,a^e_{-i}) \geq u_i(a_i,a^e_{-i}) \ \forall \ a_i$, i.e., if no agent has incentive to change given that others do not change.
+    * **Mixed NE**: for probabilistic decision making, a notion of mixed NE was defined as follows:
+      * mixed strategy: $s_i$ is a probability distribution over $A_i$
+      * strategy profile: $s = (s_1, ..., s_N)$
+      * expected utility: $u_i(s) = \sum_a p(a) u_i(a)$ where $p(a) = \prod_j s(a_j)$
+      * Nash equilibrium: $s^e$ is a mixed Nash equilibrium if $\forall \ i \ u_i(s^e_i,s^e_{-i}) \geq u_i(s_i,s^e_{-i}) \ \forall \ s_i$
+    * **Theorem (Nash 1950)**: every game in which the action sets are finite has a mixed Nash equilibrium, and if there is an even number of actions then there will be an odd number of equilibria.
+
+* **Extensive form game**: assumes that agents take turns, they can be represented as decision trees; every extensive form game can be transformed into a normal form game for which equilibria can be computed as explained before
+
+  * **Sub-game perfect equilibrium (SPE)**: equilibrium in an extensive form game that is a Nash equilibrium in all sub-games (i.e., in all sub-trees of the game's decision tree)
+  * **Theorem (Kuhn)**: every finite extensive form game has a sub-game perfect equilibrium
+
+**Mechanism Design**: describes how we should design systems to encourage certain behaviours from self-interested agents
+
+* **Ingredients**:
+  * $O$: set of possible outcomes
+  * $N$: set of $n$ agents
+  * Each agent has a type $\theta_i$ from a set of possible types $\Theta_i$ capturing all private information relevant to the agent’s decision making
+  * Utility functions $u_i(o, \theta_i)$
+  * Social choice function: $f: \Theta_1 \times ... \times \Theta_n \rightarrow O$
+* **Mechanisms**:
+  * A mechanism $M = (S_1, ..., S_n, g(\cdot))$ is a tuple of strategy spaces (one $S_i$ for each agent $i$) and an outcome function $g: S_1 \times ... \times S_n \rightarrow O$, mapping specific strategies to an outcome.
+  * A mechanism **implements** a social choice function $f(\theta)$ if there is an equilibrium $s' = (s'_1(\theta_1), ..., s'_n(\theta_n))$ such that the mechanism's outcome function, given the strategies of equilibrium $s'$, will lead to the same outcome as the social choice function, given the true preferences of the agents, irrespective of what these true types are: $g(s'_1(\theta_1), ..., s'_n(\theta_n)) = f(\theta_1, ..., \theta_n) \forall (\theta_1, ..., \theta_n) \in \Theta_1 \times ... \times \Theta_n$.
+  * A mechanism is called a **direct** mechanism for social choice function $f(\theta)$ if its strategies do simply output a type (not necessarily the agent's true type) and that the outcome for the same type profile $\theta$ is the same for social choice function $f(\theta)$ and the outcome function of the mechanism $(g(\cdot)$: $S_i = \Theta_i \forall i$ and $g(\theta) = f(\theta) \forall (\theta_1, ..., \theta_n) \in \Theta_1 \times ... \times \Theta_n$.
+  * A direct mechanism is **incentive-compatible** if it has a strategy equilibrium $s'$ such that each strategy of the equilibrium outputs the agent's true type, independent of the specific type: $s'_i(\theta_i) = \theta_i \forall i$ and $\theta_i \in \Theta_i$.
+  * A direct, incentive-compatible mechanism is **strategy-proof** if this equilibrium is the dominant strategy such that, resulting in the agents always revealing their true type simply by acting rationally.
+* **Revelation Principle Theorem**: If there is a mechanism $M$ that implements social choice function $f$ in dominant strategies, then there is a direct, strategy-proof mechanism $M'$ that implements $f$.
+* **Gibbard-Satterthwaite Theorem**: For any finite outcome space with more than two outcomes where each outcome can be achieved by social choice function $f$ and where the type space $\Theta$ includes all possible orderings over $O$, then $f$ is implementable in dominant strategies if and only if $f$ is dictatorial. Relaxations of these requirements may lead to non-dictatorial social choice functions that are implementable in dominant strategies such that strategy-proof mechanisms may be constructed; in particular, these restrictions can be relaxed by:
+  * using a weaker equilibrium concept
+  * designing mechanisms where computing manipulations is computationally hard
+  * restrict the structure of agents' preferences:
+    * **single-peaked preferences** (e.g., median voter rule)
+    * **quasi-linear preferences**: introduces the concept of transfers (e.g., money) in the outcome representation ($o = (x, t_1, ..., t_2)$) where the agents' utility functions are linear in the agents' corresponding transfer value: $u_i(o, \theta_i) = v_i(x, \theta_i) - t_i$; the following mechanisms operate with quasi-linear preferences:
+      * **Groves Mechanisms**: with choice rule $x'=\arg \max_x \sum_i v_i(x, \theta_i)$ (efficient $=$ maximizing social welfare) and transfer rules $t_i(\theta) = h_i(\theta_{-i}) - \sum_{j \neq i} v_j(x', \theta),\theta_j)$ where $\theta_{-i}$ means all types except the one for agent $i$. The **Vickrey-Clarke-Groves** (VCG) mechanism is a Groves mechanism with $h_i(\theta_{-i}) = \sum_{j \neq i} v_j(x^{-i},\theta_j)$ where $x^{-i}$ is the outcome that would have arisen if agent $i$ had not existed. This results in zero transfers for all agents for which, if they had not participated in the game, the outcome would still be the same as with them participating. An example implementation of a VCG mechanism is the Vickrey auction where the highest bidder gets the object and has to pay the second-highest bid, all the other ones do not have to pay anything.
+      * **Sponsored Search**: bids are placed for ad placements and every ad has a quality score; ads are ranked by the product of the bid and the ad's quality score; if an ad is clicked, the bidder has to pay the minimum amount it would have had to bid in order to have ended up in the same position in the current ranking. 
+ 
+# Statistical Learning
+
+**Parameter learning**: with complete data and Laplace smoothing using Maximum Likelihood (ML); given observations $x = (x_1, x_2, ..., x_d)$ from $N$ trials, estimate parameters $\theta = (\theta_1, \theta_2, ..., \theta_d)$ using $\theta_i = \frac{x_i + \alpha}{N + \alpha d}$ with $\alpha > 0$
+
+**Naive Bayes model**: with observed attribute values $x_1, x_2, ..., x_n$, assuming that all attributes are independent given the class, we can compute the posterior class probability by $P(C \mid x_1, x_2, ..., x_n) = \alpha P(C) \prod_i P(x_i \mid C)$ 
+ 
+# Expectation Maximization
+
+A technique to estimate model parameters despite the fact that there may be hidden variables or missing values in the observed data points. The general algorithm goes as follows:
+
+* **Guess the parameters** of the maximum likelihood hypothesis $h_{ML}$
+* **Loop** over the two following steps **until** the **parameters of $h_{ML}$ converge**:
+  * **Expectation**: based on $h_{ML}$, compute expectated (missing) values
+  * **Maximization**: based on expected (missing) values, compute new $h_{ML}$ 
