@@ -60,16 +60,16 @@ Decision trees have the following **structure**:
 
 ||Error Frequency|Gini Index|Entropy|
 |---|---|---|---|
-|**Definition**|$Q_\tau=\#\tau-max_k\#k$|$Q_\tau=\sum_kp_\tau(k)(1-p_\tau(k))$|$Q_t=-\sum_kp_\tau(k) \ ld \ p_\tau(k)$|
+|**Definition**|$Q_\tau=num(\tau)-max_k num(k)$|$Q_\tau=\sum_kp_\tau(k)(1-p_\tau(k))$|$Q_t=-\sum_kp_\tau(k) \ ld \ p_\tau(k)$|
 |**Explanation**|Number of examples in leaf $\tau$ minus maximum number of examples in leaf $\tau$ that belong to any class $k$|Expected misclassification when choosing the class according to $p_\tau(k)$|Expected # of bits to encode the class of an instance chosen at random according to $p_\tau(k)$|
 
 **Variables:**
 
 * $\tau$: index for leaf $\tau$
 * $k$: index for class $k$
-* $\#\tau$: number of examples in leaf $\tau$
-* $\#k$: number of examples in leaf $\tau$ belonging to class $k$
-* $p_\tau(k) = \frac{\#k}{\#\tau}$
+* $num(\tau)$: number of examples in leaf $\tau$
+* $num(k)$: number of examples in leaf $\tau$ belonging to class $k$
+* $p_\tau(k) = \frac{num(k)}{num(\tau)}$
 
 **Residual error for regression**:
 
@@ -82,7 +82,7 @@ Decision trees have the following **structure**:
 
 * In leaf $\tau$, choose attribute $A$ that reduces the residual error the most when expanded:
 * $A^*=argmax_AQ_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}$, where
-  * $p_\tau(A=a)=\frac{\#(A=a)}{\#\tau}$ denotes the proportion of examples with value $a$ (in attribute $A$) inside node $\tau$
+  * $p_\tau(A=a)=\frac{num(A=a)}{num(\tau)}$ denotes the proportion of examples with value $a$ (in attribute $A$) inside node $\tau$
   * $\tau a$ indexes the node reached by following the edge for attribute value $a$, starting from node $\tau$
   
 **Techniques to avoid overfitting:**
@@ -112,131 +112,7 @@ In the limit, single-attribute thresholding to construct decision trees for attr
 |**Decision Tree**|$O(M^2N)$|$O(M)$|
 |**$K$-Nearest Neighbors**|$O(MN)$|$O(MN)$|
 
-A good visualization of the decision boundaries for the two-dimensional 1-Nearest Neighbor case assuming Euclidean distance is the Voronoi diagram: 
-
-**In [6]:**
-
-{% highlight python linenos %}
-%matplotlib inline
-
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.spatial import Voronoi
-
-def voronoi_finite_polygons_2d(vor, radius=None):
-    """
-    Reconstruct infinite voronoi regions in a 2D diagram to finite
-    regions.
-
-    Parameters
-    ----------
-    vor : Voronoi
-        Input diagram
-    radius : float, optional
-        Distance to 'points at infinity'.
-
-    Returns
-    -------
-    regions : list of tuples
-        Indices of vertices in each revised Voronoi regions.
-    vertices : list of tuples
-        Coordinates for revised Voronoi vertices. Same as coordinates
-        of input vertices, with 'points at infinity' appended to the
-        end.
-
-    """
-
-    if vor.points.shape[1] != 2:
-        raise ValueError("Requires 2D input")
-
-    new_regions = []
-    new_vertices = vor.vertices.tolist()
-
-    center = vor.points.mean(axis=0)
-    if radius is None:
-        radius = vor.points.ptp().max()*2
-
-    # Construct a map containing all ridges for a given point
-    all_ridges = {}
-    for (p1, p2), (v1, v2) in zip(vor.ridge_points, vor.ridge_vertices):
-        all_ridges.setdefault(p1, []).append((p2, v1, v2))
-        all_ridges.setdefault(p2, []).append((p1, v1, v2))
-
-    # Reconstruct infinite regions
-    for p1, region in enumerate(vor.point_region):
-        vertices = vor.regions[region]
-
-        if all([v >= 0 for v in vertices]):
-            # finite region
-            new_regions.append(vertices)
-            continue
-
-        # reconstruct a non-finite region
-        ridges = all_ridges[p1]
-        new_region = [v for v in vertices if v >= 0]
-
-        for p2, v1, v2 in ridges:
-            if v2 < 0:
-                v1, v2 = v2, v1
-            if v1 >= 0:
-                # finite ridge: already in the region
-                continue
-
-            # Compute the missing endpoint of an infinite ridge
-
-            t = vor.points[p2] - vor.points[p1] # tangent
-            t /= np.linalg.norm(t)
-            n = np.array([-t[1], t[0]])  # normal
-
-            midpoint = vor.points[[p1, p2]].mean(axis=0)
-            direction = np.sign(np.dot(midpoint - center, n)) * n
-            far_point = vor.vertices[v2] + direction * radius
-
-            new_region.append(len(new_vertices))
-            new_vertices.append(far_point.tolist())
-
-        # sort region counterclockwise
-        vs = np.asarray([new_vertices[v] for v in new_region])
-        c = vs.mean(axis=0)
-        angles = np.arctan2(vs[:,1] - c[1], vs[:,0] - c[0])
-        new_region = np.array(new_region)[np.argsort(angles)]
-
-        # finish
-        new_regions.append(new_region.tolist())
-
-    return new_regions, np.asarray(new_vertices)
-
-# make up data points
-np.random.seed(1234)
-points = np.random.rand(15, 2)
-
-# compute Voronoi tesselation
-vor = Voronoi(points)
-
-# plot
-regions, vertices = voronoi_finite_polygons_2d(vor)
-
-# colorize
-for region in regions:
-    polygon = vertices[region]
-    plt.fill(*zip(*polygon), alpha=0.4)
-
-plt.plot(points[:,0], points[:,1], 'ko')
-plt.axis('equal')
-plt.xlim(vor.min_bound[0] - 0.1, vor.max_bound[0] + 0.1)
-plt.ylim(vor.min_bound[1] - 0.1, vor.max_bound[1] + 0.1)
-{% endhighlight %}
-
-
-
-
-    (-0.086231550409317764, 0.98264119063611655)
-
-
-
- 
-![png]({{ site.url }}/images/2016-02-06-notes-on-machine-learning_4_1.png) 
-
+A good visualization of the decision boundaries for the two-dimensional 1-Nearest Neighbor case assuming Euclidean distance is the Voronoi diagram. 
  
 ## Linear Regression
 
@@ -403,6 +279,199 @@ $Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$
   * Forward phase: compute output $z_j$ for each unit $j$
   * Backward phase: compute delta $\delta_j$ at each unit $j$:
     * if $j$ is an output unit: $\delta_j=h'(a_j)(y_j-z_j)$
-    * if $j$ is a hidden unit: $\delta_j=h'(a_j)\sum_kw_{kj}\delta_k$ (recursion)
-
+    * if $j$ is a hidden unit: $\delta_j=h'(a_j)\sum_kw_{kj}\delta_k$ (recursion) where all units $k$ are the ones that receive input from unit $j$
+    * update weights: $w_{ji} \leftarrow w_{ji} - \alpha \ \delta_j z_i$ 
  
+## Kernel Methods
+
+**Key idea**: use a large (possibly infinite) set of fixed, non-linear functions; normally, the computational complexity depends on the number of basis functions used, but by a "dual trick", complexity depends on the amount of data.
+
+**Kernel function**: $k(x, x') = \phi(x)^T \phi(x')$
+
+**Gram matrix**: $K = \Phi^T \Phi$
+
+**Prediction for kernelized linear regression**: $y_n = k(\cdot, x_n)^T (K + \lambda I)^{-1}y$ where $k(\cdot, x_n) = k(x, x_n) \ \forall \ x$
+
+**Constructing kernels $K$**:
+
+* Valid kernels must be positive semi-definite (= all eigenvalues must be $\geq 0$); in other words, the $K$ must factor into a product of a transposed matrix by itself ($K = \Phi^T \Phi$)
+* There are well-defined rules that can be applied to combine kernels with each other to create new kernels, preserving the property of positive semi-definiteness
+* Kernels can be defined with respect to other things than vector such as sets, strings or graphs.
+
+**Common kernels ($k(x, x') =$ ...)**:
+
+* **Polynomial**: $(x^T x')^M$; feature space: all degree $M$ products of entries in $x$
+* **General Polynomial**: $(x^T x' + c)^M$ with $c > 0$; feature space: all products of **up to** $M$ products of entries in $x$
+* **Gaussian**: $\exp({-\frac{\mid x - x' \mid^2}{2 \sigma^2}})$; feature space: infinite! 
+ 
+## Gaussian Processes
+
+**Key idea**: approximating the true function $f(x)$ by an infinite-dimensional Gaussian distribution over functions $P(f)$
+
+**Distribution over functions**: $f(x) \sim GP(m(x), k(x, x')) \ \forall x, x'$ where
+
+* $m(x) = E(f(x))$ is the mean (= zero because the expectation of a zero-centered Gaussian is zero)
+* $k(x, x') = E((f(x) - m(x)) (f(x') - m(x'))) = \frac{\phi(x)^T \phi(x')}{\alpha}$ is the kernel covariance function
+
+**Gaussian Process Regression**: corresponds to kernelized Bayesian linear regression with a function view instead of a weight space view, posteriors over $f$ instead of $w$ and a complexity, cubic in the number of training points instead of cubic in the number of basis functions. Prediction:
+
+* $P(y' \mid x', X, y) = N(\bar{f}(x'), k'(x', x'))$ where
+* $\bar{f}(\cdot) = k(\cdot, X) \ A \ y$
+* $k'(\cdot, \cdot) = k(\cdot, \cdot) - k(\cdot, X) \ A \ k(X, \cdot)$
+* $A = (K + \sigma^2 I)^{-1}$ (the inversion of this step is cubic in the number of training points 
+ 
+## Support Vector Machines
+
+**Key idea**: find the decision hyperplane that maximizes the distances to the closest data point, resulting in a unique and globally optimal max-margin separator that can be found in polynomial time.
+
+**Optimization problem**:
+
+* $\max_w \frac{1}{\mid w \mid} \min_n y_n w^T \phi(x_n)$
+* Alternatively, set the minimum distance to 1 and minimize $\mid w \mid$: $\min_w \frac{1}{2}{\mid w \mid}^2$ such that $y_n w^T \phi(x_n) \geq 1 \ \forall \ n$ (only the points where the distance is 1 are necessary to define the active constraints and are called **support vectors**)
+* This optimization can be reformulated as a kernelized dual problem, given by: $\max_a \sum_n a_n - \frac{1}{2} \sum_n \sum_{n'} a_n a_{n'} y_n y_{n'} k(x_n, x_{n'})$ such that $\sum_n a_n y_n = 0$ and $a_n \geq 0 \ \forall \ n$ (many $a_n$ will be zero, they will be non-zero only for the support vectors)
+
+**Prediction**:
+
+* Primal problem: $y_* = sign(w^T \phi(x_*))$
+* Dual problem: $y_* = sign(\sum_n a_n y_n k(x_n, x_*))$
+
+**Soft margin**: for data that is not linearly separable, slack variables may be introduced into the optimzation problem to handle minor misclassifications: $\min_w C \sum_n \xi_n + \frac{1}{2}{\mid w \mid}^2$ such that $y_n w^T \phi(x_n) \geq 1 - \xi_n$ and $\xi_n \geq 0 \ \forall \ n$; slack variable $\xi_n$ will be $> 0$ for misclassified examples and $C$ controls the trade-off between the slack variable penalty and the margin; $C$ can also be interpreted as a regularization parameter; when $C \rightarrow \infty$ we arrive again at the hard margin problem; **support vectors** are all points that are in the margin or misclassified;
+
+**Multiclass SMVs**:
+
+* **One-Against-All**: for $K$ classes, train $K$ SMVs to distinguish each class from the rest; drawback: there will be regions that are either claimed by no class or by multiple classes
+* **Pairwise Comparison**: train $O(K^2)$ SMVs to compare each pair of classes; drawbacks: computationally expensive and it is not obvious how the best class should be picked
+* **Continuous Ranking**: single SVM that returns a continuous value to rank all classes (most popular approach today); idea: instead of computing the sign of a linear separator, compare the values of linear functions for each class $k$; classification: $y_* = \arg\max_k w_k^T \phi(x_*)$ 
+ 
+## Hidden Markov Models
+
+**Key idea**: make use of sequential correlations between classes
+
+**Assumptions**:
+
+* **Stationary process**: transition and emission distributions are identical at each time step: $P(x_t \mid y_t) = P(x_{t+1} \mid y_{t+1})$ and $P(y_t \mid y_{t-1}) = P(y_{t+1} \mid y_t) \ \forall \ t$
+* **Markovian process**: next state is independent of previous states given the current state: $P(y_{t+1} \mid y_{t}, y_{t-1}, ..., y_{1}) = P(y_{t+1} \mid y_{t}) \ \forall \ t$
+
+**Parametetrization**:
+
+* **Initial state distribution**: $\pi = P(y_1)$
+* **Transition distribution**: $\theta = P(y_{t} \mid y_{t - 1})$
+* **Emission distribution**: $\phi = P(x_t \mid y_t)$
+
+**Inference**:
+
+* **Monitoring**: $P(y_t \mid x_{1..t})$; forward algorithm has linear complexity in $t$
+* **Prediction**: $P(y_{t+k} \mid x_{1..t})$; forward algorithm has linear compelxity in $t + k$
+* **Hindsight**: $P(y_{k} \mid x_{1..t})$ where $k < t$; forward-backward algorithm has linear complexity in $t$
+* **Most likely explanation**: $\arg\max_{y_1,...y_t}P(y_{1..t} \mid x_{1..t})$; Viterbi algorithm has linear complexity in $t$
+
+**Maximum likelihood objectives**:
+
+* **Supervised**: $\pi',\theta',\phi' = \arg\max_{\pi,\theta,\phi} P(y_{1..T},x_{1..T} \mid \pi,\theta,\phi)$
+* **Unsupervised**: $\pi',\theta',\phi' = \arg\max_{\pi,\theta,\phi} P(x_{1..T} \mid \pi,\theta,\phi)$ 
+ 
+## Deep Neural Networks
+
+**Definition**: neural network with many hidden layers, providing a high level of expressivity (as the number of layers is increased, the number of units needed may decrease exponentially; example: parity function)
+
+**Problems**:
+
+* **Gradient vanishing**: deep neural networks of sigmoid and hyperbolic units often suffer from vanishing gradients (because the derivative of these activation functions is always $< 1$); for this problem, two popular solutions exist:
+
+  * **Pre-training** of weights
+  * Other types of activation functions:
+
+    * **Rectified Linear Units**:
+      * Hard version: $g(x) = \max(0, x)$
+      * Soft version ("Softplus"): $g(x) = \log(1 + e^x)$
+    * **Maxout Units**: operate on vector-typed weights and output the maximum value of all the linear combinations of different subsets of input weights
+    
+* **Overfitting**: high expressivity increases the risk for overfitting; for this problem, three popular solutions exist:
+
+  * **Regularization**
+  * **Data augmentation** (to ensure that the number of parameters in the deep neural net is lower than the amount of data
+  * **Dropout**: random "drop" some (input and hidden) units from the network when training; during prediction, multiply the output of each unit by one minus its dropout probability; dropout can be seen as a form of ensemble learning for neural networks 
+ 
+## Convolutional Neural Networks
+
+**Key idea**: learn convolutional features in sequential, spatial or tensor data (e.g., pixels from an input image) in a flexible way. An equivariant representation of the learned model ensures (partial) translation invariance and handling of variable-length inputs.
+
+**Convolution**: in neural networks, a convolution denotes the linear combination of a subset of units based on a specific pattern of weights. Convolutions are often combined with activation functions to produce a feature value.
+
+**Pooling**: commutative mathematical operation that combines several units (e.g., max, sum, product, Euclidean norm etc.)
+
+**Convolutional Neural Network (CNN)**: any ANN that includes an alternation of convolution and pooling layers where some of the convolution weights are shared. CNNs are also trained using backpropagation, but gradients of shared weights are combined into a single gradient. 
+ 
+## Recurrent and Recursive Neural Networks
+
+**Key idea**: facilitate processing of variable-length data by instantiating recurrent or recursive patterns in the network.
+
+**Recurrent Neural Network**: outputs can be fed back to the network as inputs, creating a recurrent structure that can be unrolled to handle variable-length data. Recurrent neural networks are trained by backpropagation on the unrolled network, combining gradients of shared weights into a single gradient. The **Encoder-Decoder** model is a model mapping input sequences to output sequences (e.g., for machine translation, question answering, dialog).
+
+**Recursive Neural Network**: generalize recurrent neural networks from chains to trees. Parse trees or dependency graphs are used as structures for recursive neural networks. The **Long-Short-Term-Memory** (LSTM) model is a special gated structure to control memorization and forgetting in recursive neural networks, facilitating long-term memory. 
+ 
+## Ensemble Learning
+
+**Key idea**: combine several imperfect hypotheses into a better hypothesis
+
+**Assumptions**:
+
+* each hypothesis $h_i$ makes error with probability $p$
+* the hypotheses are independent
+
+**Probabilities of making errors** using majority vote of $n$ hypotheses under these assumptions*:
+
+* $k \leq n$ hypotheses make an error: $p_e(k) = \binom{n}{k} p^k (1-p)^{n-k}$
+* majority makes an error: $\sum_{k=\frac{1}{2}n}^n p_e(k)$
+
+**Weighted majority**: as the above two assumptions are rarely true, hypotheses can be weighted lower if:
+
+* they are correlated
+* they have a lower classification performance
+
+**Boosting**: technique to "boost" a weak learner by training multiple parametrizations of the same base model using weighted variations of the training set. One popular implementation is **AdaBoost**.
+
+* **Boosting algorithm**:
+
+  * set all instance weights $w_x$ to 1
+  * repeat until sufficient number of hypotheses:
+    * $h_i \leftarrow$ learn(dataset, weights)
+    * increase $w_x$ of misclassified instances $x$
+  * ensemble hypothesis is the weighted majority of all $h_i$ with weights $z_i$ proportional to the accuracy of $h_i$
+
+* **Requirement**: a weak learner (i.e., a model producing hypotheses at least as good as random), e.g., rules of thumb, decision stumps (= decision trees of one node), perceptrons, naive bayes models
+
+**Bagging** (= **b**ootstrap **agg**regation): technique to improve the accuracy of a weak learner by sampling a subset of both the samples and features to obtain independent classifiers; prediction is then done by a simple majority vote (without weighting). **Random forests** are bags of decision trees.
+
+* **Bagging algorithm**:
+
+  * repeat until sufficient number $K$ of hypotheses:
+    * bootstrap sampling: $D_k \leftarrow$ sample data subset
+    * random projection: $F_k \leftarrow$ sample feature subset
+    * training: $h_k \leftarrow$ learn($D_k$, $F_k$)
+  * ensemble hypothesis is the (non-weighted) majority of all $h_k$ for classification or the average output for regression
+
+
+||Boosting &nbsp;  &nbsp;  &nbsp; |Bagging &nbsp;  &nbsp;  &nbsp; |
+|---|---|---|
+|**Sampling**|reweight instances in dataset|sample subset of data and features|
+|**Classifiers obtained**|complementary|independent|
+|**Prediction**|weighted majority vote|majority vote (no weighting)| 
+ 
+## Stream Learning
+
+**Key idea**: instead of training one hypothesis on a fixed dataset, continuously update a preliminary hypothesis as new data points arrive.
+
+**Challenges**:
+
+* since the data is streaming, it cannot all be stored $\rightarrow$ old data cannot necessarily be revisited
+* time to process new incoming data must be constant and less than the arrival time for the next batch of data
+
+**Solutions**:
+
+* **Bayesian Learning**: lends itself naturally to stream learning because it stores information about training data in a product of likelihood distributions which can be updated incrementally every time a new data point comes in
+* **Stochastic Gradient Descent** (SGD): for optimization-based learners like least square regression, logistic regression, maximum likelihood, support vector machines and neural networks, gradient descent can be implemented as an incremental approach where the model parameters are updated based on every incoming data point $(x_n, y_n)$ in isolation (as opposed to all existing data points at once), weighting the corresponding loss gradient by a data point specific learning rate $\alpha_n$.
+
+  * **Robins-Monro conditions**: convergence is only guaranteed if the learning rate staisfies the Robins-Monro conditions of $\sum_{\alpha_n=1}^\infty \alpha_n = \infty$ and $\sum_{\alpha_n=1}^\infty \alpha_n^2 < \infty$; an example of such an update rule for learning rate $\alpha_n$ that satisfies these conditions is: $\alpha_n = \frac{1}{(\tau + n)^k}$ where $\tau \geq 0$ and $k \in (0.5, 1]$
+  
+  * **AdaGrad**: form of SDG that is often used in backpropagation. In AdaGrad, the model parameters $\theta$ are updated as follows: $\theta_m^{(n+1)} \leftarrow \theta_m^{(n)} - \frac{\alpha}{\tau + \sqrt{s_m^{(n)}}} \frac{\delta Loss(x_n; y_n; \theta^{(n)})}{\delta \theta_m^{(n)}}$ where $s_m^{(n)} \leftarrow s_m^{(n - 1)} + (\frac{\delta Loss(x_n; y_n; \theta^{(n)})}{\delta \theta_m^{(n)}})^2$ 

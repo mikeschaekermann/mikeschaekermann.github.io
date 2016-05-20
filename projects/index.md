@@ -37,9 +37,9 @@ A collaborative web application for annotating gameplay videos, based on biometr
 
 ## Implicit Surface Modeling for 3D Printing
 
-This project is an experimental prototype for the real-time customization and animation of 3D-printable objects. It makes use of implicit surfaces, raymarching and the isosurface extraction algorithm Marching Cubes. The current version of the prototype only works on Mac OS X and iOS devices.
+This project is an experimental prototype for the real-time customization and animation of 3D-printable objects. It makes use of implicit surfaces, raymarching and the isosurface extraction algorithm Marching Cubes.
 
-<div><a href="http://primary-matter.meteor.com/" target="_blank"><img src="{{ site.url }}/images/implicit_surface_modeling_for_3D_printing.png"></a></div>
+<div><img src="{{ site.url }}/images/implicit_surface_modeling_for_3D_printing.png"></div>
 
 ---
 

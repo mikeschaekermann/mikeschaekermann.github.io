@@ -10,6 +10,22 @@ share: false
 
 ---
 
+## CHI2016: Resolvable vs. Irresolvable Ambiguity
+
+In May 2016, I presented a <a href="http://www.doc.gold.ac.uk/~mas02mg/HCML2016/HCML2016_paper_24.pdf" target="_blank">position paper</a> from our research group at the workshop on <a href="http://hcml2016.goldsmithsdigital.com/program/" target="_blank">Human-Centered Machine Learning</a> (HCML) at the <a href="https://chi2016.acm.org/" target="_blank">CHI2016</a> conference in San Jose. In this paper, we tackle the conventional assumption that, in supervised machine learning, ground truth data always needs to provide exactly one correct label per training example. We propose a new hybrid framework for dealing with uncertainty in ground truth that fully acknowledges the notion of irresolvable expert disagreement.
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/eWz1xkawhVii8C" width="595" height="485" class="force-full-width-keep-aspect-ratio" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+&nbsp;
+
+This paper was one of two workshop papers from our research group, accepted at CHI2016 workshops:
+
+{% bibliography --file papers %}
+
+&nbsp;
+
+---
+
 ## Hacking Brain-Computer Interfaces
 
 In March 2015, I had the pleasure to give a talk on brain-computer interface (BCI) technologies at the <a href="http://www.meetup.com/de-DE/Singularity-meets-Self-Improvement-in-Berlin/" target="_blank">"Singularity meets Self-Improvement" (SMSI) meetup</a> in Berlin which is regularly hosted by <a href="http://trent.st/publications/" target="_blank">AI researcher</a> and <a href="https://www.ascribe.io/" target="_blank">start-up founder</a> <a href="http://trent.st/" target="_blank">Dr. Trent McConaghy</a>. In this talk, the focus is on different ways of presenting, processing and analyzing electroencephalographic (EEG) data, alleging some fun examples from real-world BCI applications. In addition to that, the open-source/open-hardware device <a href="http://openbci.com/" target="_blank">OpenBCI</a> is introduced and demonstrated.
