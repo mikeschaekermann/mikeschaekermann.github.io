@@ -14,6 +14,8 @@ share: false
 
 In May 2016, I presented a <a href="http://www.doc.gold.ac.uk/~mas02mg/HCML2016/HCML2016_paper_24.pdf" target="_blank">position paper</a> from our research group at the workshop on <a href="http://hcml2016.goldsmithsdigital.com/program/" target="_blank">Human-Centered Machine Learning</a> (HCML) at the <a href="https://chi2016.acm.org/" target="_blank">CHI2016</a> conference in San Jose. In this paper, we tackle the conventional assumption that, in supervised machine learning, ground truth data always needs to provide exactly one correct label per training example. We propose a new hybrid framework for dealing with uncertainty in ground truth that fully acknowledges the notion of irresolvable expert disagreement.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L-BhJP26SY8" frameborder="0" allowfullscreen></iframe>
+
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/eWz1xkawhVii8C" width="595" height="485" class="force-full-width-keep-aspect-ratio" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 &nbsp;
