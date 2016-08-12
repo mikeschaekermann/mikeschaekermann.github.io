@@ -1,10 +1,7 @@
 # Site navigation links
 
-- title: Bio
-  url: /bio/
-
-- title: Research
-  url: /research/
+- title: Bio & Research
+  url: /bio-and-research/
 
 - title: Projects
   url: /projects/
