@@ -24,3 +24,13 @@ share: false
 My research at the University of Waterloo, where I am supervised by <a href="http://edithlaw.ca/" target="_blank">Dr. Edith Law</a> and <a href="https://cs.uwaterloo.ca/~klarson/" target="_blank">Dr. Kate Larson</a>, is located at the intersection of machine learning and human-computer interaction. In particular, I look at how we can combine the power of human and machine intelligence to solve problems too hard to be tackled by computational methods alone (i.e., crowdsourcing). My work in this topic revolves around the analysis of [medical time series data]({{site.url}}/projects/#crowdeeg). In the past, I have applied methods of data visualization and collaborative analysis of biosignals to the field of [games user research]({{site.url}}/projects/#collaborative-biosignal-and-gameplay-analysis) in collaboration with <a href="http://www.acagamic.com/" target="_blank">Dr. Lennart Nacke</a>. All in all, I operate in the hybrid and emerging space of Human-Centered Machine Learning. Just recently, [I gave a talk]({{site.url}}/presentations/#chi2016-resolvable-vs-irresolvable-ambiguity) at a workshop on that topic at CHI 2016 in San Jose, CA.
 
 ---
+
+# News
+
+---
+
+* **Jan 2017:** I started my **Software Engineering Internship at Google**, Mountain View, CA.
+* **Oct 2016:** Our workshop, <a href="https://www.crowdcurio.com/research/workshops/chi2017/" target="_blank">**Designing for Curiosity: An Interdisciplinary Workshop**</a>, was accepted to CHI 2017.
+* **Sep 2016:** Our paper, **Testing Incremental Difficulty Design in Platformer Games** was accepted to CHI 2017.
+
+---

@@ -17,14 +17,6 @@ Framework to combine machine and human intelligence for the scalable and accurat
 
 <div><a href="https://github.com/edithlmlaw/crowdeeg-viewer" target="_blank"><img src="{{ site.url }}/images/crowdeeg_expert_annotation_interface.png"></a></div>
 
-&nbsp;
-
-The CrowdLab will also be represented at this year's <a href="https://chi2016.acm.org/wp/" target="_blank">CHI 2016</a> workshops on <a href="http://research.microsoft.com/en-us/um/people/teevan/misc/microproductivity/" target="_blank">Microproductivity</a> by <a href="http://acw.io/" target="_blank">Alex C. Williams</a> and on <a href="http://hcml2016.goldsmithsdigital.com/" target="_blank">Human-Centered Machine Learning</a> by myself with the following two paper submissions:
-
-{% bibliography --file papers %}
-
-&nbsp;
-
 ---
 
 ## Collaborative Biosignal and Gameplay Analysis
