@@ -29,8 +29,9 @@ My research at the University of Waterloo, where I am supervised by <a href="htt
 
 ---
 
-* **Jan 2017:** I started my **Software Engineering Internship at Google**, Mountain View, CA.
-* **Oct 2016:** Our workshop, <a href="https://www.crowdcurio.com/research/workshops/chi2017/" target="_blank">**Designing for Curiosity: An Interdisciplinary Workshop**</a>, was accepted to CHI 2017.
-* **Sep 2016:** Our paper, **Testing Incremental Difficulty Design in Platformer Games** was accepted to CHI 2017.
+* **05/2017:** I will be joining the <a href="https://flowers.inria.fr/" target="_blank">**Flowers team at Inria**</a>, Bordeaux, France, as a visiting researcher.
+* **01/2017:** I started my **Software Engineering Internship at Google**, Mountain View, CA.
+* **10/2016:** Our workshop, <a href="https://www.crowdcurio.com/research/workshops/chi2017/" target="_blank">**Designing for Curiosity: An Interdisciplinary Workshop**</a>, was accepted to CHI 2017.
+* **09/2016:** Our paper, **Testing Incremental Difficulty Design in Platformer Games** was accepted to CHI 2017.
 
 ---
