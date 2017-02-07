@@ -30,8 +30,10 @@ My research at the University of Waterloo, where I am supervised by <a href="htt
 ---
 
 * **05/2017:** I will be joining the <a href="https://flowers.inria.fr/" target="_blank">**Flowers team at Inria**</a>, Bordeaux, France, as a visiting researcher.
+* **01/2017:** Our paper <a href="https://openreview.net/pdf?id=ByqiJIqxg" target="_blank">**Online Bayesian Transfer Learning for Sequential Data Modeling**</a> was accepted to the International Conference on Learning Representations (ICLR 2017), to be held in Toulon, France.
 * **01/2017:** I started my **Software Engineering Internship at Google**, Mountain View, CA.
-* **10/2016:** Our workshop, <a href="https://www.crowdcurio.com/research/workshops/chi2017/" target="_blank">**Designing for Curiosity: An Interdisciplinary Workshop**</a>, was accepted to CHI 2017.
-* **09/2016:** Our paper, **Testing Incremental Difficulty Design in Platformer Games** was accepted to CHI 2017.
+* **10/2016:** Our workshop <a href="https://www.crowdcurio.com/research/workshops/chi2017/" target="_blank">**Designing for Curiosity: An Interdisciplinary Workshop**</a> was accepted to CHI 2017.
+* **09/2016:** Our paper **Testing Incremental Difficulty Design in Platformer Games** was accepted to CHI 2017, to be held at Denver, CO.
+* **03/2016:** I presented our position paper at the workshop on <a href="http://hcml2016.goldsmithsdigital.com/" target="_blank">**Human-Centered Machine Learning**</a> at CHI 2016, San Jose, CA.
 
 ---

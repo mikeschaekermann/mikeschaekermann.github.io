@@ -22,7 +22,7 @@ In May 2016, I presented a <a href="http://www.doc.gold.ac.uk/~mas02mg/HCML2016/
 
 This paper was one of two workshop papers from our research group, accepted at CHI2016 workshops:
 
-{% bibliography --file papers %}
+{% bibliography --file workshop_papers %}
 
 &nbsp;
 

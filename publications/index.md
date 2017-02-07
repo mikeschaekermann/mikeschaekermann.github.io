@@ -10,9 +10,15 @@ share: false
 
 ---
 
+## Conference Papers
+
+{% bibliography --file conference_papers %}
+
+---
+
 ## Workshop Papers
 
-{% bibliography --file papers %}
+{% bibliography --file workshop_papers %}
 
 ---
 
