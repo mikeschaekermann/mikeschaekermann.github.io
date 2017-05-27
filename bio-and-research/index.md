@@ -29,7 +29,7 @@ My research at the University of Waterloo, where I am supervised by <a href="htt
 
 ---
 
-* **05/2017:** I will be joining the <a href="https://flowers.inria.fr/" target="_blank">**Flowers team at Inria**</a>, Bordeaux, France, as a visiting researcher.
+* **05/2017:** I will be joining the <a href="https://flowers.inria.fr/" target="_blank">**FLOWing Epigenetic Robots and Systems lab at Inria**</a>, Bordeaux, France, as a visiting researcher.
 * **01/2017:** Our paper <a href="https://openreview.net/pdf?id=ByqiJIqxg" target="_blank">**Online Bayesian Transfer Learning for Sequential Data Modeling**</a> was accepted to the International Conference on Learning Representations (ICLR 2017), to be held in Toulon, France.
 * **01/2017:** I started my **Software Engineering Internship at Google**, Mountain View, CA.
 * **10/2016:** Our workshop <a href="https://www.crowdcurio.com/research/workshops/chi2017/" target="_blank">**Designing for Curiosity: An Interdisciplinary Workshop**</a> was accepted to CHI 2017.
