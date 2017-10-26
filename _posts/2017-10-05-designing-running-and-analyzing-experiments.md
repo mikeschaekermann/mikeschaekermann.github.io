@@ -1,12 +1,14 @@
 ---
 layout: post
-title: "Notes on Design and Analysis of Experiments"
+title: "Notes on Designing, Running and Analyzing Experiments"
 tags:
     - python
     - notebook
 ---
 
 {% include _toc.html %}
+
+These notes are a result of taking the online course [Designing, Running and Analyzing Experiments](https://www.coursera.org/learn/designexperiments) taught by Scott Klemmer and Jacob Wobbrock. The contents are therefore based on the corresponding presentations available online.
 
 ## Basic Experiment Design Concepts
 
