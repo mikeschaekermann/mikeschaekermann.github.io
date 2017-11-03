@@ -6,9 +6,51 @@ tags:
     - notebook
 ---
 
+<style>
+  table {
+    border: 1px solid #000000;
+    text-align: center;
+  }
+
+  td {
+    border-right: 1px solid #000000;
+  }
+
+  tbody tr {
+    border-top: 1px solid #dddddd;
+  }
+
+  thead tr {
+    border-bottom: 1px solid #000000;
+  }
+</style>
+
 {% include _toc.html %}
 
-These notes are a result of taking the online course [Designing, Running and Analyzing Experiments](https://www.coursera.org/learn/designexperiments) taught by Scott Klemmer and Jacob Wobbrock. The contents are therefore based on the corresponding presentations available online.
+These notes are a result of taking the online course [Designing, Running and Analyzing Experiments](https://www.coursera.org/learn/designexperiments) taught by [Scott Klemmer](https://d.ucsd.edu/srk/) and [Jacob Wobbrock](https://faculty.washington.edu/wobbrock/). The contents are therefore based on the corresponding presentations available online.
+
+## Tests Cheatsheet
+
+**Tests of Proportions**:
+
+| Samples | Response Categories | Asymptotic Tests         | Exact Tests           |
+|---------|---------------------|--------------------------|-----------------------|
+| 1       | 2                   | One-sample $\chi^2$ test | Binomial test         |
+| 1       | > 2                 | One-sample $\chi^2$ test | Multinomial test      |
+| > 1     | >= 2                | N-sample $\chi^2$ test   | G-test; Fisher's test |
+
+
+**Analyses of Variance**:
+
+| Factors | Levels | (B)etween or (W)ithin | Parametric Tests                                             | Non-Parametric Tests                                                 |
+|---------|--------|-----------------------|--------------------------------------------------------------|----------------------------------------------------------------------|
+| 1       | 2      | B                     | Independent-samples T-test                                   | Mann-Whitney U Test                                                  |
+| 1       | > 2    | B                     | One-way ANOVA                                                | Kruskal-Wallis Test                                                  |
+| 1       | 2      | W                     | Paired-samples t-test                                        | Wilcoxon signed-rank test                                            |
+| 1       | > 2    | W                     | One-way repeated measures ANOVA                              | Friedman test                                                        |
+| > 1     | >= 2   | B                     | Factorial ANOVA; Linear Models (LM)                          | Aligned Rank Transform (ART); Generalized Linear Models (GLM)        |
+| > 1     | >= 2   | W                     | Factorial repeated measures ANOVA; Linear Mixed Models (LMM) | Aligned Rank Transform (ART); Generalized Linear Mixed Models (GLMM) |
+
 
 ## Basic Experiment Design Concepts
 
