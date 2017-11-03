@@ -205,3 +205,29 @@ These notes are a result of taking the online course [Designing, Running and Ana
 * R call: `library(coin); wilcox_test(Y ~ X, data=data, distribution="exact")`
 * R output: `Z = {TEST STATISTIC}, p-value = {P VALUE}`
 * Report as: $Z = \text{\{TEST STATISTIC\}}, \text{\{P VALUE REPORT\}}$
+
+
+## One-Factor Between-Subjects Experiments
+
+**One-Way ANOVA** (parametric; for experiments with a single between-subjects factor of more than two levels):
+
+* **F-test** (overall / omnibus test):
+
+  * R call: `m = aov(Y ~ X, data=data); anova(m)`
+  * R output: `Df: {NUM. DOF} Sum Sq: ... Mean Sq: ... F value: {TEST STATISTIC} Pr(>F): {P VALUE} Residuals: {DENOM. DOF}`
+  * Report as: $F(\text{\{NUM. DOF\}}, \text{\{DENOM. DOF\}}) = \text{\{TEST STATISTIC\}}, \text{\{P VALUE REPORT\}}$
+  
+* **Post-hoc pairwise comparisons** (using independent samples t-tests):
+  
+  * R call: `library(multcomp); summary(glht(m, mcp(IDE="Tukey")), test=adjusted(type="holm"))`
+
+**Non-parametric Equivalent**:
+
+* **Kruskal-Wallis Test** (overall / omnibus test):
+
+  * R call: `library(coin); kruskal_test(Y ~ X, data=data, distribution="asymptotic")`
+
+* **Post-hoc pairwise comparisons** (using either multiple Mann-Whitney U tests [see above] or one combined test by Cover and Iman [see R call below]):
+
+  * R call: `library(PMCMR); posthoc.kruskal.conover.test(Y ~ X, data=data, p.adjust.method="holm")`
+
