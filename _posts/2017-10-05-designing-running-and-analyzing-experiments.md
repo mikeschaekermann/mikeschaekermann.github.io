@@ -150,7 +150,11 @@ These notes are a result of taking the online course [Designing, Running and Ana
 
 * **Independent Variables**: The variables the experimenter manipulates, also called the *treatments*, or *factors* (with different levels, i.e., the specific values a factor can take on)
   * **Between-Subjects Factor**: Each participant experiences only one level of a factor
-  * **Within-Subjects Factor**: Each participant experiences more than one level of a factor (partial within-subjects factors expose participants to more than one, but not all levels of the factor)
+    * **Pros**: Avoids **carryover effects** (see below)
+    * **Cons**: More participants needed; higher subject-dependent variance in the response variables
+  * **Within-Subjects Factor**: Each participant experiences more than one level of a factor (partial within-subjects factors expose participants to more than one, but not all levels of the factor); also called **Repeated Measures** factor:
+    * **Pros**: Less participants needed; lower subject-dependent variance in the response variables
+    * **Cons**: Is prone to **carryover effects** (like fatigue, practice effects, boredom, skill transfer etc.); carryover effects can be accounted for by controlling (e.g., randomizing or rotating) and logging the order in which individual participants are exposed to the different levels of a factor
 * **Dependent Variables**: The variables that are potentially influenced by the independent variables
 * **Notation in R**: $Y \sim X + \epsilon$ ($Y$: dependent variable; $X$: independent variable; $\epsilon$: random measurement error)
 
@@ -231,3 +235,64 @@ These notes are a result of taking the online course [Designing, Running and Ana
 
   * R call: `library(PMCMR); posthoc.kruskal.conover.test(Y ~ X, data=data, p.adjust.method="holm")`
 
+
+## One-Factor Within-Subjects Experiments
+
+**Counterbalancing Repeated Measures Factors** (how to assign order of presentation of factor levels to avoid carryover effects):
+
+* **Full Counterbalancing**: every possible order is represented equally in the study; preferred method if the participant sample is large enough to represent each order equally often; the number of possible orders is the factorial of the number of factor levels; the participant should be a multiple of the number of possible orders;
+
+* **Latin Square**: each factor level appears in each order position equally often; this is done by rotating a fixed order of factor levels; the participant sample should be a multiple of the number of factor levels;
+  * 1, 2, 3, 4, 5
+  * 2, 3, 4, 5, 1
+  * 3, 4, 5, 1, 2
+  * 4, 5, 1, 2, 3
+  * 5, 1, 2, 3, 4
+
+* **Balanced Latin Square**: first row (1, 2, n, 3, n-1, 4, n-2, ...); subsequent (n-1) rows increment the values from each preceding row and wrap around $(n_p + 1 \mod n)$; if n, i.e., the number of factor levels, is odd, repeat the block in reverse order); below is an example for an odd number of factor levels:
+  * **Block 1** (forward order):
+    * 1, 2, 5, 3, 4
+    * 2, 3, 1, 4, 5
+    * 3, 4, 2, 5, 1
+    * 4, 5, 3, 1, 2
+    * 4, 1, 4, 2, 3
+  * **Block 2** (reverse order; only needed if n is odd):
+    * 4, 3, 5, 2, 1
+    * 5, 4, 1, 3, 2
+    * 1, 5, 2, 4, 3
+    * 2, 1, 3, 5, 4
+    * 3, 2, 4, 1, 4
+
+
+**Paired t-test** (parametric form of ANOVA, appropriate for within-subjects factors with two levels)
+
+* R call: `t.test(Y ~ X, data=dataframe, paired=TRUE, var.equal=TRUE)` (use `var.equal=FALSE` for the Welch t-test for unequal variances, e.g., when the homoscedasticity assumption for ANOVAs is violated)
+* R output: `t = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}`
+* Report as: $t(\text{\{DEGREES OF FREEDOM\}}) = \text{\{TEST STATISTIC\}}, \text{\{P VALUE REPORT\}}$
+
+
+**Wilcoxon Signed-Rank Test** (nonparametric equivalent of paired t-test):
+
+* R call: `library(coin); wilcoxsign_test(Y ~ X | Subject, data=dataframe, distribution="exact")`
+* R output: `Z = {TEST STATISTIC}, p-value = {P VALUE}`
+* Report as: $Z = \text{\{TEST STATISTIC\}}, \text{\{P VALUE REPORT\}}$
+
+
+**One-way Repeated Measures ANOVA** (parametric form of ANOVA, appropriate for within-subjects factors with more than two levels)
+
+* R call: `library(ez); m = ezANOVA(dv=Y, within=X, wid=Subject, data=dataframe); m$Mauchly; m$ANOVA;`
+`pos = match(m$``Sphericity Corrections``$Effect, m$ANOVA$Effect)`
+`m$Sphericity$GGe.DFn = m$Sphericity$GGe * m$ANOVA$DFn[pos] # Greenhouse-Geisser`
+`m$Sphericity$GGe.DFd = m$Sphericity$GGe * m$ANOVA$DFd[pos]`
+`m$Sphericity$HFe.DFn = m$Sphericity$HFe * m$ANOVA$DFn[pos] # Huynh-Feldt`
+`m$Sphericity$HFe.DFd = m$Sphericity$HFe * m$ANOVA$DFd[pos]`
+`m$Sphericity`
+* Followed by post-hoc pairwise comparisons using paired t-tests
+
+
+**Friedman's Test** (non-parametric equivalent of one-way repeated measures ANOVA):
+
+* R call: `library(coin); friedman_test(Y ~ X | Subject, data=dataframe, distribution="asymptotic")`
+* R output: `chi-squared = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}`
+* Report as: $\chi^2(\text{\{DEGREES OF FREEDOM\}}) = \text{\{TEST STATISTIC\}}, \text{\{P VALUE REPORT\}}$
+* Followed by post-hoc pairwise comparisons using Wilcoxon signed-rank tests
