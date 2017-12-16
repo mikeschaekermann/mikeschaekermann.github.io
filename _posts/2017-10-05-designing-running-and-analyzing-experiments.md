@@ -315,9 +315,13 @@ These notes are a result of taking the online course [Designing, Running and Ana
 
 **Mixed Factorial ANOVA**:
 
-* **R code**: `library(ez); ezANOVA(dv={DEPENDENT VARIABLE}, between={BETWEEN-SUBJECTS FACTOR}, within={WITHIN-SUBJECTS FACTOR}, wid={SUBJECT COLUMN NAME}, data=data)`
+* **R code**: `library(ez); ezANOVA(dv={DEPENDENT VARIABLE},`
+`between={BETWEEN-SUBJECTS FACTOR}, within={WITHIN-SUBJECTS FACTOR},`
+`wid={SUBJECT COLUMN NAME}, data=data)`
 
 **Aligned Rank Transform (ART) Procedure** (non-parametric equivalent to Mixed Factorial ANOVA):
 
-* **R code**: `library(ARTool); m = art({DEPENDENT VARIABLE} ~ {BETWEEN-SUBJECTS FACTOR} * {WITHIN-SUBJECTS FACTOR} + (1|{SUBJECT COLUMN NAME}), data=data); anova(m)`
+* **R code**: `library(ARTool); m = art({DEPENDENT VARIABLE} ~ {BETWEEN-SUBJECTS`
+`FACTOR} * {WITHIN-SUBJECTS FACTOR} + (1|{SUBJECT COLUMN NAME}),`
+`data=data); anova(m)`
 
