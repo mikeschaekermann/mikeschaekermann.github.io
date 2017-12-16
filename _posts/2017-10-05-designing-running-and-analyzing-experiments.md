@@ -296,3 +296,28 @@ These notes are a result of taking the online course [Designing, Running and Ana
 * R output: `chi-squared = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}`
 * Report as: $\chi^2(\text{\{DEGREES OF FREEDOM\}}) = \text{\{TEST STATISTIC\}}, \text{\{P VALUE REPORT\}}$
 * Followed by post-hoc pairwise comparisons using Wilcoxon signed-rank tests
+
+
+## Multi-Factor Experiments
+
+**NxM mixed / within-subjects / between-subjects factorial designs**:
+
+* **N**: number of levels in the first factor
+* **M**: number of levels in the second factor (there can be more than two factors)
+* **mixed**: means that some factors are within-subjects factors and some factors are between-subjects factors; if the factorial design contains any within-subjects factors, always use Repeated Measures ANOVA, not regular ANOVA
+* **within-subjects**: means that all factors are within-subjects factors
+* **between-subjects**: means that all factors are between-subjects factors
+
+**Effects**:
+
+* **Main effect**: means that changing levels within one factor leads to significant differences in the dependent variable
+* **Interaction effect**: means that changing levels in one factor differentially affects outcomes in the dependent variable for different levels of another factor
+
+**Mixed Factorial ANOVA**:
+
+* **R code**: `library(ez); ezANOVA(dv={DEPENDENT VARIABLE}, between={BETWEEN-SUBJECTS FACTOR}, within={WITHIN-SUBJECTS FACTOR}, wid={SUBJECT COLUMN NAME}, data=data)`
+
+**Aligned Rank Transform (ART) Procedure** (non-parametric equivalent to Mixed Factorial ANOVA):
+
+* **R code**: `library(ARTool); m = art({DEPENDENT VARIABLE} ~ {BETWEEN-SUBJECTS FACTOR} * {WITHIN-SUBJECTS FACTOR} + (1|{SUBJECT COLUMN NAME}), data=data); anova(m)`
+
