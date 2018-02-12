@@ -325,3 +325,26 @@ These notes are a result of taking the online course [Designing, Running and Ana
 `FACTOR} * {WITHIN-SUBJECTS FACTOR} + (1|{SUBJECT COLUMN NAME}),`
 `data=data); anova(m)`
 
+
+## Generalized Linear Models (GLMs)
+
+Removes the assumption of a linear relationship between predictor variable and response variable and the assumption of a normal distribution of the response variable; only used for **between-subjects** factors
+
+* **Multinomial / Nominal Logistic Regression** (categorical response variable): with logit link
+  * **R code**:
+  `library(nnet); library(car); contrasts(data.frame$X) <- "contr.sum";`
+  `m = multinom(Y ~ X, data=data.frame); Anova(m, type=3)`
+  * followed by post-hoc pairwise comparisons if omnibus test permits
+
+* **Ordinal Logistic Regression** (ordinal response variable): with cumulative logit link
+  * **R code**:
+  `library(MASS); library(car); data.frame$Y = ordered(data.frame$Y);`
+  `contrasts(data.frame$X) <- "contr.sum"; m = polr(Y ~ X, data=data.frame, Hess=TRUE);`
+  `Anova(m, type=3)`
+  * followed by post-hoc pairwise comparisons if omnibus test permits
+
+* **Poisson Regression** (count response variable): with log link
+  * **R code**:
+  `library(car); contrasts(data.frame$X) <- "contr.sum";`
+  `m = glm(Y ~ X, data=data.frame, family=poisson); Anova(m, type=3);`
+  * followed by post-hoc pairwise comparisons if omnibus test permits
