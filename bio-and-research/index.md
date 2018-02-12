@@ -29,6 +29,7 @@ My research at the University of Waterloo, where I am supervised by <a href="htt
 
 ---
 
+* **04/2018:** I will start my **Research Internship at Google**, Mountain View, CA.
 * **06/2017:** Our paper **Curiously Motivated: Profiling Curiosity with Self-Reports and Behaviour Metrics in the Game "Destiny"** was accepted to CHI PLAY 2017, to be held at Amsterdam, Netherlands.
 * **05/2017:** I will be joining the <a href="https://flowers.inria.fr/" target="_blank">**FLOWing Epigenetic Robots and Systems lab at Inria**</a>, Bordeaux, France, as a visiting researcher.
 * **01/2017:** Our paper <a href="https://openreview.net/pdf?id=ByqiJIqxg" target="_blank">**Online Bayesian Transfer Learning for Sequential Data Modeling**</a> was accepted to the International Conference on Learning Representations (ICLR 2017), to be held in Toulon, France.
