@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes on Machine Learning"
+title: "Machine Learning"
 tags:
     - python
     - notebook

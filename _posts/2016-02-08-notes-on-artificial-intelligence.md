@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes on Artificial Intelligence"
+title: "Artificial Intelligence"
 tags:
     - python
     - notebook
