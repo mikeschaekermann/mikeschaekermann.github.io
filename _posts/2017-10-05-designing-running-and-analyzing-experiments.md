@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Notes on Designing, Running and Analyzing Experiments"
+title: "Experiment Design & Analysis"
 tags:
     - python
     - notebook
@@ -326,7 +326,7 @@ These notes are a result of taking the online course [Designing, Running and Ana
 `data=data); anova(m)`
 
 
-## Generalized Linear Models (GLMs)
+## Generalized Linear Models
 
 Removes the assumption of a linear relationship between predictor variable and response variable and the assumption of a normal distribution of the response variable; only used for **between-subjects** factors
 
@@ -348,3 +348,49 @@ Removes the assumption of a linear relationship between predictor variable and r
   `library(car); contrasts(data.frame$X) <- "contr.sum";`
   `m = glm(Y ~ X, data=data.frame, family=poisson); Anova(m, type=3);`
   * followed by post-hoc pairwise comparisons if omnibus test permits
+
+## Mixed Effects Models
+
+Types of models that can handle both within-subjects and between-subjects factors. The term 'mixed' indicates that the model incorporates both:
+
+* **Fixed Effects** (factors of interest that we manipulate in a study)
+* **Random Effects** (factors whose levels were sampled randomly from a larger population about which we wish to generalize, but whose specific level values we do not care about, e.g., subjects)
+
+**Nesting / Nested Effects**: Important when the levels of a factor should not be pooled just by their labels alone, i.e., when the individual levels of a factor do not mean very much. For example, the levels of a factor 'Trial' (with 20 trials) should be nested into other fixed effect factors.
+
+**Advantages of Mixed Effects Models:**
+
+* Can handle missing data points
+* Do not require balanced data sets
+* Do not have a sphericity requirement (i.e., similarity of variances across all levels of a factor)
+
+**Disadvantages of Mixed Effects Models:**
+
+* Computationally more intensive
+* Larger degrees of freedom in the denominator
+
+**Linear Mixed Model (LMM)**:
+
+* **R code**:
+  `library(lme4); library(lmerTest); library(car);`
+  `contrasts(data.frame$X1) <- "contr.sum"`
+  `contrasts(data.frame$X2) <- "contr.sum"`
+  `contrasts(data.frame$Trial) <- "contr.sum"`
+  `m = lmer(Y ~ (X1 * X2)/Trial + (1|Subject), data=data.frame)`
+  `Anova(m, type=3, test.statistic="F")`
+* X1 and X2 are fixed effects, Trial is nested into the interaction of X1 and X2, and Subject is a random effect
+* followed by post-hoc pairwise comparisons if omnibus test permits
+
+**Generalized Linear Mixed Model (GLMM)**
+
+* **R code**:
+  `library(lme4); library(car);`
+  `contrasts(data.frame$X1) <- "contr.sum"`
+  `contrasts(data.frame$X2) <- "contr.sum"`
+  `contrasts(data.frame$Trial) <- "contr.sum"`
+  `m = glmer(Y ~ (X1 * X2)/Trial + (1|Subject), data=data.frame, family=poisson, nAGQ=1)`
+  `Anova(m, type=3)`
+* X1 and X2 are fixed effects, Trial is nested into the interaction of X1 and X2, and Subject is a random effect
+* family can be switched to a different type of distribution; Poisson distribution usually works well for count response variables like error counts
+* switch nAGQ to 0 to speed up the computation, but verify that the result is still similar
+* followed by post-hoc pairwise comparisons if omnibus test permits
