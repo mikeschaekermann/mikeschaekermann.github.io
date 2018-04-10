@@ -29,6 +29,7 @@ My research at the University of Waterloo, where I am supervised by <a href="htt
 
 ---
 
+* **04/2018:** I was awarded the <a href="https://research.googleblog.com/2018/04/announcing-2018-google-phd-fellows-for.html" target="_blank">**Google PhD Fellowship**</a>, as one of 39 recipients globally and the only one from Canada.
 * **04/2018:** I will start my **Research Internship at Google**, Mountain View, CA.
 * **06/2017:** Our paper **Curiously Motivated: Profiling Curiosity with Self-Reports and Behaviour Metrics in the Game "Destiny"** was accepted to CHI PLAY 2017, to be held at Amsterdam, Netherlands.
 * **05/2017:** I will be joining the <a href="https://flowers.inria.fr/" target="_blank">**FLOWing Epigenetic Robots and Systems lab at Inria**</a>, Bordeaux, France, as a visiting researcher.
