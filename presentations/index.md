@@ -18,14 +18,6 @@ In May 2016, I presented a <a href="http://www.doc.gold.ac.uk/~mas02mg/HCML2016/
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/eWz1xkawhVii8C" width="595" height="485" class="force-full-width-keep-aspect-ratio" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-&nbsp;
-
-This paper was one of two workshop papers from our research group, accepted at CHI2016 workshops:
-
-{% bibliography --file workshop_papers %}
-
-&nbsp;
-
 ---
 
 ## Hacking Brain-Computer Interfaces

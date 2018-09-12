@@ -1,4 +1,48 @@
 ---
 ---
 
-{{reference}}{% if link %} <a href="https://cs.uwaterloo.ca/~mschaeke{{link}}" target="_blank">View PDF</a>{% endif %}
+<span style="font-size: 24px"><b>{% if link %}<a href="https://cs.uwaterloo.ca/~mschaeke{{link}}" target="_blank">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}</b></span>
+<br>
+{{ entry.author }}.{% if entry.booktitle %} In <i>{{ entry.booktitle }}</i>.{% endif %}
+<br>
+<div style="margin: 10px 0 20px 0; padding: 5px 0; width: 100%; text-align: right; border-top: 1px solid #000000; border-bottom: 2px solid #000000">{% if link %}<b><a href="https://cs.uwaterloo.ca/~mschaeke{{link}}" target="_blank">Download PDF <i class="fa fa-file"></i></a></b><div style="display: inline-block; width: 20px"></div>{% endif %}<span id="copy_bibtex_{{key}}">Copy Bibtex <i class="fa fa-clone"></i><pre id="bibtex_{{key}}">{{ entry.bibtex }}</pre></span>
+<style>
+#copy_bibtex_{{key}} {
+    cursor: pointer;
+    font-weight: bold;
+}
+#copy_bibtex_{{key}} #bibtex_{{key}} {
+    display: none;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0 15px 0;
+}
+#copy_bibtex_{{key}}:hover {
+    background: #eeeeee;
+}
+#copy_bibtex_{{key}}:hover #bibtex_{{key}} {
+    display: block;
+    background: #eeeeee;
+}
+</style>
+<script>
+(function() {
+    const copyBibtexLink = document.querySelector('#copy_bibtex_{{key}}');
+    const copyBibtexLinkIcon = document.querySelector('#copy_bibtex_{{key}} i');
+    const bibtex = document.querySelector('#bibtex_{{key}}');
+
+    copyBibtexLink.onclick = function(event) {
+        document.execCommand('copy');
+    }
+
+    copyBibtexLink.addEventListener('copy', function(event) {
+        if (event.clipboardData) {
+            event.clipboardData.setData('text/plain', bibtex.textContent);
+            copyBibtexLinkIcon.classList.remove('fa-clone');
+            copyBibtexLinkIcon.classList.add('fa-check');
+        }
+    });
+})();
+</script>
+</div>
+<br>
