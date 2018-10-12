@@ -21,8 +21,8 @@ share: false
 
 ---
 
-* **09/2018:** Our paper <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_crowd_deliberation_2018.pdf" target="_blank">**Resolvable vs. Irresolvable Disagreement: A Study on Worker Deliberation in Crowd Work**</a> was accepted to CSCW 2018, to be held at New York City, NY.
-* **09/2018:** I join <a href="https://ai.google/research/teams/brain/healthcare-biosciences" target="_blank">**Google Brain**</a> as a Student Researcher
+* **10/2018:** Our CSCW paper <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_crowd_deliberation_2018.pdf" target="_blank">**Resolvable vs. Irresolvable Disagreement: A Study on Worker Deliberation in Crowd Work**</a> received a <a href="https://medium.com/acm-cscw/announcing-the-best-of-cscw-2018-b98cb91e0f61" target="_blank">**Best Paper**</a> award.
+* **09/2018:** I joined <a href="https://ai.google/research/teams/brain/healthcare-biosciences" target="_blank">**Google Brain**</a> as a Student Researcher.
 * **04/2018:** I was awarded the <a href="https://research.googleblog.com/2018/04/announcing-2018-google-phd-fellows-for.html" target="_blank">**Google PhD Fellowship**</a>, as one of 39 recipients globally and the only one from Canada.
 
 ---
