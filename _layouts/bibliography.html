@@ -4,8 +4,8 @@
 <span style="font-size: 24px"><b>
 {% if link %}<a href="https://cs.uwaterloo.ca/~mschaeke{{link}}" target="_blank">{{ entry.title }}</a>{% else %}{{ entry.title }}{% endif %}</b></span>
 <br>
-{{ entry.author }}.{% if entry.booktitle %} In <i>{{ entry.booktitle }}</i>.{% endif %}
-{% if entry.note %}<br><b>[ {{ entry.note }} ]</b>{% endif %}
+{{ entry.author | replace: 'Schaekermann, Mike', '<span class="publication-author-is-website-owner">Schaekermann, Mike</span>' }}.{% if entry.booktitle %} In <i>{{ entry.booktitle }}</i>.{% endif %}
+{% if entry.note %}<br><span class="publication-note">[ {{ entry.note }} ]</span>{% endif %}
 
 <br>
 
@@ -31,6 +31,14 @@
 #copy_bibtex_{{key}}:hover #bibtex_{{key}} {
     display: block;
     background: #eeeeee;
+}
+.publication-note {
+    font-weight: bold;
+    color: #ff3d00;
+}
+.publication-author-is-website-owner {
+    font-weight: bold;
+    color: #2962ff;
 }
 </style>
 <script>
