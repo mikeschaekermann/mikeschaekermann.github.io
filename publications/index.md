@@ -22,6 +22,12 @@ share: false
 
 ---
 
+## Conference Abstracts & Posters
+
+{% bibliography --file conference_abstracts %}
+
+---
+
 ## Thesis
 
 {% bibliography --file theses %}
