@@ -8,6 +8,14 @@ url:              http://127.0.0.1:4000
 # Jekyll configuration
 
 permalink:   /:categories/:title/
+keywords:
+  - Mike
+  - Hardy
+  - Schäkermann
+  - Schaekermann
+  - Shaekermann
+  - Shaekerman
+  - Shakerman
 markdown:    kramdown
 highlighter: pygments
 sass:
