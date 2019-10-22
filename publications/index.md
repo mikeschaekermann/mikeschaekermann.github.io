@@ -16,6 +16,12 @@ share: false
 
 ---
 
+## Journal Papers
+
+{% bibliography --file journal_papers %}
+
+---
+
 ## Workshop Papers
 
 {% bibliography --file workshop_papers %}
