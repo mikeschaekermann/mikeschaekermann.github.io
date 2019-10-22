@@ -8,7 +8,7 @@ share: false
 
 ---
 
-* Ph.D. candidate in the <a href="https://cs.uwaterloo.ca/" target="_blank">David R. Cheriton School of Computer Science</a>, University of Waterloo, Canada, and Student Researcher at <a href="https://ai.google/research/teams/brain/healthcare-biosciences" target="_blank">Google Brain</a>
+* Ph.D. candidate in the <a href="https://cs.uwaterloo.ca/" target="_blank">David R. Cheriton School of Computer Science</a>, University of Waterloo, Canada, and Student Researcher at <a href="https://ai.google/healthcare" target="_blank">Google Health</a>
 * <a href="https://multimediatechnology.at/" target="_blank">MultiMediaTechnology</a> with a major in Augmented Reality and Game Development (2014, Bachelor of Science in Engineering, <a href="{{ site.url }}/publications/schaekermann_bachelorsthesis_2014.pdf" target="_blank">link to bachelor thesis</a>) at Salzburg University of Applied Sciences, Austria
 * <a href="https://www.uni-marburg.de/fb20" target="_blank">Medicine</a> (2011, pre-clinical examination) at the University of Marburg, Germany
 * Co-founder and Head of IT at <a href="https://stilnest.com/en/" target="_blank">Stilnest.com</a>, online-store for 3D-printed designer accessories (2013-2015)
@@ -21,8 +21,9 @@ share: false
 
 ---
 
+* **06/2019:** Our work on <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_eeg_adjudication_2019.pdf" target="_blank">**Understanding Expert Disagreement in Medical Data Analysis through Structured Adjudication**</a> was accepted for publication at CSCW 2019.
 * **10/2018:** Our CSCW paper <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_crowd_deliberation_2018.pdf" target="_blank">**Resolvable vs. Irresolvable Disagreement: A Study on Worker Deliberation in Crowd Work**</a> received a <a href="https://medium.com/acm-cscw/announcing-the-best-of-cscw-2018-b98cb91e0f61" target="_blank">**Best Paper**</a> award.
-* **09/2018:** I joined <a href="https://ai.google/research/teams/brain/healthcare-biosciences" target="_blank">**Google Brain**</a> as a Student Researcher.
+* **09/2018:** I joined <a href="https://ai.google/healthcare" target="_blank">**Google Brain**</a> as a Student Researcher.
 * **04/2018:** I was awarded the <a href="https://research.googleblog.com/2018/04/announcing-2018-google-phd-fellows-for.html" target="_blank">**Google PhD Fellowship**</a>, as one of 39 recipients globally and the only one from Canada.
 
 ---
