@@ -21,9 +21,11 @@ share: false
 
 ---
 
+* **01/2020:** Both of our papers, <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_ambiguity_aware_ai_2020.pdf" target="_blank">**Ambiguity-aware AI Assistants for Medical Data Analysis**</a> and <b>Expert Discussions Improve Comprehension of Difficult Cases in Medical Image Assessment</b>, were accepted for publication at CHI 2020 and will be presented in Honolulu, Hawaii, this April!
+* **12/2019:** Our work on <a href="https://tvst.arvojournals.org/article.aspx?articleid=2757836" target="_blank">**Remote Tool-Based Adjudication for Grading Diabetic Retinopathy**</a> was published in TVST.
 * **06/2019:** Our work on <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_eeg_adjudication_2019.pdf" target="_blank">**Understanding Expert Disagreement in Medical Data Analysis through Structured Adjudication**</a> was accepted for publication at CSCW 2019.
 * **10/2018:** Our CSCW paper <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_crowd_deliberation_2018.pdf" target="_blank">**Resolvable vs. Irresolvable Disagreement: A Study on Worker Deliberation in Crowd Work**</a> received a <a href="https://medium.com/acm-cscw/announcing-the-best-of-cscw-2018-b98cb91e0f61" target="_blank">**Best Paper**</a> award.
-* **09/2018:** I joined <a href="https://ai.google/healthcare" target="_blank">**Google Brain**</a> as a Student Researcher.
+* **09/2018:** I joined <a href="https://health.google/health-research/" target="_blank">**Google Health**</a> as a Student Researcher.
 * **04/2018:** I was awarded the <a href="https://research.googleblog.com/2018/04/announcing-2018-google-phd-fellows-for.html" target="_blank">**Google PhD Fellowship**</a>, as one of 39 recipients globally and the only one from Canada.
 
 ---
