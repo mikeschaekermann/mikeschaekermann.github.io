@@ -1,4 +1,4 @@
 #!/bin/sh
 
-bundle exec jekyll build --config _config.yml,_production.yml
+docker run --rm -it --volume="$PWD:/srv/jekyll" --volume="$PWD/vendor/bundle:/usr/local/bundle" --env JEKYLL_ENV=production jekyll/jekyll:3.8 bundle install && bundle exec jekyll build --config _config.yml,_production.yml
 rsync -avr --delete-after --delete-excluded _site/* mschaeke@linux.cs.uwaterloo.ca:/u3/mschaekermann/public_html
