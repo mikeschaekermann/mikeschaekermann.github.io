@@ -10,6 +10,7 @@ share: false
 <b>Engineering, B.Sc.</b>, <a href="https://www.fh-salzburg.ac.at/en/study/design-media-and-arts/multimediatechnology-bachelor" target="_blank">Salzburg Univ. of Applied Sciences</a>, Austria (2014)<br>
 <b>Medicine, State Exam I</b>, <a href="https://www.uni-marburg.de/en/fb20" target="_blank">University of Marburg</a>, Germany (2011)<br>
 
+<b>Applied Scientist</b> at <a href="https://aws.amazon.com/ai/" target="_blank">AWS AI</a> (Since 2020)<br>
 <b>Student Researcher</b> at <a href="https://health.google/health-research/" target="_blank">Google Health</a> (2018-2020)<br>
 <b>Research Intern</b> at <a href="https://research.google/teams/brain/" target="_blank">Google Brain</a> (2018)<br>
 <b>Software Engineering Intern</b> at <a href="https://blog.google/" target="_blank">Google</a> (2017)<br>
