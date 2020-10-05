@@ -51,7 +51,7 @@ titlecase: true
 owner:
   name: Mike Schaekermann
   avatar: mike-schaekermann-photo-3.png
-  bio: University of Waterloo Computer Science Ph.D. candidate with a degree in Medicine
+  bio: Computer Science, Ph.D.<br>Engineering, B.Sc.<br>Medicine, State Exam I
   email: mikeschaekermann@gmail.com
   disqus-shortname:
   twitter: #username
@@ -66,7 +66,7 @@ owner:
   bing-verify:
   github: mikeschaekermann
   stackoverflow: #123456/username   from a "http://stackoverflow.com/users/123456/username" link
-  linkedin: mike-schäkermann-058abb75
+  linkedin: mschaeke
   xing: #username
   instagram: #username
   lastfm: #username
