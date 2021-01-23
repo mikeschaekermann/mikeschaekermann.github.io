@@ -34,7 +34,7 @@ share: false
 
 ---
 
-## Thesis
+## Theses
 
 {% bibliography --file theses %}
 
