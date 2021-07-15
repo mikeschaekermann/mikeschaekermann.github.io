@@ -28,6 +28,7 @@ My research is located at the intersection of **human-computer interaction**, **
 
 # News
 
+* **05/2021:** My PhD thesis was awarded the <a href="https://cscan-infocan.ca/feature/mike-schaekermann-announcement/" target="_blank">**Canadian Computer Science Distinguished Dissertation Award**</a> and the <a href="https://cs.uwaterloo.ca/news/mike-schaekermann-hong-zhou-fiodar-kazhamiaka-win-cheriton-distinguished-dissertation-awards">**Cheriton Distinguished Dissertation Award**</a>. Thank you! :)
 * **10/2020:** I started a new position as Applied Scientist at <a href="https://aws.amazon.com/ai/" target="_blank">**Amazon AI**</a>.
 * **09/2020:** I have defended my thesis on <a href="https://uwspace.uwaterloo.ca/handle/10012/16284" target="_blank">**Human-AI Interaction in the Presence of Ambiguity**</a>.
 * **01/2020:** Both of our papers, <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_ambiguity_aware_ai_2020.pdf" target="_blank">**Ambiguity-aware AI Assistants for Medical Data Analysis**</a> and <a href="https://cs.uwaterloo.ca/~mschaeke/publications/schaekermann_adjudication_based_training_2020.pdf" target="_blank">**Expert Discussions Improve Comprehension of Difficult Cases in Medical Image Assessment**</a>, were accepted for publication at CHI 2020 and will be presented in Honolulu, Hawaii, this April!
