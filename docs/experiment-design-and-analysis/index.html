@@ -1,0 +1,872 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Experiment Design & Analysis &#8211; Mike Schaekermann</title>
+<meta name="description" content="
+">
+<meta name="keywords" content="python, notebook, Mike, Hardy, Schäkermann, Schaekermann, Shaekermann, Shaekerman, Shakerman">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Experiment Design & Analysis">
+<meta name="twitter:description" content="
+">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Experiment Design & Analysis">
+<meta property="og:description" content="
+">
+<meta property="og:url" content="http://localhost:4000/experiment-design-and-analysis/">
+<meta property="og:site_name" content="Mike Schaekermann">
+
+<meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/experiment-design-and-analysis/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Mike Schaekermann Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000/">Mike Schaekermann</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://localhost:4000/bio-and-research/" >Bio & Research</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/projects/" >Projects</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/publications/" >Publications</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/presentations/" >Presentations</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/notes/" >Notes</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <a href="http://localhost:4000">
+  
+	  <img src="http://localhost:4000/images/mike-schaekermann-photo-5.jpg" class="bio-photo" alt="Mike Schaekermann bio photo">
+  
+  </a>
+
+  <a href="http://localhost:4000"><h3 itemprop="name">Mike Schaekermann</h3></a>
+  <p>Computer Science, Ph.D.<br>Engineering, B.Sc.<br>Medicine, State Exam I</p>
+  <a href="mailto:mikeschaekermann@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  <a href="https://scholar.google.com/citations?user=mwj_ldQAAAAJ" class="author-social" target="_blank"><i class="fa fa-fw fa-google"></i> Google Scholar</a>
+  
+  <a href="http://linkedin.com/in/mschaeke" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  
+  
+  
+  <a href="http://github.com/mikeschaekermann" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/experiment-design-and-analysis/" rel="bookmark" title="Experiment Design & Analysis">Experiment Design & Analysis</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <style>
+  table {
+    border: 1px solid #000000;
+    text-align: center;
+  }
+
+  td {
+    border-right: 1px solid #000000;
+  }
+
+  tbody tr {
+    border-top: 1px solid #dddddd;
+  }
+
+  thead tr {
+    border-bottom: 1px solid #000000;
+  }
+</style>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Overview</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#tests-cheatsheet" id="markdown-toc-tests-cheatsheet">Tests Cheatsheet</a></li>
+  <li><a href="#basic-experiment-design-concepts" id="markdown-toc-basic-experiment-design-concepts">Basic Experiment Design Concepts</a></li>
+  <li><a href="#tests-of-proportions" id="markdown-toc-tests-of-proportions">Tests of Proportions</a></li>
+  <li><a href="#the-t-test" id="markdown-toc-the-t-test">The T-Test</a></li>
+  <li><a href="#validity-in-design-and-analysis" id="markdown-toc-validity-in-design-and-analysis">Validity in Design and Analysis</a></li>
+  <li><a href="#one-factor-between-subjects-experiments" id="markdown-toc-one-factor-between-subjects-experiments">One-Factor Between-Subjects Experiments</a></li>
+  <li><a href="#one-factor-within-subjects-experiments" id="markdown-toc-one-factor-within-subjects-experiments">One-Factor Within-Subjects Experiments</a></li>
+  <li><a href="#multi-factor-experiments" id="markdown-toc-multi-factor-experiments">Multi-Factor Experiments</a></li>
+  <li><a href="#generalized-linear-models" id="markdown-toc-generalized-linear-models">Generalized Linear Models</a></li>
+  <li><a href="#mixed-effects-models" id="markdown-toc-mixed-effects-models">Mixed Effects Models</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<p>These notes are a result of taking the online course <a href="https://www.coursera.org/learn/designexperiments">Designing, Running and Analyzing Experiments</a> taught by <a href="https://d.ucsd.edu/srk/">Scott Klemmer</a> and <a href="https://faculty.washington.edu/wobbrock/">Jacob Wobbrock</a>. The contents are therefore based on the corresponding presentations available online.</p>
+
+<h2 id="tests-cheatsheet">Tests Cheatsheet</h2>
+
+<p><strong>Tests of Proportions</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Samples</th>
+      <th>Response Categories</th>
+      <th>Asymptotic Tests</th>
+      <th>Exact Tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>One-sample $\chi^2$ test</td>
+      <td>Binomial test</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>&gt; 2</td>
+      <td>One-sample $\chi^2$ test</td>
+      <td>Multinomial test</td>
+    </tr>
+    <tr>
+      <td>&gt; 1</td>
+      <td>&gt;= 2</td>
+      <td>N-sample $\chi^2$ test</td>
+      <td>G-test; Fisher’s test</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Analyses of Variance</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Factors</th>
+      <th>Levels</th>
+      <th>(B)etween or (W)ithin</th>
+      <th>Parametric Tests</th>
+      <th>Non-Parametric Tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>B</td>
+      <td>Independent-samples T-test</td>
+      <td>Mann-Whitney U Test</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>&gt; 2</td>
+      <td>B</td>
+      <td>One-way ANOVA</td>
+      <td>Kruskal-Wallis Test</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>W</td>
+      <td>Paired-samples t-test</td>
+      <td>Wilcoxon signed-rank test</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>&gt; 2</td>
+      <td>W</td>
+      <td>One-way repeated measures ANOVA</td>
+      <td>Friedman test</td>
+    </tr>
+    <tr>
+      <td>&gt; 1</td>
+      <td>&gt;= 2</td>
+      <td>B</td>
+      <td>Factorial ANOVA; Linear Models (LM)</td>
+      <td>Aligned Rank Transform (ART); Generalized Linear Models (GLM)</td>
+    </tr>
+    <tr>
+      <td>&gt; 1</td>
+      <td>&gt;= 2</td>
+      <td>W</td>
+      <td>Factorial repeated measures ANOVA; Linear Mixed Models (LMM)</td>
+      <td>Aligned Rank Transform (ART); Generalized Linear Mixed Models (GLMM)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="basic-experiment-design-concepts">Basic Experiment Design Concepts</h2>
+
+<p><strong>Participants</strong>:</p>
+
+<ul>
+  <li><strong>Sampling</strong>:
+    <ul>
+      <li>Probability Sampling (uses random approaches)</li>
+      <li>Non-probability Sampling (purposive, convenience, snowball)</li>
+    </ul>
+  </li>
+  <li><strong>Criteria</strong>:
+    <ul>
+      <li>Inclusion Criteria</li>
+      <li>Exclusion Criteria</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Apparatus</strong>:</p>
+
+<ul>
+  <li><strong>Environment</strong>:
+    <ul>
+      <li>Lab Study</li>
+      <li>Online Study</li>
+      <li>Remote Study</li>
+    </ul>
+  </li>
+  <li><strong>Data Capturing</strong>:
+    <ul>
+      <li>Log Files</li>
+      <li>Video Recording</li>
+      <li>Personal Observations</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Procedure</strong>:</p>
+
+<ul>
+  <li><strong>Trials</strong>:
+    <ul>
+      <li>Number</li>
+      <li>Duration</li>
+    </ul>
+  </li>
+  <li><strong>Temporal Effects</strong>:
+    <ul>
+      <li>Fatigueness</li>
+      <li>Learning</li>
+    </ul>
+  </li>
+  <li><strong>Tasks</strong>:
+    <ul>
+      <li>Open Exploration</li>
+      <li>Task</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Design &amp; Analysis</strong>:</p>
+
+<ul>
+  <li>Formal Design Characteristics</li>
+  <li>Appropriate Statistical Analysis</li>
+</ul>
+
+<h2 id="tests-of-proportions">Tests of Proportions</h2>
+
+<p><strong>Types of Tests</strong>:</p>
+
+<ul>
+  <li><strong>Exact</strong>: computes exact p-value</li>
+  <li><strong>Aymptotic</strong>: approximates p-value</li>
+</ul>
+
+<p><strong>Reporting p-values (referred to as {P VALUE REPORT} below)</strong>:</p>
+
+<ul>
+  <li><strong>If statistically significant</strong>:
+    <ul>
+      <li>$p &lt; .05$</li>
+      <li>$p &lt; .01$</li>
+      <li>$p &lt; .001$</li>
+      <li>$p &lt; .0001$</li>
+    </ul>
+  </li>
+  <li><strong>If on the edge of significance (i.e., $.05 &lt; p &lt; .1$)</strong>:
+    <ul>
+      <li>Report as a “trend”</li>
+    </ul>
+  </li>
+  <li><strong>If not statistically significant</strong>:
+    <ul>
+      <li><em>n.s.</em> (do not treat statistically non-significant differences as there being no difference, but rather as there being no detectable difference based on the observed data)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>One-sample Test of Proportions</strong>:</p>
+
+<ul>
+  <li><strong>Pearson $\chi^2$ Test</strong> (asymptotic test):
+    <ul>
+      <li>R call: <code>chisq.test(table)</code></li>
+      <li>R output: <code>X-squared = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}</code></li>
+      <li>Report as: $\chi^2(\text{{DEGREES OF FREEDOM}}, N=\text{{SAMPLE SIZE}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+    </ul>
+  </li>
+  <li><strong>Binomial Test</strong> (exact test):
+    <ul>
+      <li>R call: <code>binom.test(table)</code></li>
+      <li>R output: <code>number of successes = {NUM. SUCCESSES}, number of trials = {SAMPLE SIZE}, p-value = {P VALUE}</code></li>
+      <li>Report as: We had a binomial test with {SAMPLE SIZE} data points, {P VALUE REPORT}</li>
+    </ul>
+  </li>
+  <li><strong>Multinomial Test</strong> (exact test for more than two response categories, should be followed by a series of post-hoc binomial tests and a Bonferroni adjustment of p-values to determine significance for individual response categories):
+    <ul>
+      <li>R call: <code>library(XNomial); xmulti(table, c(1/3, 1/3, 1/3), statName="Prob")</code> (this notation is correct for three response categories; adjust the second argument for more than three response categories)</li>
+      <li>R output: <code>P value (Prob) = {P VALUE}</code></li>
+      <li>Report as: We had a multinomial test with {SAMPLE SIZE} data points, {P VALUE REPORT}</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>N-sample Test of Proportions</strong>:</p>
+
+<ul>
+  <li><strong>N-sample Pearson $\chi^2$ Test</strong> (asymptotic test, see above)</li>
+  <li><strong>G Test</strong> (asymptotic test):
+    <ul>
+      <li>R call: <code>library(RVAideMemoire); G.test(table)</code></li>
+      <li>R output: <code>G = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}</code></li>
+    </ul>
+  </li>
+  <li><strong>Fisher’s Test</strong> (exact test):
+    <ul>
+      <li>R call: <code>fisher.test(table)</code></li>
+      <li>R output: <code>p-value = {P VALUE}</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-t-test">The T-Test</h2>
+
+<p><strong>Variable Types</strong>:</p>
+
+<ul>
+  <li><strong>Independent Variables</strong>: The variables the experimenter manipulates, also called the <em>treatments</em>, or <em>factors</em> (with different levels, i.e., the specific values a factor can take on)
+    <ul>
+      <li><strong>Between-Subjects Factor</strong>: Each participant experiences only one level of a factor
+        <ul>
+          <li><strong>Pros</strong>: Avoids <strong>carryover effects</strong> (see below)</li>
+          <li><strong>Cons</strong>: More participants needed; higher subject-dependent variance in the response variables</li>
+        </ul>
+      </li>
+      <li><strong>Within-Subjects Factor</strong>: Each participant experiences more than one level of a factor (partial within-subjects factors expose participants to more than one, but not all levels of the factor); also called <strong>Repeated Measures</strong> factor:
+        <ul>
+          <li><strong>Pros</strong>: Less participants needed; lower subject-dependent variance in the response variables</li>
+          <li><strong>Cons</strong>: Is prone to <strong>carryover effects</strong> (like fatigue, practice effects, boredom, skill transfer etc.); carryover effects can be accounted for by controlling (e.g., randomizing or rotating) and logging the order in which individual participants are exposed to the different levels of a factor</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Dependent Variables</strong>: The variables that are potentially influenced by the independent variables</li>
+  <li><strong>Notation in R</strong>: $Y \sim X + \epsilon$ ($Y$: dependent variable; $X$: independent variable; $\epsilon$: random measurement error)</li>
+</ul>
+
+<p><strong>Design Types</strong>:</p>
+
+<ul>
+  <li><strong>Balanced vs. Unbalanced</strong>: depending on whether there are about the same number of participants in every condition</li>
+  <li><strong>N-Measure</strong>: indicating how many data points we measure from each participant</li>
+</ul>
+
+<p><strong>Independent-samples t-test / Two-samples t-test</strong> (parametric form of ANOVA, appropriate for between-subjects factors with two levels)</p>
+
+<ul>
+  <li>R call: <code>t.test(Y ~ X, data=dataframe, var.equal=TRUE)</code> (use <code>var.equal=FALSE</code> for the Welch t-test for unequal variances, e.g., when the homoscedasticity assumption for ANOVAs is violated, see below)</li>
+  <li>R output: <code>t = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}</code></li>
+  <li>Report as: $t(\text{{DEGREES OF FREEDOM}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+</ul>
+
+<h2 id="validity-in-design-and-analysis">Validity in Design and Analysis</h2>
+
+<p><strong>Experimental Control</strong>:</p>
+
+<ul>
+  <li><strong>Goal</strong>: ensuring that systematic differences in observed responses can be attributed to systematic changes in manipulated factors</li>
+  <li><strong>Trade-off between experimental control and ecological validity</strong></li>
+  <li><strong>Confounds</strong>: non-random effects that introduce uncontrolled variation in the experiment; strategies to mitigate the effects of confounds:
+    <ol>
+      <li><strong>Manipulate it</strong> (by turning confounds into independent variables that are manipulated systematically)</li>
+      <li><strong>Control for it</strong> (keep the confound constant or evenly spread out across all participants)</li>
+      <li><strong>Measure it</strong> (record it to control for it in the subsequent analysis)</li>
+      <li><strong>Consider it a <em>Hidden Effect</em> otherwise</strong></li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>Types of Analyses</strong></p>
+
+<ul>
+  <li><strong>Parametric</strong>: does make assumptions about the distribution of the response variable to gain statistical power</li>
+  <li><strong>Non-Parametric</strong>: does not make assumptions about the distribution of the response variable lacking statistical power (typically operate on ranks)</li>
+</ul>
+
+<p><strong>Data Distributions</strong>:</p>
+
+<ul>
+  <li><strong>Continuous</strong>:
+    <ul>
+      <li><strong>Normal / Gaussian</strong>: $\mu$ (mean); $\delta^2$ (variance); applies to most response variables</li>
+      <li><strong>Log Normal</strong>: $\mu$ (mean); $\delta^2$ (variance); e.g., task time</li>
+      <li><strong>Gamma</strong>: $k$ (shape); $\Theta$ (scale); e.g., waiting times in lines</li>
+      <li><strong>Exponential</strong>: $\lambda$ (rate); e.g., people’s wealth; special case of the Gamma distribution when shape $k=1$; $\lambda = \Theta^{-1}$</li>
+    </ul>
+  </li>
+  <li><strong>Discrete</strong>:
+    <ul>
+      <li><strong>Poisson</strong>: $\lambda$; e.g., counts of rare events</li>
+      <li><strong>Binomial / Multinomial</strong>: $n$ (number of trials); $p$ (probabilities of success for individual outcomes, only one scalar for the binomial distribution, and a vector for the multinomial distribution); for categorical response variables</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>3 Assumptions of Analysis of Variance (ANOVA, parametric test)</strong>:</p>
+
+<ul>
+  <li><strong>Independence</strong>: each participant is sampled independently from other participants (violated in snowball sampling); also, each measure on a given participant is independent from measures on other subjects</li>
+  <li><strong>Normality</strong>: the residuals (i.e., the differences between the observed response variable and the statistical model’s predictions) are normally distributed (i.e., follow the Gaussian bell curve); use Shapiro-Wilk normality test on the residuals (<code>shapiro.test(residuals(model))</code> –&gt; <code>W = {TEST STATISTIC}, p-value = {P VALUE}</code>, must <em>not</em> be significant in order to comply with the normality assumption) and visualize with a QQ-plot (<code>qqnorm(residuals(model)); qqline(residuals(model))</code> –&gt; all points should be close to the diagonal line); if this assumption is violated, try to transform the data in a way that the data, and thus likely also the residuals, are normally distributed; for example, test for log-normality of the data using the Kolmogorov-Smirnov test (<code>library(MASS); fit = fitdistr(data, "lognormal")$estimate;</code> <code>ks.test(data, "plnorm", meanlog=fit[1], sdlog=fit[2], exact=TRUE)</code> –&gt; <code>D = {TEST STATISTIC}, p-value = {P VALUE}</code>, must <em>not</em> be significant in order to assume a log-normal distribution); if the data is follows a log-normal distribution, apply a log transform to it before performing the ANOVA</li>
+  <li><strong>Homoscedasticity / Homogeneity of Variance</strong>: the variance among groups being compared is similar; use Levene’s test (<code>leveneTest(Y ~ X, data=data, center=mean)</code> –&gt; <code>Df {DEGREES OF FREEDOM} F value {TEST STATISTIC} Pr(&gt;F) {P VALUE}</code>, must <em>not</em> be significant in order to comply with the homoscedasticity assumption) and Brown-Forsythe test (<code>leveneTest(Y ~ X, data=data, center=median)</code> –&gt; <code>Df {DEGREES OF FREEDOM} F value {TEST STATISTIC} Pr(&gt;F) {P VALUE}</code>, must <em>not</em> be significant in order to comply with the homoscedasticity assumption; preferred as it uses the median and is more robust to outliers) to test for this assumption; if this assumption is violated (even after a potential log transform of the data), use the Welch t-test for unequal variances</li>
+</ul>
+
+<p><strong>Mann-Whitney U test</strong> (non-parametric form of ANOVA, appropriate for between-subjects factors with two levels, i.e., the non-parametric equivalent of the independent-samples t-test):</p>
+
+<ul>
+  <li>R call: <code>library(coin); wilcox_test(Y ~ X, data=data, distribution="exact")</code></li>
+  <li>R output: <code>Z = {TEST STATISTIC}, p-value = {P VALUE}</code></li>
+  <li>Report as: $Z = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+</ul>
+
+<h2 id="one-factor-between-subjects-experiments">One-Factor Between-Subjects Experiments</h2>
+
+<p><strong>One-Way ANOVA</strong> (parametric; for experiments with a single between-subjects factor of more than two levels):</p>
+
+<ul>
+  <li>
+    <p><strong>F-test</strong> (overall / omnibus test):</p>
+
+    <ul>
+      <li>R call: <code>m = aov(Y ~ X, data=data); anova(m)</code></li>
+      <li>R output: <code>Df: {NUM. DOF} Sum Sq: ... Mean Sq: ... F value: {TEST STATISTIC} Pr(&gt;F): {P VALUE} Residuals: {DENOM. DOF}</code></li>
+      <li>Report as: $F(\text{{NUM. DOF}}, \text{{DENOM. DOF}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Post-hoc pairwise comparisons</strong> (using independent samples t-tests):</p>
+
+    <ul>
+      <li>R call: <code>library(multcomp); summary(glht(m, mcp(IDE="Tukey")), test=adjusted(type="holm"))</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Non-parametric Equivalent</strong>:</p>
+
+<ul>
+  <li>
+    <p><strong>Kruskal-Wallis Test</strong> (overall / omnibus test):</p>
+
+    <ul>
+      <li>R call: <code>library(coin); kruskal_test(Y ~ X, data=data, distribution="asymptotic")</code></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Post-hoc pairwise comparisons</strong> (using either multiple Mann-Whitney U tests [see above] or one combined test by Cover and Iman [see R call below]):</p>
+
+    <ul>
+      <li>R call: <code>library(PMCMR); posthoc.kruskal.conover.test(Y ~ X, data=data, p.adjust.method="holm")</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="one-factor-within-subjects-experiments">One-Factor Within-Subjects Experiments</h2>
+
+<p><strong>Counterbalancing Repeated Measures Factors</strong> (how to assign order of presentation of factor levels to avoid carryover effects):</p>
+
+<ul>
+  <li>
+    <p><strong>Full Counterbalancing</strong>: every possible order is represented equally in the study; preferred method if the participant sample is large enough to represent each order equally often; the number of possible orders is the factorial of the number of factor levels; the participant should be a multiple of the number of possible orders;</p>
+  </li>
+  <li><strong>Latin Square</strong>: each factor level appears in each order position equally often; this is done by rotating a fixed order of factor levels; the participant sample should be a multiple of the number of factor levels;
+    <ul>
+      <li>1, 2, 3, 4, 5</li>
+      <li>2, 3, 4, 5, 1</li>
+      <li>3, 4, 5, 1, 2</li>
+      <li>4, 5, 1, 2, 3</li>
+      <li>5, 1, 2, 3, 4</li>
+    </ul>
+  </li>
+  <li><strong>Balanced Latin Square</strong>: first row (1, 2, n, 3, n-1, 4, n-2, …); subsequent (n-1) rows increment the values from each preceding row and wrap around $(n_p + 1 \mod n)$; if n, i.e., the number of factor levels, is odd, repeat the block in reverse order); below is an example for an odd number of factor levels:
+    <ul>
+      <li><strong>Block 1</strong> (forward order):
+        <ul>
+          <li>1, 2, 5, 3, 4</li>
+          <li>2, 3, 1, 4, 5</li>
+          <li>3, 4, 2, 5, 1</li>
+          <li>4, 5, 3, 1, 2</li>
+          <li>4, 1, 4, 2, 3</li>
+        </ul>
+      </li>
+      <li><strong>Block 2</strong> (reverse order; only needed if n is odd):
+        <ul>
+          <li>4, 3, 5, 2, 1</li>
+          <li>5, 4, 1, 3, 2</li>
+          <li>1, 5, 2, 4, 3</li>
+          <li>2, 1, 3, 5, 4</li>
+          <li>3, 2, 4, 1, 4</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Paired t-test</strong> (parametric form of ANOVA, appropriate for within-subjects factors with two levels)</p>
+
+<ul>
+  <li>R call: <code>t.test(Y ~ X, data=dataframe, paired=TRUE, var.equal=TRUE)</code> (use <code>var.equal=FALSE</code> for the Welch t-test for unequal variances, e.g., when the homoscedasticity assumption for ANOVAs is violated)</li>
+  <li>R output: <code>t = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}</code></li>
+  <li>Report as: $t(\text{{DEGREES OF FREEDOM}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+</ul>
+
+<p><strong>Wilcoxon Signed-Rank Test</strong> (nonparametric equivalent of paired t-test):</p>
+
+<ul>
+  <li>R call: <code>library(coin); wilcoxsign_test(Y ~ X | Subject, data=dataframe, distribution="exact")</code></li>
+  <li>R output: <code>Z = {TEST STATISTIC}, p-value = {P VALUE}</code></li>
+  <li>Report as: $Z = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+</ul>
+
+<p><strong>One-way Repeated Measures ANOVA</strong> (parametric form of ANOVA, appropriate for within-subjects factors with more than two levels)</p>
+
+<ul>
+  <li>R call: <code>library(ez); m = ezANOVA(dv=Y, within=X, wid=Subject, data=dataframe); m$Mauchly; m$ANOVA;</code>
+<code>pos = match(m$</code><code>Sphericity Corrections</code><code>$Effect, m$ANOVA$Effect)</code>
+<code>m$Sphericity$GGe.DFn = m$Sphericity$GGe * m$ANOVA$DFn[pos] # Greenhouse-Geisser</code>
+<code>m$Sphericity$GGe.DFd = m$Sphericity$GGe * m$ANOVA$DFd[pos]</code>
+<code>m$Sphericity$HFe.DFn = m$Sphericity$HFe * m$ANOVA$DFn[pos] # Huynh-Feldt</code>
+<code>m$Sphericity$HFe.DFd = m$Sphericity$HFe * m$ANOVA$DFd[pos]</code>
+<code>m$Sphericity</code></li>
+  <li>Followed by post-hoc pairwise comparisons using paired t-tests</li>
+</ul>
+
+<p><strong>Friedman’s Test</strong> (non-parametric equivalent of one-way repeated measures ANOVA):</p>
+
+<ul>
+  <li>R call: <code>library(coin); friedman_test(Y ~ X | Subject, data=dataframe, distribution="asymptotic")</code></li>
+  <li>R output: <code>chi-squared = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}</code></li>
+  <li>Report as: $\chi^2(\text{{DEGREES OF FREEDOM}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$</li>
+  <li>Followed by post-hoc pairwise comparisons using Wilcoxon signed-rank tests</li>
+</ul>
+
+<h2 id="multi-factor-experiments">Multi-Factor Experiments</h2>
+
+<p><strong>NxM mixed / within-subjects / between-subjects factorial designs</strong>:</p>
+
+<ul>
+  <li><strong>N</strong>: number of levels in the first factor</li>
+  <li><strong>M</strong>: number of levels in the second factor (there can be more than two factors)</li>
+  <li><strong>mixed</strong>: means that some factors are within-subjects factors and some factors are between-subjects factors; if the factorial design contains any within-subjects factors, always use Repeated Measures ANOVA, not regular ANOVA</li>
+  <li><strong>within-subjects</strong>: means that all factors are within-subjects factors</li>
+  <li><strong>between-subjects</strong>: means that all factors are between-subjects factors</li>
+</ul>
+
+<p><strong>Effects</strong>:</p>
+
+<ul>
+  <li><strong>Main effect</strong>: means that changing levels within one factor leads to significant differences in the dependent variable</li>
+  <li><strong>Interaction effect</strong>: means that changing levels in one factor differentially affects outcomes in the dependent variable for different levels of another factor</li>
+</ul>
+
+<p><strong>Mixed Factorial ANOVA</strong>:</p>
+
+<ul>
+  <li><strong>R code</strong>: <code>library(ez); ezANOVA(dv={DEPENDENT VARIABLE},</code>
+<code>between={BETWEEN-SUBJECTS FACTOR}, within={WITHIN-SUBJECTS FACTOR},</code>
+<code>wid={SUBJECT COLUMN NAME}, data=data)</code></li>
+</ul>
+
+<p><strong>Aligned Rank Transform (ART) Procedure</strong> (non-parametric equivalent to Mixed Factorial ANOVA):</p>
+
+<ul>
+  <li><strong>R code</strong>: <code>library(ARTool); m = art({DEPENDENT VARIABLE} ~ {BETWEEN-SUBJECTS</code>
+<code>FACTOR} * {WITHIN-SUBJECTS FACTOR} + (1|{SUBJECT COLUMN NAME}),</code>
+<code>data=data); anova(m)</code></li>
+</ul>
+
+<h2 id="generalized-linear-models">Generalized Linear Models</h2>
+
+<p>Removes the assumption of a linear relationship between predictor variable and response variable and the assumption of a normal distribution of the response variable; only used for <strong>between-subjects</strong> factors</p>
+
+<ul>
+  <li><strong>Multinomial / Nominal Logistic Regression</strong> (categorical response variable): with logit link
+    <ul>
+      <li><strong>R code</strong>:
+<code>library(nnet); library(car); contrasts(data.frame$X) &lt;- "contr.sum";</code>
+<code>m = multinom(Y ~ X, data=data.frame); Anova(m, type=3)</code></li>
+      <li>followed by post-hoc pairwise comparisons if omnibus test permits</li>
+    </ul>
+  </li>
+  <li><strong>Ordinal Logistic Regression</strong> (ordinal response variable): with cumulative logit link
+    <ul>
+      <li><strong>R code</strong>:
+<code>library(MASS); library(car); data.frame$Y = ordered(data.frame$Y);</code>
+<code>contrasts(data.frame$X) &lt;- "contr.sum"; m = polr(Y ~ X, data=data.frame, Hess=TRUE);</code>
+<code>Anova(m, type=3)</code></li>
+      <li>followed by post-hoc pairwise comparisons if omnibus test permits</li>
+    </ul>
+  </li>
+  <li><strong>Poisson Regression</strong> (count response variable): with log link
+    <ul>
+      <li><strong>R code</strong>:
+<code>library(car); contrasts(data.frame$X) &lt;- "contr.sum";</code>
+<code>m = glm(Y ~ X, data=data.frame, family=poisson); Anova(m, type=3);</code></li>
+      <li>followed by post-hoc pairwise comparisons if omnibus test permits</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="mixed-effects-models">Mixed Effects Models</h2>
+
+<p>Types of models that can handle both within-subjects and between-subjects factors. The term ‘mixed’ indicates that the model incorporates both:</p>
+
+<ul>
+  <li><strong>Fixed Effects</strong> (factors of interest that we manipulate in a study)</li>
+  <li><strong>Random Effects</strong> (factors whose levels were sampled randomly from a larger population about which we wish to generalize, but whose specific level values we do not care about, e.g., subjects)</li>
+</ul>
+
+<p><strong>Nesting / Nested Effects</strong>: Important when the levels of a factor should not be pooled just by their labels alone, i.e., when the individual levels of a factor do not mean very much. For example, the levels of a factor ‘Trial’ (with 20 trials) should be nested into other fixed effect factors.</p>
+
+<p><strong>Advantages of Mixed Effects Models:</strong></p>
+
+<ul>
+  <li>Can handle missing data points</li>
+  <li>Do not require balanced data sets</li>
+  <li>Do not have a sphericity requirement (i.e., similarity of variances across all levels of a factor)</li>
+</ul>
+
+<p><strong>Disadvantages of Mixed Effects Models:</strong></p>
+
+<ul>
+  <li>Computationally more intensive</li>
+  <li>Larger degrees of freedom in the denominator</li>
+</ul>
+
+<p><strong>Linear Mixed Model (LMM)</strong>:</p>
+
+<ul>
+  <li><strong>R code</strong>:
+<code>library(lme4); library(lmerTest); library(car);</code>
+<code>contrasts(data.frame$X1) &lt;- "contr.sum"</code>
+<code>contrasts(data.frame$X2) &lt;- "contr.sum"</code>
+<code>contrasts(data.frame$Trial) &lt;- "contr.sum"</code>
+<code>m = lmer(Y ~ (X1 * X2)/Trial + (1|Subject), data=data.frame)</code>
+<code>Anova(m, type=3, test.statistic="F")</code></li>
+  <li>X1 and X2 are fixed effects, Trial is nested into the interaction of X1 and X2, and Subject is a random effect</li>
+  <li>followed by post-hoc pairwise comparisons if omnibus test permits</li>
+</ul>
+
+<p><strong>Generalized Linear Mixed Model (GLMM)</strong></p>
+
+<ul>
+  <li><strong>R code</strong>:
+<code>library(lme4); library(car);</code>
+<code>contrasts(data.frame$X1) &lt;- "contr.sum"</code>
+<code>contrasts(data.frame$X2) &lt;- "contr.sum"</code>
+<code>contrasts(data.frame$Trial) &lt;- "contr.sum"</code>
+<code>m = glmer(Y ~ (X1 * X2)/Trial + (1|Subject), data=data.frame, family=poisson, nAGQ=1)</code>
+<code>Anova(m, type=3)</code></li>
+  <li>X1 and X2 are fixed effects, Trial is nested into the interaction of X1 and X2, and Subject is a random effect</li>
+  <li>family can be switched to a different type of distribution; Poisson distribution usually works well for count response variables like error counts</li>
+  <li>switch nAGQ to 0 to speed up the computation, but verify that the result is still similar</li>
+  <li>followed by post-hoc pairwise comparisons if omnibus test permits</li>
+</ul>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/experiment-design-and-analysis/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/experiment-design-and-analysis/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/experiment-design-and-analysis/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+        <p class="byline"><strong>Experiment Design & Analysis</strong> was published on <time datetime="2017-10-05T00:00:00-04:00">October 05, 2017</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://localhost:4000/ethical-dilemmas-in-artificial-intelligence/" title="Ethical Dilemmas in Artificial Intelligence">Ethical Dilemmas in Artificial Intelligence</a></li>
+    
+      <li><a href="http://localhost:4000/artificial-intelligence/" title="Artificial Intelligence">Artificial Intelligence</a></li>
+    
+      <li><a href="http://localhost:4000/machine-learning/" title="Machine Learning">Machine Learning</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-41409977-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+<script>
+$('.force-full-width-keep-aspect-ratio').each(function() {
+  var iFrame = $(this);
+  var originalWidth = $(this).width();
+  var originalHeight = $(this).height();
+  iFrame.css('width', '100%');
+  $(window).resize(function() {
+    iFrame.css('height', Math.ceil(iFrame.width() / originalWidth * originalHeight * 0.975) + 'px');
+  });
+});
+$(window).resize();
+</script>
+
+</body>
+</html>

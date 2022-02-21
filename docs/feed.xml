@@ -1,0 +1,2239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Mike Schaekermann</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2022-02-20T21:36:27-05:00</updated>
+<id>http://localhost:4000/</id>
+<author>
+  <name>Mike Schaekermann</name>
+  <uri>http://localhost:4000/</uri>
+  <email>mikeschaekermann@gmail.com</email>
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Experiment Design & Analysis]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/experiment-design-and-analysis/" />
+  <id>http://localhost:4000/experiment-design-and-analysis</id>
+  <published>2017-10-05T00:00:00-04:00</published>
+  <updated>2017-10-05T00:00:00-04:00</updated>
+  <author>
+    <name>Mike Schaekermann</name>
+    <uri>http://localhost:4000</uri>
+    <email>mikeschaekermann@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;style&gt;
+  table {
+    border: 1px solid #000000;
+    text-align: center;
+  }
+
+  td {
+    border-right: 1px solid #000000;
+  }
+
+  tbody tr {
+    border-top: 1px solid #dddddd;
+  }
+
+  thead tr {
+    border-bottom: 1px solid #000000;
+  }
+&lt;/style&gt;
+
+&lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Overview&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#tests-cheatsheet&quot; id=&quot;markdown-toc-tests-cheatsheet&quot;&gt;Tests Cheatsheet&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#basic-experiment-design-concepts&quot; id=&quot;markdown-toc-basic-experiment-design-concepts&quot;&gt;Basic Experiment Design Concepts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#tests-of-proportions&quot; id=&quot;markdown-toc-tests-of-proportions&quot;&gt;Tests of Proportions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-t-test&quot; id=&quot;markdown-toc-the-t-test&quot;&gt;The T-Test&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#validity-in-design-and-analysis&quot; id=&quot;markdown-toc-validity-in-design-and-analysis&quot;&gt;Validity in Design and Analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#one-factor-between-subjects-experiments&quot; id=&quot;markdown-toc-one-factor-between-subjects-experiments&quot;&gt;One-Factor Between-Subjects Experiments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#one-factor-within-subjects-experiments&quot; id=&quot;markdown-toc-one-factor-within-subjects-experiments&quot;&gt;One-Factor Within-Subjects Experiments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#multi-factor-experiments&quot; id=&quot;markdown-toc-multi-factor-experiments&quot;&gt;Multi-Factor Experiments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#generalized-linear-models&quot; id=&quot;markdown-toc-generalized-linear-models&quot;&gt;Generalized Linear Models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mixed-effects-models&quot; id=&quot;markdown-toc-mixed-effects-models&quot;&gt;Mixed Effects Models&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- /#table-of-contents --&gt;
+
+&lt;p&gt;These notes are a result of taking the online course &lt;a href=&quot;https://www.coursera.org/learn/designexperiments&quot;&gt;Designing, Running and Analyzing Experiments&lt;/a&gt; taught by &lt;a href=&quot;https://d.ucsd.edu/srk/&quot;&gt;Scott Klemmer&lt;/a&gt; and &lt;a href=&quot;https://faculty.washington.edu/wobbrock/&quot;&gt;Jacob Wobbrock&lt;/a&gt;. The contents are therefore based on the corresponding presentations available online.&lt;/p&gt;
+
+&lt;h2 id=&quot;tests-cheatsheet&quot;&gt;Tests Cheatsheet&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Tests of Proportions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Samples&lt;/th&gt;
+      &lt;th&gt;Response Categories&lt;/th&gt;
+      &lt;th&gt;Asymptotic Tests&lt;/th&gt;
+      &lt;th&gt;Exact Tests&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;One-sample $\chi^2$ test&lt;/td&gt;
+      &lt;td&gt;Binomial test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;&amp;gt; 2&lt;/td&gt;
+      &lt;td&gt;One-sample $\chi^2$ test&lt;/td&gt;
+      &lt;td&gt;Multinomial test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;gt; 1&lt;/td&gt;
+      &lt;td&gt;&amp;gt;= 2&lt;/td&gt;
+      &lt;td&gt;N-sample $\chi^2$ test&lt;/td&gt;
+      &lt;td&gt;G-test; Fisher’s test&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Analyses of Variance&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Factors&lt;/th&gt;
+      &lt;th&gt;Levels&lt;/th&gt;
+      &lt;th&gt;(B)etween or (W)ithin&lt;/th&gt;
+      &lt;th&gt;Parametric Tests&lt;/th&gt;
+      &lt;th&gt;Non-Parametric Tests&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;Independent-samples T-test&lt;/td&gt;
+      &lt;td&gt;Mann-Whitney U Test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;&amp;gt; 2&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;One-way ANOVA&lt;/td&gt;
+      &lt;td&gt;Kruskal-Wallis Test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;W&lt;/td&gt;
+      &lt;td&gt;Paired-samples t-test&lt;/td&gt;
+      &lt;td&gt;Wilcoxon signed-rank test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;&amp;gt; 2&lt;/td&gt;
+      &lt;td&gt;W&lt;/td&gt;
+      &lt;td&gt;One-way repeated measures ANOVA&lt;/td&gt;
+      &lt;td&gt;Friedman test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;gt; 1&lt;/td&gt;
+      &lt;td&gt;&amp;gt;= 2&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;Factorial ANOVA; Linear Models (LM)&lt;/td&gt;
+      &lt;td&gt;Aligned Rank Transform (ART); Generalized Linear Models (GLM)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&amp;gt; 1&lt;/td&gt;
+      &lt;td&gt;&amp;gt;= 2&lt;/td&gt;
+      &lt;td&gt;W&lt;/td&gt;
+      &lt;td&gt;Factorial repeated measures ANOVA; Linear Mixed Models (LMM)&lt;/td&gt;
+      &lt;td&gt;Aligned Rank Transform (ART); Generalized Linear Mixed Models (GLMM)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;basic-experiment-design-concepts&quot;&gt;Basic Experiment Design Concepts&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Participants&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Sampling&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Probability Sampling (uses random approaches)&lt;/li&gt;
+      &lt;li&gt;Non-probability Sampling (purposive, convenience, snowball)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Criteria&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Inclusion Criteria&lt;/li&gt;
+      &lt;li&gt;Exclusion Criteria&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Apparatus&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Environment&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Lab Study&lt;/li&gt;
+      &lt;li&gt;Online Study&lt;/li&gt;
+      &lt;li&gt;Remote Study&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Data Capturing&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Log Files&lt;/li&gt;
+      &lt;li&gt;Video Recording&lt;/li&gt;
+      &lt;li&gt;Personal Observations&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Procedure&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Trials&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Number&lt;/li&gt;
+      &lt;li&gt;Duration&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Temporal Effects&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Fatigueness&lt;/li&gt;
+      &lt;li&gt;Learning&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tasks&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Open Exploration&lt;/li&gt;
+      &lt;li&gt;Task&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Design &amp;amp; Analysis&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Formal Design Characteristics&lt;/li&gt;
+  &lt;li&gt;Appropriate Statistical Analysis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tests-of-proportions&quot;&gt;Tests of Proportions&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Types of Tests&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Exact&lt;/strong&gt;: computes exact p-value&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Aymptotic&lt;/strong&gt;: approximates p-value&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Reporting p-values (referred to as {P VALUE REPORT} below)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;If statistically significant&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$p &amp;lt; .05$&lt;/li&gt;
+      &lt;li&gt;$p &amp;lt; .01$&lt;/li&gt;
+      &lt;li&gt;$p &amp;lt; .001$&lt;/li&gt;
+      &lt;li&gt;$p &amp;lt; .0001$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;If on the edge of significance (i.e., $.05 &amp;lt; p &amp;lt; .1$)&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Report as a “trend”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;If not statistically significant&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;em&gt;n.s.&lt;/em&gt; (do not treat statistically non-significant differences as there being no difference, but rather as there being no detectable difference based on the observed data)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;One-sample Test of Proportions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Pearson $\chi^2$ Test&lt;/strong&gt; (asymptotic test):
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;chisq.test(table)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;R output: &lt;code&gt;X-squared = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Report as: $\chi^2(\text{{DEGREES OF FREEDOM}}, N=\text{{SAMPLE SIZE}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Binomial Test&lt;/strong&gt; (exact test):
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;binom.test(table)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;R output: &lt;code&gt;number of successes = {NUM. SUCCESSES}, number of trials = {SAMPLE SIZE}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Report as: We had a binomial test with {SAMPLE SIZE} data points, {P VALUE REPORT}&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Multinomial Test&lt;/strong&gt; (exact test for more than two response categories, should be followed by a series of post-hoc binomial tests and a Bonferroni adjustment of p-values to determine significance for individual response categories):
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;library(XNomial); xmulti(table, c(1/3, 1/3, 1/3), statName=&quot;Prob&quot;)&lt;/code&gt; (this notation is correct for three response categories; adjust the second argument for more than three response categories)&lt;/li&gt;
+      &lt;li&gt;R output: &lt;code&gt;P value (Prob) = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Report as: We had a multinomial test with {SAMPLE SIZE} data points, {P VALUE REPORT}&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;N-sample Test of Proportions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;N-sample Pearson $\chi^2$ Test&lt;/strong&gt; (asymptotic test, see above)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;G Test&lt;/strong&gt; (asymptotic test):
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;library(RVAideMemoire); G.test(table)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;R output: &lt;code&gt;G = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fisher’s Test&lt;/strong&gt; (exact test):
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;fisher.test(table)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;R output: &lt;code&gt;p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-t-test&quot;&gt;The T-Test&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Variable Types&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Independent Variables&lt;/strong&gt;: The variables the experimenter manipulates, also called the &lt;em&gt;treatments&lt;/em&gt;, or &lt;em&gt;factors&lt;/em&gt; (with different levels, i.e., the specific values a factor can take on)
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Between-Subjects Factor&lt;/strong&gt;: Each participant experiences only one level of a factor
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Pros&lt;/strong&gt;: Avoids &lt;strong&gt;carryover effects&lt;/strong&gt; (see below)&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Cons&lt;/strong&gt;: More participants needed; higher subject-dependent variance in the response variables&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Within-Subjects Factor&lt;/strong&gt;: Each participant experiences more than one level of a factor (partial within-subjects factors expose participants to more than one, but not all levels of the factor); also called &lt;strong&gt;Repeated Measures&lt;/strong&gt; factor:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Pros&lt;/strong&gt;: Less participants needed; lower subject-dependent variance in the response variables&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Cons&lt;/strong&gt;: Is prone to &lt;strong&gt;carryover effects&lt;/strong&gt; (like fatigue, practice effects, boredom, skill transfer etc.); carryover effects can be accounted for by controlling (e.g., randomizing or rotating) and logging the order in which individual participants are exposed to the different levels of a factor&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Dependent Variables&lt;/strong&gt;: The variables that are potentially influenced by the independent variables&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Notation in R&lt;/strong&gt;: $Y \sim X + \epsilon$ ($Y$: dependent variable; $X$: independent variable; $\epsilon$: random measurement error)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Design Types&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Balanced vs. Unbalanced&lt;/strong&gt;: depending on whether there are about the same number of participants in every condition&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;N-Measure&lt;/strong&gt;: indicating how many data points we measure from each participant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Independent-samples t-test / Two-samples t-test&lt;/strong&gt; (parametric form of ANOVA, appropriate for between-subjects factors with two levels)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;R call: &lt;code&gt;t.test(Y ~ X, data=dataframe, var.equal=TRUE)&lt;/code&gt; (use &lt;code&gt;var.equal=FALSE&lt;/code&gt; for the Welch t-test for unequal variances, e.g., when the homoscedasticity assumption for ANOVAs is violated, see below)&lt;/li&gt;
+  &lt;li&gt;R output: &lt;code&gt;t = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Report as: $t(\text{{DEGREES OF FREEDOM}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;validity-in-design-and-analysis&quot;&gt;Validity in Design and Analysis&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Experimental Control&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Goal&lt;/strong&gt;: ensuring that systematic differences in observed responses can be attributed to systematic changes in manipulated factors&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Trade-off between experimental control and ecological validity&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Confounds&lt;/strong&gt;: non-random effects that introduce uncontrolled variation in the experiment; strategies to mitigate the effects of confounds:
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Manipulate it&lt;/strong&gt; (by turning confounds into independent variables that are manipulated systematically)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Control for it&lt;/strong&gt; (keep the confound constant or evenly spread out across all participants)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Measure it&lt;/strong&gt; (record it to control for it in the subsequent analysis)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Consider it a &lt;em&gt;Hidden Effect&lt;/em&gt; otherwise&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Types of Analyses&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Parametric&lt;/strong&gt;: does make assumptions about the distribution of the response variable to gain statistical power&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Non-Parametric&lt;/strong&gt;: does not make assumptions about the distribution of the response variable lacking statistical power (typically operate on ranks)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Data Distributions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Continuous&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Normal / Gaussian&lt;/strong&gt;: $\mu$ (mean); $\delta^2$ (variance); applies to most response variables&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Log Normal&lt;/strong&gt;: $\mu$ (mean); $\delta^2$ (variance); e.g., task time&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Gamma&lt;/strong&gt;: $k$ (shape); $\Theta$ (scale); e.g., waiting times in lines&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Exponential&lt;/strong&gt;: $\lambda$ (rate); e.g., people’s wealth; special case of the Gamma distribution when shape $k=1$; $\lambda = \Theta^{-1}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Discrete&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Poisson&lt;/strong&gt;: $\lambda$; e.g., counts of rare events&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Binomial / Multinomial&lt;/strong&gt;: $n$ (number of trials); $p$ (probabilities of success for individual outcomes, only one scalar for the binomial distribution, and a vector for the multinomial distribution); for categorical response variables&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3 Assumptions of Analysis of Variance (ANOVA, parametric test)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Independence&lt;/strong&gt;: each participant is sampled independently from other participants (violated in snowball sampling); also, each measure on a given participant is independent from measures on other subjects&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Normality&lt;/strong&gt;: the residuals (i.e., the differences between the observed response variable and the statistical model’s predictions) are normally distributed (i.e., follow the Gaussian bell curve); use Shapiro-Wilk normality test on the residuals (&lt;code&gt;shapiro.test(residuals(model))&lt;/code&gt; –&amp;gt; &lt;code&gt;W = {TEST STATISTIC}, p-value = {P VALUE}&lt;/code&gt;, must &lt;em&gt;not&lt;/em&gt; be significant in order to comply with the normality assumption) and visualize with a QQ-plot (&lt;code&gt;qqnorm(residuals(model)); qqline(residuals(model))&lt;/code&gt; –&amp;gt; all points should be close to the diagonal line); if this assumption is violated, try to transform the data in a way that the data, and thus likely also the residuals, are normally distributed; for example, test for log-normality of the data using the Kolmogorov-Smirnov test (&lt;code&gt;library(MASS); fit = fitdistr(data, &quot;lognormal&quot;)$estimate;&lt;/code&gt; &lt;code&gt;ks.test(data, &quot;plnorm&quot;, meanlog=fit[1], sdlog=fit[2], exact=TRUE)&lt;/code&gt; –&amp;gt; &lt;code&gt;D = {TEST STATISTIC}, p-value = {P VALUE}&lt;/code&gt;, must &lt;em&gt;not&lt;/em&gt; be significant in order to assume a log-normal distribution); if the data is follows a log-normal distribution, apply a log transform to it before performing the ANOVA&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Homoscedasticity / Homogeneity of Variance&lt;/strong&gt;: the variance among groups being compared is similar; use Levene’s test (&lt;code&gt;leveneTest(Y ~ X, data=data, center=mean)&lt;/code&gt; –&amp;gt; &lt;code&gt;Df {DEGREES OF FREEDOM} F value {TEST STATISTIC} Pr(&amp;gt;F) {P VALUE}&lt;/code&gt;, must &lt;em&gt;not&lt;/em&gt; be significant in order to comply with the homoscedasticity assumption) and Brown-Forsythe test (&lt;code&gt;leveneTest(Y ~ X, data=data, center=median)&lt;/code&gt; –&amp;gt; &lt;code&gt;Df {DEGREES OF FREEDOM} F value {TEST STATISTIC} Pr(&amp;gt;F) {P VALUE}&lt;/code&gt;, must &lt;em&gt;not&lt;/em&gt; be significant in order to comply with the homoscedasticity assumption; preferred as it uses the median and is more robust to outliers) to test for this assumption; if this assumption is violated (even after a potential log transform of the data), use the Welch t-test for unequal variances&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Mann-Whitney U test&lt;/strong&gt; (non-parametric form of ANOVA, appropriate for between-subjects factors with two levels, i.e., the non-parametric equivalent of the independent-samples t-test):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;R call: &lt;code&gt;library(coin); wilcox_test(Y ~ X, data=data, distribution=&quot;exact&quot;)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;R output: &lt;code&gt;Z = {TEST STATISTIC}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Report as: $Z = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;one-factor-between-subjects-experiments&quot;&gt;One-Factor Between-Subjects Experiments&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;One-Way ANOVA&lt;/strong&gt; (parametric; for experiments with a single between-subjects factor of more than two levels):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;F-test&lt;/strong&gt; (overall / omnibus test):&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;m = aov(Y ~ X, data=data); anova(m)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;R output: &lt;code&gt;Df: {NUM. DOF} Sum Sq: ... Mean Sq: ... F value: {TEST STATISTIC} Pr(&amp;gt;F): {P VALUE} Residuals: {DENOM. DOF}&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Report as: $F(\text{{NUM. DOF}}, \text{{DENOM. DOF}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Post-hoc pairwise comparisons&lt;/strong&gt; (using independent samples t-tests):&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;library(multcomp); summary(glht(m, mcp(IDE=&quot;Tukey&quot;)), test=adjusted(type=&quot;holm&quot;))&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Non-parametric Equivalent&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Kruskal-Wallis Test&lt;/strong&gt; (overall / omnibus test):&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;library(coin); kruskal_test(Y ~ X, data=data, distribution=&quot;asymptotic&quot;)&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Post-hoc pairwise comparisons&lt;/strong&gt; (using either multiple Mann-Whitney U tests [see above] or one combined test by Cover and Iman [see R call below]):&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;R call: &lt;code&gt;library(PMCMR); posthoc.kruskal.conover.test(Y ~ X, data=data, p.adjust.method=&quot;holm&quot;)&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;one-factor-within-subjects-experiments&quot;&gt;One-Factor Within-Subjects Experiments&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Counterbalancing Repeated Measures Factors&lt;/strong&gt; (how to assign order of presentation of factor levels to avoid carryover effects):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Full Counterbalancing&lt;/strong&gt;: every possible order is represented equally in the study; preferred method if the participant sample is large enough to represent each order equally often; the number of possible orders is the factorial of the number of factor levels; the participant should be a multiple of the number of possible orders;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Latin Square&lt;/strong&gt;: each factor level appears in each order position equally often; this is done by rotating a fixed order of factor levels; the participant sample should be a multiple of the number of factor levels;
+    &lt;ul&gt;
+      &lt;li&gt;1, 2, 3, 4, 5&lt;/li&gt;
+      &lt;li&gt;2, 3, 4, 5, 1&lt;/li&gt;
+      &lt;li&gt;3, 4, 5, 1, 2&lt;/li&gt;
+      &lt;li&gt;4, 5, 1, 2, 3&lt;/li&gt;
+      &lt;li&gt;5, 1, 2, 3, 4&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Balanced Latin Square&lt;/strong&gt;: first row (1, 2, n, 3, n-1, 4, n-2, …); subsequent (n-1) rows increment the values from each preceding row and wrap around $(n_p + 1 \mod n)$; if n, i.e., the number of factor levels, is odd, repeat the block in reverse order); below is an example for an odd number of factor levels:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Block 1&lt;/strong&gt; (forward order):
+        &lt;ul&gt;
+          &lt;li&gt;1, 2, 5, 3, 4&lt;/li&gt;
+          &lt;li&gt;2, 3, 1, 4, 5&lt;/li&gt;
+          &lt;li&gt;3, 4, 2, 5, 1&lt;/li&gt;
+          &lt;li&gt;4, 5, 3, 1, 2&lt;/li&gt;
+          &lt;li&gt;4, 1, 4, 2, 3&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Block 2&lt;/strong&gt; (reverse order; only needed if n is odd):
+        &lt;ul&gt;
+          &lt;li&gt;4, 3, 5, 2, 1&lt;/li&gt;
+          &lt;li&gt;5, 4, 1, 3, 2&lt;/li&gt;
+          &lt;li&gt;1, 5, 2, 4, 3&lt;/li&gt;
+          &lt;li&gt;2, 1, 3, 5, 4&lt;/li&gt;
+          &lt;li&gt;3, 2, 4, 1, 4&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Paired t-test&lt;/strong&gt; (parametric form of ANOVA, appropriate for within-subjects factors with two levels)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;R call: &lt;code&gt;t.test(Y ~ X, data=dataframe, paired=TRUE, var.equal=TRUE)&lt;/code&gt; (use &lt;code&gt;var.equal=FALSE&lt;/code&gt; for the Welch t-test for unequal variances, e.g., when the homoscedasticity assumption for ANOVAs is violated)&lt;/li&gt;
+  &lt;li&gt;R output: &lt;code&gt;t = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Report as: $t(\text{{DEGREES OF FREEDOM}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Wilcoxon Signed-Rank Test&lt;/strong&gt; (nonparametric equivalent of paired t-test):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;R call: &lt;code&gt;library(coin); wilcoxsign_test(Y ~ X | Subject, data=dataframe, distribution=&quot;exact&quot;)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;R output: &lt;code&gt;Z = {TEST STATISTIC}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Report as: $Z = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;One-way Repeated Measures ANOVA&lt;/strong&gt; (parametric form of ANOVA, appropriate for within-subjects factors with more than two levels)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;R call: &lt;code&gt;library(ez); m = ezANOVA(dv=Y, within=X, wid=Subject, data=dataframe); m$Mauchly; m$ANOVA;&lt;/code&gt;
+&lt;code&gt;pos = match(m$&lt;/code&gt;&lt;code&gt;Sphericity Corrections&lt;/code&gt;&lt;code&gt;$Effect, m$ANOVA$Effect)&lt;/code&gt;
+&lt;code&gt;m$Sphericity$GGe.DFn = m$Sphericity$GGe * m$ANOVA$DFn[pos] # Greenhouse-Geisser&lt;/code&gt;
+&lt;code&gt;m$Sphericity$GGe.DFd = m$Sphericity$GGe * m$ANOVA$DFd[pos]&lt;/code&gt;
+&lt;code&gt;m$Sphericity$HFe.DFn = m$Sphericity$HFe * m$ANOVA$DFn[pos] # Huynh-Feldt&lt;/code&gt;
+&lt;code&gt;m$Sphericity$HFe.DFd = m$Sphericity$HFe * m$ANOVA$DFd[pos]&lt;/code&gt;
+&lt;code&gt;m$Sphericity&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Followed by post-hoc pairwise comparisons using paired t-tests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Friedman’s Test&lt;/strong&gt; (non-parametric equivalent of one-way repeated measures ANOVA):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;R call: &lt;code&gt;library(coin); friedman_test(Y ~ X | Subject, data=dataframe, distribution=&quot;asymptotic&quot;)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;R output: &lt;code&gt;chi-squared = {TEST STATISTIC}, df = {DEGREES OF FREEDOM}, p-value = {P VALUE}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Report as: $\chi^2(\text{{DEGREES OF FREEDOM}}) = \text{{TEST STATISTIC}}, \text{{P VALUE REPORT}}$&lt;/li&gt;
+  &lt;li&gt;Followed by post-hoc pairwise comparisons using Wilcoxon signed-rank tests&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;multi-factor-experiments&quot;&gt;Multi-Factor Experiments&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;NxM mixed / within-subjects / between-subjects factorial designs&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;N&lt;/strong&gt;: number of levels in the first factor&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;M&lt;/strong&gt;: number of levels in the second factor (there can be more than two factors)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;mixed&lt;/strong&gt;: means that some factors are within-subjects factors and some factors are between-subjects factors; if the factorial design contains any within-subjects factors, always use Repeated Measures ANOVA, not regular ANOVA&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;within-subjects&lt;/strong&gt;: means that all factors are within-subjects factors&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;between-subjects&lt;/strong&gt;: means that all factors are between-subjects factors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Effects&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Main effect&lt;/strong&gt;: means that changing levels within one factor leads to significant differences in the dependent variable&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Interaction effect&lt;/strong&gt;: means that changing levels in one factor differentially affects outcomes in the dependent variable for different levels of another factor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Mixed Factorial ANOVA&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;: &lt;code&gt;library(ez); ezANOVA(dv={DEPENDENT VARIABLE},&lt;/code&gt;
+&lt;code&gt;between={BETWEEN-SUBJECTS FACTOR}, within={WITHIN-SUBJECTS FACTOR},&lt;/code&gt;
+&lt;code&gt;wid={SUBJECT COLUMN NAME}, data=data)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Aligned Rank Transform (ART) Procedure&lt;/strong&gt; (non-parametric equivalent to Mixed Factorial ANOVA):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;: &lt;code&gt;library(ARTool); m = art({DEPENDENT VARIABLE} ~ {BETWEEN-SUBJECTS&lt;/code&gt;
+&lt;code&gt;FACTOR} * {WITHIN-SUBJECTS FACTOR} + (1|{SUBJECT COLUMN NAME}),&lt;/code&gt;
+&lt;code&gt;data=data); anova(m)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;generalized-linear-models&quot;&gt;Generalized Linear Models&lt;/h2&gt;
+
+&lt;p&gt;Removes the assumption of a linear relationship between predictor variable and response variable and the assumption of a normal distribution of the response variable; only used for &lt;strong&gt;between-subjects&lt;/strong&gt; factors&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Multinomial / Nominal Logistic Regression&lt;/strong&gt; (categorical response variable): with logit link
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;:
+&lt;code&gt;library(nnet); library(car); contrasts(data.frame$X) &amp;lt;- &quot;contr.sum&quot;;&lt;/code&gt;
+&lt;code&gt;m = multinom(Y ~ X, data=data.frame); Anova(m, type=3)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;followed by post-hoc pairwise comparisons if omnibus test permits&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ordinal Logistic Regression&lt;/strong&gt; (ordinal response variable): with cumulative logit link
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;:
+&lt;code&gt;library(MASS); library(car); data.frame$Y = ordered(data.frame$Y);&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$X) &amp;lt;- &quot;contr.sum&quot;; m = polr(Y ~ X, data=data.frame, Hess=TRUE);&lt;/code&gt;
+&lt;code&gt;Anova(m, type=3)&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;followed by post-hoc pairwise comparisons if omnibus test permits&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Poisson Regression&lt;/strong&gt; (count response variable): with log link
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;:
+&lt;code&gt;library(car); contrasts(data.frame$X) &amp;lt;- &quot;contr.sum&quot;;&lt;/code&gt;
+&lt;code&gt;m = glm(Y ~ X, data=data.frame, family=poisson); Anova(m, type=3);&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;followed by post-hoc pairwise comparisons if omnibus test permits&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mixed-effects-models&quot;&gt;Mixed Effects Models&lt;/h2&gt;
+
+&lt;p&gt;Types of models that can handle both within-subjects and between-subjects factors. The term ‘mixed’ indicates that the model incorporates both:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Fixed Effects&lt;/strong&gt; (factors of interest that we manipulate in a study)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Random Effects&lt;/strong&gt; (factors whose levels were sampled randomly from a larger population about which we wish to generalize, but whose specific level values we do not care about, e.g., subjects)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Nesting / Nested Effects&lt;/strong&gt;: Important when the levels of a factor should not be pooled just by their labels alone, i.e., when the individual levels of a factor do not mean very much. For example, the levels of a factor ‘Trial’ (with 20 trials) should be nested into other fixed effect factors.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Advantages of Mixed Effects Models:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can handle missing data points&lt;/li&gt;
+  &lt;li&gt;Do not require balanced data sets&lt;/li&gt;
+  &lt;li&gt;Do not have a sphericity requirement (i.e., similarity of variances across all levels of a factor)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Disadvantages of Mixed Effects Models:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Computationally more intensive&lt;/li&gt;
+  &lt;li&gt;Larger degrees of freedom in the denominator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Linear Mixed Model (LMM)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;:
+&lt;code&gt;library(lme4); library(lmerTest); library(car);&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$X1) &amp;lt;- &quot;contr.sum&quot;&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$X2) &amp;lt;- &quot;contr.sum&quot;&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$Trial) &amp;lt;- &quot;contr.sum&quot;&lt;/code&gt;
+&lt;code&gt;m = lmer(Y ~ (X1 * X2)/Trial + (1|Subject), data=data.frame)&lt;/code&gt;
+&lt;code&gt;Anova(m, type=3, test.statistic=&quot;F&quot;)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;X1 and X2 are fixed effects, Trial is nested into the interaction of X1 and X2, and Subject is a random effect&lt;/li&gt;
+  &lt;li&gt;followed by post-hoc pairwise comparisons if omnibus test permits&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Generalized Linear Mixed Model (GLMM)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;R code&lt;/strong&gt;:
+&lt;code&gt;library(lme4); library(car);&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$X1) &amp;lt;- &quot;contr.sum&quot;&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$X2) &amp;lt;- &quot;contr.sum&quot;&lt;/code&gt;
+&lt;code&gt;contrasts(data.frame$Trial) &amp;lt;- &quot;contr.sum&quot;&lt;/code&gt;
+&lt;code&gt;m = glmer(Y ~ (X1 * X2)/Trial + (1|Subject), data=data.frame, family=poisson, nAGQ=1)&lt;/code&gt;
+&lt;code&gt;Anova(m, type=3)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;X1 and X2 are fixed effects, Trial is nested into the interaction of X1 and X2, and Subject is a random effect&lt;/li&gt;
+  &lt;li&gt;family can be switched to a different type of distribution; Poisson distribution usually works well for count response variables like error counts&lt;/li&gt;
+  &lt;li&gt;switch nAGQ to 0 to speed up the computation, but verify that the result is still similar&lt;/li&gt;
+  &lt;li&gt;followed by post-hoc pairwise comparisons if omnibus test permits&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/experiment-design-and-analysis/&quot;&gt;Experiment Design &amp; Analysis&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;http://localhost:4000&quot;&gt;Mike Schaekermann&lt;/a&gt; on October 05, 2017.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Ethical Dilemmas in Artificial Intelligence]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/ethical-dilemmas-in-artificial-intelligence/" />
+  <id>http://localhost:4000/ethical-dilemmas-in-artificial-intelligence</id>
+  <published>2016-02-22T00:00:00-05:00</published>
+  <updated>2016-02-22T00:00:00-05:00</updated>
+  <author>
+    <name>Mike Schaekermann</name>
+    <uri>http://localhost:4000</uri>
+    <email>mikeschaekermann@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Today, I would like to draw your attention to a blog post highlighting how self-driving cars will force humans to start thinking about their very basic ethical foundations again [1]. We probably all have read or heard about a plethora of articles pointing out how much more reliable and safe autonomous vehicles have become over the last few months and years. In contrast to that, the article &lt;em&gt;Why Self-Driving Cars Must Be Programmed to Kill&lt;/em&gt; [1] reviews a scientific paper [2] posing the question how self-driving cars should be programmed to act in the event of an unavoidable accident.&lt;/p&gt;
+
+&lt;p&gt;Special emphasis in both the article and the cited paper is on the question whether the general ethical premise should be to minimize pain in general and the loss of life in particular. Amongst philosophers, such an approach is called utilitarianism [10]. However, in some situations, such a utilitarian calculation could conclude that the death toll is minimized if the car avoids a group of individuals on the street by swerving into a wall and killing the passenger instead.&lt;/p&gt;
+
+&lt;p&gt;The article highlights the importance of such ethical questions with respect to acceptance and adoption of self-driving cars in society. The fact that also media from other domains like business [7] or general news [8] report about this pressing topic indicates the relevance of this discussion for the broader public. It is also emphasized in [2] that carmakers will have to target potentially incompatible objectives: being consistent in algorithmic morality, preventing public rejection of the technology and encouraging customers to buy cars.&lt;/p&gt;
+
+&lt;p&gt;In the reviewed paper [2], the authors tackle the problem of ethical dilemmas by employing a new technique, located at the intersection of psychology and philosophy, called experimental ethics. They ran a crowdsourcing experiment asking for people’s opinions about specific scenarios in which the lives of one or more pedestrians could be saved if a car were to avoid the pedestrians by driving into a barrier, killing the passengers of the car or a pedestrian. The overall result of this extensive questionnaire was that most people wished others to drive in utilitarian self-driving cars without being ready to buy and use a utilitarian autonomous vehicle themselves - a comprehensible paradoxon.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://d267cvn3rvuq91.cloudfront.net/i/images/Ethical%20cars.png?sw=790&quot; /&gt;
+&lt;em&gt;Image reprinted from paper [2]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Another paper [4] takes a bit of a different approach on the same problem stating that the answer to these types of ethical dilemmas cannot be found by employing humans’ ability of ethical reasoning alone because the assignment of blame to either the human programmer or black-box AI processes might be too complex to answer for human beings alone. The authors of this paper argue that we should make use of complementary AI systems to ensure other AI systems do not act illegally or unethically.&lt;/p&gt;
+
+&lt;p&gt;In general, I think the presented article highlights the importance of some of the topics we have also discussed in class like reasoning under uncertainty. For example, the authors of [2] describe the scenario of a car avoiding a crash with a motorcycle by driving into a wall taking into account that the chance of survival is higher for the driver of the car than for the rider of the motorcycle. Another example related to the notion of the expected discounted sum of future rewards, alleged in the same paper, highlights the question whether decisions should be adjusted depending on the age of the passengers, given that children, on average, have a longer time ahead of them than adults.&lt;/p&gt;
+
+&lt;p&gt;In addition to that, paper [2] also mentions the notion of randomization in decision making to break ties when it comes to irresolvable ethical dilemmas. This idea partially ties in with optimization approaches like simulated annealing or genetic algorithms where randomization is used as a means to explore the solution space in scenarios where it is near to impossible to find the optimal solution in an acceptable time frame.&lt;/p&gt;
+
+&lt;p&gt;In my opinion, the discussion of moral dilemmas in the context of self-driving cars is just the tip of the iceberg. The next obvious cases raising similar questions, in my opinion, will be all other types of vehicles that will be equipped with full autonomy in the near future like airplanes, ships and motorcycles. In fact, I think the discussion is fundamentally relevant to all autonomous agents with a large degree of freedom in making decisions, both human and non-human. One example from the medical domain would be a robot performing a Caesarean operation confronted with a scenario in which any decision it could make will lead to the death of either the mother or the child.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, I would like to express my opinion that the social implications of this article are mostly positive because all real-life moral dilemmas will force us to explicitly reason about our underlying ethical foundations both as individual human beings and as society as a whole (referring to the approach of experimental ethics proposed in [2]). Essentially, my assumption is that the need for explicitness fosters conscious reflection about our most basic moral values - and how can it get any more explicit than writing algorithmic instructions for a computer? ;)&lt;/p&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[1] &lt;a href=&quot;https://www.technologyreview.com/s/542626/why-self-driving-cars-must-be-programmed-to-kill/&quot;&gt;Why Self-Driving Cars Must Be Programmed to Kill&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[2] &lt;a href=&quot;http://arxiv.org/abs/1510.03346&quot;&gt;Autonomous Vehicles Need Experimental Ethics: Are We Ready for Utilitarian Cars?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[3] &lt;a href=&quot;http://ed.ted.com/lessons/the-ethical-dilemma-of-self-driving-cars-patrick-lin&quot;&gt;The ethical dilemma of self-driving cars&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[4] &lt;a href=&quot;http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2705546&quot;&gt;The Ethics Bot: AI Needs Legal and Ethical Guidance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[5] &lt;a href=&quot;https://www.technologyreview.com/s/542651/drivers-push-teslas-autopilot-beyond-its-abilities/&quot;&gt;Drivers push Tesla’s autopilot beyond its abilities&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[6] &lt;a href=&quot;https://www.technologyreview.com/s/527756/lazy-humans-shaped-googles-new-autonomous-car/&quot;&gt;Lazy humans shaped Google’s new autonomous car&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[7] &lt;a href=&quot;http://www.businessinsider.com/the-ethical-questions-facing-self-driving-cars-2015-10&quot;&gt;The huge, unexpected ethical question that self-driving cars will have to tackle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[8] &lt;a href=&quot;http://www.theguardian.com/technology/2015/dec/23/the-problem-with-self-driving-cars-who-controls-the-code&quot;&gt;The problem with self-driving cars: who controls the code?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[9] &lt;a href=&quot;https://www.technologyreview.com/s/539731/how-to-help-self-driving-cars-make-ethical-decisions/&quot;&gt;How to help self-driving cars make ethical decisions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[10] &lt;a href=&quot;https://en.wikipedia.org/wiki/Utilitarianism&quot;&gt;Utilitarianism&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/ethical-dilemmas-in-artificial-intelligence/&quot;&gt;Ethical Dilemmas in Artificial Intelligence&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;http://localhost:4000&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 22, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Artificial Intelligence]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/artificial-intelligence/" />
+  <id>http://localhost:4000/artificial-intelligence</id>
+  <published>2016-02-08T00:00:00-05:00</published>
+  <updated>2016-02-08T00:00:00-05:00</updated>
+  <author>
+    <name>Mike Schaekermann</name>
+    <uri>http://localhost:4000</uri>
+    <email>mikeschaekermann@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Overview&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#search&quot; id=&quot;markdown-toc-search&quot;&gt;Search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#uninformed-search&quot; id=&quot;markdown-toc-uninformed-search&quot;&gt;Uninformed Search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#informed-search&quot; id=&quot;markdown-toc-informed-search&quot;&gt;Informed Search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#constraint-satisfaction-problems&quot; id=&quot;markdown-toc-constraint-satisfaction-problems&quot;&gt;Constraint Satisfaction Problems&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#local-search&quot; id=&quot;markdown-toc-local-search&quot;&gt;Local Search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#planning&quot; id=&quot;markdown-toc-planning&quot;&gt;Planning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#adversarial-search&quot; id=&quot;markdown-toc-adversarial-search&quot;&gt;Adversarial Search&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#decision-making&quot; id=&quot;markdown-toc-decision-making&quot;&gt;Decision Making&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#markov-decision-processes&quot; id=&quot;markdown-toc-markov-decision-processes&quot;&gt;Markov Decision Processes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reinforcement-learning&quot; id=&quot;markdown-toc-reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#bayes-nets&quot; id=&quot;markdown-toc-bayes-nets&quot;&gt;Bayes Nets&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#decision-networks&quot; id=&quot;markdown-toc-decision-networks&quot;&gt;Decision Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#multiagent-systems&quot; id=&quot;markdown-toc-multiagent-systems&quot;&gt;Multiagent Systems&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#statistical-learning&quot; id=&quot;markdown-toc-statistical-learning&quot;&gt;Statistical Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#expectation-maximization&quot; id=&quot;markdown-toc-expectation-maximization&quot;&gt;Expectation Maximization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- /#table-of-contents --&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;These notes are a result of my preparation for a midterm exam in &lt;a href=&quot;https://cs.uwaterloo.ca/~klarson/&quot;&gt;Kate Larson&lt;/a&gt;’s introductory &lt;a href=&quot;https://cs.uwaterloo.ca/~klarson/teaching/W16-486/&quot;&gt;course on Artificial Intelligence&lt;/a&gt; at University of Waterloo in the winter 2016 term. The contents are therefore based on the corresponding presentation slides available online.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition dimensions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Reasoning&lt;/th&gt;
+      &lt;th&gt;Behavior&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Human-like&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Thinking like a human&lt;/td&gt;
+      &lt;td&gt;Acting like a human&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Rational&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Thinking rationally&lt;/td&gt;
+      &lt;td&gt;Acting rationally (course focuses on this field)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Rational agents&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Agent: entity that perceives and acts&lt;/li&gt;
+  &lt;li&gt;Rationality: acting optimally towards a specific goal in a given environment&lt;/li&gt;
+  &lt;li&gt;Task environment: performance measure, environment, sensors and actuators&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Properties of the Task Environment&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fully observable vs Partially observable&lt;/li&gt;
+  &lt;li&gt;Deterministic vs Stochastic&lt;/li&gt;
+  &lt;li&gt;Episodic vs Dynamic&lt;/li&gt;
+  &lt;li&gt;Discrete vs Continuous&lt;/li&gt;
+  &lt;li&gt;Single agent vs Multi agent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;search&quot;&gt;Search&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Task environment&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fully observable&lt;/li&gt;
+  &lt;li&gt;Deterministic&lt;/li&gt;
+  &lt;li&gt;Episodic&lt;/li&gt;
+  &lt;li&gt;Discrete&lt;/li&gt;
+  &lt;li&gt;Single Agent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;uninformed-search&quot;&gt;Uninformed Search&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Techniques&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Depth First&lt;/th&gt;
+      &lt;th&gt;Breadh First&lt;/th&gt;
+      &lt;th&gt;Iterative Deepening&lt;/th&gt;
+      &lt;th&gt;Uniform Cost&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;acronym&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;DFS&lt;/td&gt;
+      &lt;td&gt;BFS&lt;/td&gt;
+      &lt;td&gt;IDS&lt;/td&gt;
+      &lt;td&gt;UCS&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;dequeuing method&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;LIFO&lt;/td&gt;
+      &lt;td&gt;FIFO&lt;/td&gt;
+      &lt;td&gt;alternating LIFO and FIFO&lt;/td&gt;
+      &lt;td&gt;minimal backward cost of path&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;complete?&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;if all $\epsilon &amp;gt; 0$ and $C^*&amp;lt;\infty$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;optimal?&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;for ident. cost&lt;/td&gt;
+      &lt;td&gt;for ident. cost&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;time complexity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$O(b^m)$&lt;/td&gt;
+      &lt;td&gt;$O(b^d)$&lt;/td&gt;
+      &lt;td&gt;$O(b^d)$&lt;/td&gt;
+      &lt;td&gt;$O(b^{C^*/\epsilon})$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;space complexity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$O(bm)$&lt;/td&gt;
+      &lt;td&gt;$O(b^d)$&lt;/td&gt;
+      &lt;td&gt;$O(bd)$&lt;/td&gt;
+      &lt;td&gt;$O(b^{C^*/\epsilon})$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Variables&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$b$: branching factor of search tree&lt;/li&gt;
+  &lt;li&gt;$m$: maximum depth of search tree&lt;/li&gt;
+  &lt;li&gt;$d$: depth of shallowest goal node&lt;/li&gt;
+  &lt;li&gt;$C^*$: cheapest solution cost&lt;/li&gt;
+  &lt;li&gt;$\epsilon$: minimum edge cost&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Helper technique&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;If the state space graph is cyclic the search tree will be infinite. In this case, a “closed list” may be used to keep track of nodes which have already been expanded in order to avoid infinite traversals of cyclic structures&lt;/p&gt;
+
+&lt;h2 id=&quot;informed-search&quot;&gt;Informed Search&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Heuristic function&lt;/strong&gt;: function $h(n)$ that estimates the cost of reaching a goal from a given state (requirement: $h(n_{goal})=0$)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Admissibility&lt;/strong&gt;: a heuristic is admissible if $0 \leq h(n) \leq h’(n)$ where $h’(n)$ is the true shortest path from node $n$ to one of the goal states&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Consistency&lt;/strong&gt;: a heuristic is consistent if $h(n) \leq cost(n,n’)+h(n’)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Backward cost&lt;/strong&gt;: function $g(n)$ that tells how expensive it was to reach node $n$ from the start node&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Estimate of cost of entire path&lt;/strong&gt;: function $f(n)=g(n)+h(n)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Greedy Best First Search&lt;/strong&gt;: expand the most promising node according to the heuristic only; only complete when used with a closed-list&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Techniques&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Greedy Best First&lt;/th&gt;
+      &lt;th&gt;A*&lt;/th&gt;
+      &lt;th&gt;Iterative Deepening A*&lt;/th&gt;
+      &lt;th&gt;Simplified Memory-bounded A*&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;acronym&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;GBFS&lt;/td&gt;
+      &lt;td&gt;A*&lt;/td&gt;
+      &lt;td&gt;IDA*&lt;/td&gt;
+      &lt;td&gt;SMA*&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;dequeuing method&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;minimal $h(n)$&lt;/td&gt;
+      &lt;td&gt;minimal $f(n)$&lt;/td&gt;
+      &lt;td&gt;minimal $f(n)$ with f-limit&lt;/td&gt;
+      &lt;td&gt;see A*&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;complete?&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;see A*&lt;/td&gt;
+      &lt;td&gt;if memory needed for path to shallowest goal node $\leq$ memory size&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;optimal?&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;only for graph-search and a consistent $h(n)$&lt;/td&gt;
+      &lt;td&gt;see A*&lt;/td&gt;
+      &lt;td&gt;see above&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;time complexity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$O(b^m)$&lt;/td&gt;
+      &lt;td&gt;$O(b^m)$&lt;/td&gt;
+      &lt;td&gt;see A*&lt;/td&gt;
+      &lt;td&gt;see A*&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;space complexity&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$O(b^m)$&lt;/td&gt;
+      &lt;td&gt;$O(b^m)$&lt;/td&gt;
+      &lt;td&gt;less than A*&lt;/td&gt;
+      &lt;td&gt;will drop nodes from memory if it runs out of memory&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;constraint-satisfaction-problems&quot;&gt;Constraint Satisfaction Problems&lt;/h2&gt;
+
+&lt;p&gt;A special subset of search problems where:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;States&lt;/strong&gt; are defined by (continuous or discrete) &lt;strong&gt;variables&lt;/strong&gt; $X_i$ with values from (finite or infinite) &lt;strong&gt;domains&lt;/strong&gt; $D_i$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal test&lt;/strong&gt; is a set of (unary, binary, higher-order or soft) &lt;strong&gt;constraints&lt;/strong&gt; specifying allowable combinations of values for subsets of variables&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Commutativity&lt;/strong&gt; is in place, i.e., the order of actions taken does not effect the outcome; variables can be assigned in any order&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Formal abstraction&lt;/strong&gt; as a search problem:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;States&lt;/strong&gt;: partial assignments of values to variables&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Initial State&lt;/strong&gt;: empty assignment ${}$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Successor Function&lt;/strong&gt;: assign a value to an unassigned variable&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal Test&lt;/strong&gt;: the current assignment is complete and satisfies all constraints&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Backtracking&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Select unassigned variable $X$ and try out first valid assignment $x_i$&lt;/li&gt;
+  &lt;li&gt;If a valid assignment is found move to next variable&lt;/li&gt;
+  &lt;li&gt;If no valid assignment is found back up and try a different assignment for $X$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Improvements&lt;/strong&gt; to backtracking using:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ordering&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Most Constrained Variable&lt;/strong&gt;: choose the variable which has the fewest legal moves&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Most Constraining Variable&lt;/strong&gt;: choose variable with most constraints on unassigned variables (tie-breaker for most constrained variable)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Least Constraining Value&lt;/strong&gt;: given a variable, choose the value that rules out the fewest values in unassigned variables&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Filtering&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Forward Checking&lt;/strong&gt;: keep track of remaining legal values for unassigned variables and terminate search if any variable has no legal values&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Arc Consistency&lt;/strong&gt;: given two domains $D_1$ and $D_2$, an arc from $D_1$ to $D_2$ is consistent if, for all $x$ in $D_1$, there is a $y$ in $D_2$ such that $x$ and $y$ are consistent&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Structure&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Independent Subproblems&lt;/strong&gt;: break down constraint graph into connected components and solve them separately; can reduce time complexity from $O(d^n)$ to $O(d^c n/c)$ where $d$ is the domain size, $n$ is the total number of variables and $c$ is the average number of variables per component&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Tree Structures&lt;/strong&gt;: perform topological sort; back to front: make mutually consistent between children and parents; front to back: assign values consistent with parent; time complexity is $O(nd^2)$&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Cutsets&lt;/strong&gt;: choose a subset $S$ of variables such that the constraint graph becomes a tree when $S$ is removed ($S$ is the cycle subset); for each possible valid assignment to the variables of $S$: remove from the domains of remaining variables all values that are inconsistent with $S$; if the remaining CSP has a solution, return it; time complexity is $O(d^c(n-c)d^2)$ where $c$ is the size of the cutset&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Tree Decomposition&lt;/strong&gt;: decompose graph into subproblems that constitute a tree structure; solve each subproblem independently; solve constraints connecting the subproblems using the tree-based algorithm; time complexity is $O(nd^w)$ where $w$ is the size of the largest subproblem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;local-search&quot;&gt;Local Search&lt;/h2&gt;
+
+&lt;p&gt;For many problems, the search path is unimportant. Instead, oftentimes it is simply important to find a viable/good comnbinatorial solution without knowing the path to get there.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Iterative Improvement&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Approach&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Start at some random point&lt;/li&gt;
+      &lt;li&gt;Generate all possible points to move to (i.e., the moveset)&lt;/li&gt;
+      &lt;li&gt;If the set is empty, restart&lt;/li&gt;
+      &lt;li&gt;If the set is not empty, choose point from it and move to it&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Methods&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Hill Climbing / Gradient Descent&lt;/strong&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Idea&lt;/strong&gt;: always take a step in the direction that improves the current solution value the most&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Pros:&lt;/strong&gt;
+            &lt;ul&gt;
+              &lt;li&gt;straightforward implementation&lt;/li&gt;
+              &lt;li&gt;low memory consumption&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Cons&lt;/strong&gt;:
+            &lt;ul&gt;
+              &lt;li&gt;not complete&lt;/li&gt;
+              &lt;li&gt;not optimal (can get stuck in local optima/plateaus)&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Modifications&lt;/strong&gt;:
+            &lt;ul&gt;
+              &lt;li&gt;allow sideway moves to escape plateaus&lt;/li&gt;
+              &lt;li&gt;random restarts to escape local optima&lt;/li&gt;
+              &lt;li&gt;random selection of next move, but only take the step if it improves the solution&lt;/li&gt;
+              &lt;li&gt;allow bad moves to escape local optima (see simulated annealing)&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Simulated Annealing&lt;/strong&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Idea&lt;/strong&gt;:
+            &lt;ul&gt;
+              &lt;li&gt;choose random move from moveset&lt;/li&gt;
+              &lt;li&gt;if it improves the solution make the move&lt;/li&gt;
+              &lt;li&gt;if not (bad move) take it anyways with probability $p$&lt;/li&gt;
+              &lt;li&gt;$p=e^\frac{V(S_i)-V(S)}{T}$ (Boltzmann distribution)&lt;/li&gt;
+              &lt;li&gt;$T$ is a temperature parameter which will decrease over time:
+                &lt;ul&gt;
+                  &lt;li&gt;exploration phase when $T$ is high (random walk)&lt;/li&gt;
+                  &lt;li&gt;exploitation phase when $T$ is low (randomized hill climbing)&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Properties&lt;/strong&gt;:
+            &lt;ul&gt;
+              &lt;li&gt;optimal if $T$ decreases slowly enough&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Genetic Algorithms&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Idea&lt;/strong&gt;: simluation of natural evolutionary processes to approach a global optimum&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Requirements&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Encoding representation&lt;/strong&gt; of individuals (normally a bitstring)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Fitness function&lt;/strong&gt; to evaluate the quality of an individual&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Operations&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Selection&lt;/strong&gt;: selection of candidates for reproduction may be…
+            &lt;ul&gt;
+              &lt;li&gt;fitness-proportionate (can lead to overcrowding)&lt;/li&gt;
+              &lt;li&gt;tournament-based (select two individuals at random and, with constant probability, choose the fitter one)&lt;/li&gt;
+              &lt;li&gt;rank-based&lt;/li&gt;
+              &lt;li&gt;softmax-based&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Crossover&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Mutation&lt;/strong&gt; (normally done with a low probability)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Algorithm&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Initialize population randomly&lt;/li&gt;
+      &lt;li&gt;Compute fitness for each individual&lt;/li&gt;
+      &lt;li&gt;$N$ times do:
+        &lt;ul&gt;
+          &lt;li&gt;Select two parents&lt;/li&gt;
+          &lt;li&gt;Crossover the parents to create new child&lt;/li&gt;
+          &lt;li&gt;With low probability, mutate child&lt;/li&gt;
+          &lt;li&gt;Add child to population&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Return “fittest” individual in population&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;planning&quot;&gt;Planning&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: construct a sequence of actions for performing some task / reaching some goal&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stanford Research Institute Problem Solver (STRIPS)&lt;/strong&gt; language:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Domain&lt;/strong&gt;: set of typed, concrete objects (no variables allowed)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;States&lt;/strong&gt;: conjunctions of first-order predicates over objects (no variables allowed)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goals&lt;/strong&gt;: conjunctions of &lt;strong&gt;positive&lt;/strong&gt; ground literals (no negative ground literals allowed)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Closed-World Assumption&lt;/strong&gt;: any conditions not mentioned in a state are assumed to be false (see Frame Problem)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Actions&lt;/strong&gt;: tuples of preconditions (conjunction of function-free positive literals) and effects (description of how the state changes when the action is executed, sometimes defined as &lt;strong&gt;delete- and add-lists&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Planning as Search&lt;/strong&gt;: planning is a specific type of search in which the search space is reduced significantly by the use of a highly structured and restriced planning language (e.g., Planning Domain Definition Language &lt;strong&gt;PDDL&lt;/strong&gt;, a generalization of STRIPS):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Progression Planning (Forward Planning): classical search which can strongly benefit from good heuristics&lt;/li&gt;
+  &lt;li&gt;Regression Planning (Backward Planning): &lt;strong&gt;start from goal state&lt;/strong&gt; and find a sequence of &lt;strong&gt;consistent&lt;/strong&gt; (i.e., must not undo any desired state), &lt;strong&gt;relevant&lt;/strong&gt; (i.e., must achieve one of the conjuncts of the goal) actions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Frame Problem&lt;/strong&gt;: when the consequences of an action are described the frame problem poses the question what has happened to components of the world that were not mentioned in this description&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sussman’s Anomaly&lt;/strong&gt;: stack-based regression planning might not work if a problem is decomposed into sub-problems that are interdependent&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Planning Graphs&lt;/strong&gt;: a form of representation of a planning problem&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Levels&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$S_0$ has a node for each literal that holds in the initial state&lt;/li&gt;
+      &lt;li&gt;$A_0$ has a node for each action that could be taken in $S_0$&lt;/li&gt;
+      &lt;li&gt;$S_i$ contains all literals that could hold given the actions taken in level $A_{i-1}$&lt;/li&gt;
+      &lt;li&gt;$A_i$ contains all actions whose preconditions could hold in $S_i$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Persistence Actions (no-op)&lt;/strong&gt;: literal will persist until an action negates it&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mutual Exclusion (Mutex) links&lt;/strong&gt;: record conflicts between actions or states that cannot occur together for one of the following reasons:
+    &lt;ul&gt;
+      &lt;li&gt;Inconsistent Effects (actions)&lt;/li&gt;
+      &lt;li&gt;Interference (actions)&lt;/li&gt;
+      &lt;li&gt;Competing Needs (actions)&lt;/li&gt;
+      &lt;li&gt;Inconsistent Support (states)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Heuristics&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Level-cost: for a single goal literal, the level in which it appears first&lt;/li&gt;
+      &lt;li&gt;Max-level: $argmax_i levelcost(g_i)$&lt;/li&gt;
+      &lt;li&gt;Sum-level: $\sum_i levelcost(g_i)$ (may be inadmissible!)&lt;/li&gt;
+      &lt;li&gt;Set-level: for multiple goal literals, the first level where all appear and are not mutex (dominates max-level)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;GraphPlan&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Forward construction of the planning graph (in polynomial time)&lt;/li&gt;
+      &lt;li&gt;Solution extraction (backward search through the graph, may be intractable because PSPACE-complete)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;adversarial-search&quot;&gt;Adversarial Search&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Task environment&lt;/strong&gt;: multi-agent&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Types of Games&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Perfect Information&lt;/th&gt;
+      &lt;th&gt;Imperfect Information&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Deterministic&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Chess&lt;/td&gt;
+      &lt;td&gt;Other Card Games&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Stochastic&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Rolling the Dice&lt;/td&gt;
+      &lt;td&gt;Poker&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Zero-sum Perfect Information Games&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Agents&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;MAX: aims to maximize the utility of the terminal node (i.e., win the game)&lt;/li&gt;
+      &lt;li&gt;MIN: aims to minimize the utility of the terminal node (i.e., make MAX lose the game)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Goal&lt;/strong&gt;: finding an optimal strategy for MAX (i.e., a strategy that leads to outcomes at least as good for MAX as any other strategy, given that MIN is playing optimally)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Minimax&lt;/strong&gt;: a search algorithm to extract the optimal strategy
+    &lt;ul&gt;
+      &lt;li&gt;Complete if tree is finite&lt;/li&gt;
+      &lt;li&gt;Time complexity: $O(b^m)$&lt;/li&gt;
+      &lt;li&gt;Space complexity: $O(bm)$ (DFS)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Alpha-Beta Pruning&lt;/strong&gt;: elimination of large parts of the minimax search tree
+    &lt;ul&gt;
+      &lt;li&gt;$\alpha$: value of best choice (highest value) we have found so far on path for MAX&lt;/li&gt;
+      &lt;li&gt;$\beta$: value of best choice (lowest value) we have found so far on path for MIN&lt;/li&gt;
+      &lt;li&gt;Prune branches that are worse than $\alpha$ or $\beta$ for MAX and MIN respectively&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Evaluation Functions&lt;/strong&gt;: compute expected utility for non-terminal states (and actual utility for terminal states) to allow for real-time decisions instead of going down the search tree for part of the search space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Stochastic Games&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Agents&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;MIN and MAX like above&lt;/li&gt;
+      &lt;li&gt;CHANCE&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Expectiminimax&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;CHANCE will compute the expected value&lt;/li&gt;
+      &lt;li&gt;MIN will compute the minimum&lt;/li&gt;
+      &lt;li&gt;MAX will compute the maximum&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;decision-making&quot;&gt;Decision Making&lt;/h2&gt;
+
+&lt;p&gt;A decision problem under uncertainty is $&amp;lt;D,S,U,P&amp;gt;$ where:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$D$ is a set of decisions&lt;/li&gt;
+  &lt;li&gt;$S$ is a set of states&lt;/li&gt;
+  &lt;li&gt;$U$ is a function that maps a real utility value to every state $\in S$ (unique up to a positive affine transformation)&lt;/li&gt;
+  &lt;li&gt;$P$ is a probability distribution which will tell how likely it is that decision $d$ will lead to state $s$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Expected Utility&lt;/strong&gt;: $EU(d)=\sum_{s \in S}P_d(s)U(s)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;: any $d’ \in D$ such that $EU(d’) \geq EU(d)$ for all $d \in D$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Policies&lt;/strong&gt;: for a sequence of actions, a policy assigns an action decision to each state; policies may be obtained by bottom-up analysis of decision trees, incorporating a NATURE agent, representing probability distributions of outcomes for actions, taken in states&lt;/p&gt;
+
+&lt;h2 id=&quot;markov-decision-processes&quot;&gt;Markov Decision Processes&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Markov Chain&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A set of probability distributions of the next state given the current state (may be represented as a &lt;strong&gt;transition probability matrix&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;History Independence (Markov Property)&lt;/strong&gt;: the probability of reaching state $s_{t+1}$ from state $s_t$ does not depend on how the agent got to the current state $s_t$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Discounted sum of future rewards&lt;/strong&gt; $U’(s)$ of state $s$: is the sum of the reward for state $s$ and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $\gamma$ being a constant discount factor with $0 &amp;lt; \gamma &amp;lt; 1$:
+    &lt;ul&gt;
+      &lt;li&gt;$U’(s_i)=r_i+\gamma\sum_{j=1}^nP_{ij}U’(s_j)$&lt;/li&gt;
+      &lt;li&gt;$U=(I-\gamma P)^{-1}R$ ($P$ being the transition probability matrix and $R$ being the rewards vector)&lt;/li&gt;
+      &lt;li&gt;This system may be solved directly by &lt;strong&gt;matrix inversion&lt;/strong&gt; or, if this is too costly, approximated by &lt;strong&gt;Value Iteration&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $n=1$)&lt;/li&gt;
+          &lt;li&gt;Use dynamic programming by computing $U^n(s)$ using the previously computed and stored values of $U^{n-1}(s)$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Markov Decision Process (MDP)&lt;/strong&gt;: similar to a Markov Chain, but incorporating the notion of actions. In every state $s_i$, the agent may decide to take an action $a_k$ which may lead to state $s_j$ with probability $P(s_j \mid s_i,a_k)$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Expected discounted sum of future rewards&lt;/strong&gt; assuming the optimal policy and a step length of $t$, starting from state $s_i$, $V^t(s_i)$:
+    &lt;ul&gt;
+      &lt;li&gt;$V^{t+1}(s_i)=max_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_j)$&lt;/li&gt;
+      &lt;li&gt;$V^*(s_i)$ is $V^t(s_i)$ with $t=\infty$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Policy Optimization&lt;/strong&gt;: for every MDP, there is an optimal policy (i.e., a mapping from state to action) such that for every possible start state, there is no better option than to follow the policy; it can be found in polynomial time (in the number of states) by:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Value Iteration&lt;/strong&gt;: iteratively compute $V^*(s_i)$ for all $s_i$ and select the best action $k$ according to $argmax_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_j)$&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Policy Iteration&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Policy Evaluation&lt;/strong&gt;: given policy $\pi$, compute $V_i^\pi$ for all states $s_i$&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Policy Improvement&lt;/strong&gt;: calculate a new policy $\pi_{i+1}$ using 1-step lookahead&lt;/li&gt;
+          &lt;li&gt;Repeat both steps until $V^\pi(s_i)$ converges&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Partially Observable MDP (POMDP)&lt;/strong&gt;: in a POMDP, the agent does not know for sure what state it is in; therefore, it also stores a set of observations $O={o_1,…,o_k}$, an observation model $P(o_t \mid s_t)$ and a belief state $b$ which is a probability distribution over all possible states; $b(s)$ is the probability assigned to state $s$; here, a policy is a mapping from a belief state to an action; generally, finding an approximately optimal policy is PSPACE-hard&lt;/p&gt;
+
+&lt;h2 id=&quot;reinforcement-learning&quot;&gt;Reinforcement Learning&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Task Environment&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fully observable&lt;/li&gt;
+  &lt;li&gt;Stochastic&lt;/li&gt;
+  &lt;li&gt;Dynamic&lt;/li&gt;
+  &lt;li&gt;Discrete&lt;/li&gt;
+  &lt;li&gt;Single Agent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Characteristics&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the agent learns a policy to act with the aim to maximize the resulting reinforcement signals (numerical reward)&lt;/li&gt;
+  &lt;li&gt;the reinforcement signals may be delayed (credit assignment problem)&lt;/li&gt;
+  &lt;li&gt;the goal is to find the optimal policy, but we start without knowing the underlying Markov Decision Process (MDP), i.e., the rewards and transition probabilities are not known&lt;/li&gt;
+  &lt;li&gt;formally, we can describe this as the following problem: learn policy $\pi:S \mapsto A$ that maximizes $E[r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+…]$ from any starting state $\in S$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Forms of Reinforcement Learning&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Passive (evaluate a given policy)&lt;/th&gt;
+      &lt;th&gt;Active (learning to act optimally)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Model-based&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Adaptive Dynamic Programming&lt;/strong&gt; (ADP): evaluate a given policy, based on observations after running the policy a number of times&lt;/td&gt;
+      &lt;td&gt;${}$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Model-free&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Temporal Difference&lt;/strong&gt;: use observed transitions to adjust values of observed states so that they satisfy Bellman equations according to the following update rule: $V^\pi(s_i) \rightarrow V^\pi(s_i) + \alpha \sum_{m=i}^\infty \lambda^{m-i} [r(s_m) + \gamma V^\pi(s_{m+1} - V^\pi(s_{m})]$; empirically, $\lambda=0.7$ works well&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Q-Learning&lt;/strong&gt;: learn a function $Q: SxA \rightarrow R$, then, if the Q values are learned correctly, the optimal policy is defined as $\pi’(s)=\arg!\max_aQ(s,a)$ and the expected utility is defined as $V’(s)=\max_aQ(s,a)$; algorithm: loop over the following steps: 1. select action $a$ with probability $p(a)=\frac{e^{Q(s,a)/T}}{\sum_ae^{Q(s,a)/T}}$ (Boltzmann exploration); 2. receive immediate reward $r$; 3. observe new state $s’$; 4. update according to the following update rule: $Q(s,a) = Q(s,a) + \alpha(r + \gamma \max_{a’}Q(s’,a’) - Q(s,a))$; 4. set $s = s’$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Reward Shaping&lt;/strong&gt;: consider delays in rewards and add additional rewards for “making progress” using domain knowledge about important steps for reaching the final reward; this bears the risk of the agent optimizing for the pseudo rewards&lt;/p&gt;
+
+&lt;h1 id=&quot;bayes-nets&quot;&gt;Bayes Nets&lt;/h1&gt;
+
+&lt;p&gt;A Bayes Net (BN) is a &lt;strong&gt;graphical representation&lt;/strong&gt; of direct dependencies over a set of variables + a set of &lt;strong&gt;conditional probability distributions&lt;/strong&gt; (CPTs) quantifying the strength of the influences.&lt;/p&gt;
+
+&lt;p&gt;The structure of the BN means: every $X_i$ is conditionally independent of all of its nondescendents given its parents.&lt;/p&gt;
+
+&lt;p&gt;Determining conditional independence in a Bayes net:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Non-descendents&lt;/strong&gt;: a node is conditionally independent of its non-descendents, given its parents&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Markov blanket&lt;/strong&gt;: a node is conditionally independent of all other nodes in the network, given its parents, its children and its children’s parents&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;D-separation&lt;/strong&gt;: two nodes are conditionally independent from each other, given evidence E if E blocks all undirected paths P between the two nodes (E blocks p in P if there is a node z in p which is also in E and where at least one arc in p goes out of z, or if there is a node z in p two arcs in p go into with neither z nor any of its descendents being in E)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Inference in BNs&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Forward with upstream evidence&lt;/li&gt;
+  &lt;li&gt;Backward with downstream evidence&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Variable elimination&lt;/strong&gt;: algorithm, representing conditional probability tables (CPTs) in BNs as factors and defining ways to answer arbitrary queries involving the variables of a given BN in an algorithmic manner. Solving queries is linear in the number of variables (i.e., nodes) in the BN and exponential in the size of the largest CPT.&lt;/p&gt;
+
+&lt;h1 id=&quot;decision-networks&quot;&gt;Decision Networks&lt;/h1&gt;
+
+&lt;p&gt;Decision Networks provide a representation for decision making, consisting of:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;random variables&lt;/strong&gt; like in Bayes Nets&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;decision variables&lt;/strong&gt; controlled by the agent, parent nodes reflect information available at time of decision; decisions are made in sequence; information available to previous decisions remains available for current decision;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;utility variables&lt;/strong&gt; stating how good certain states are, value only depends on state of parents, generally only one utility node per network&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Policies&lt;/strong&gt;: a policy $\delta$ is a set of mappings $\delta_i$, one for each decision node $D_i$, associating a decision for each parent assignment of $D_i$. The value of a policy $\delta$ is the expected utility given that decision nodes are executed according to $\delta$.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimal Policy&lt;/strong&gt;: an optimal policy $\delta’$ is such that $EU(\delta’) \geq EU(\delta) \forall \delta$; optimal policies can be constructed working from the last decision backwards&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Value of Information&lt;/strong&gt;: information has value to the extent that it is likely to cause a change of plan and that the new plan will be better than the old plan; for any single-agent decision-theoretic scenario, the value of information is non-negative!&lt;/p&gt;
+
+&lt;h1 id=&quot;multiagent-systems&quot;&gt;Multiagent Systems&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Game Theory&lt;/strong&gt;: describes how self-interested agents should behave; per definition, it is a formal way to analyze interactions among a group of rational agents that behave strategically:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Normal form game&lt;/strong&gt;: also known as matrix or strategic game, assumes that agents are playing simultaneously
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Ingredients&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;$I$: set of agents ${1, …, N}$&lt;/li&gt;
+          &lt;li&gt;$A_i$: set of actions for each agent ${a_i^1, a_i^2, …, a_i^m}$&lt;/li&gt;
+          &lt;li&gt;Outcome of a game, defined by a profile: $o = (a_1, …, a_n)$&lt;/li&gt;
+          &lt;li&gt;Utility functions: $u_i: O \rightarrow \mathbb{R}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Zero-sum games&lt;/strong&gt;: $\sum_{i=1}^N u_i(o) = 0 \forall o$&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Dominant strategies&lt;/strong&gt;: strategy $a_i’$ strictly dominates strategy $a_i$ if $u_i(a_i’,a_{-i}) &amp;gt; u_i(a_i,a_{-i}) \ \forall \ a_{-i}$; dominated strategies will never be played!&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Nash Equlibrium (NE)&lt;/strong&gt;:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Pure NE&lt;/strong&gt;: an action profile $a^e$ is a Nash equilibrium if $\forall \ i \ u_i(a^e_i,a^e_{-i}) \geq u_i(a_i,a^e_{-i}) \ \forall \ a_i$, i.e., if no agent has incentive to change given that others do not change.&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Mixed NE&lt;/strong&gt;: for probabilistic decision making, a notion of mixed NE was defined as follows:
+            &lt;ul&gt;
+              &lt;li&gt;mixed strategy: $s_i$ is a probability distribution over $A_i$&lt;/li&gt;
+              &lt;li&gt;strategy profile: $s = (s_1, …, s_N)$&lt;/li&gt;
+              &lt;li&gt;expected utility: $u_i(s) = \sum_a p(a) u_i(a)$ where $p(a) = \prod_j s(a_j)$&lt;/li&gt;
+              &lt;li&gt;Nash equilibrium: $s^e$ is a mixed Nash equilibrium if $\forall \ i \ u_i(s^e_i,s^e_{-i}) \geq u_i(s_i,s^e_{-i}) \ \forall \ s_i$&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Theorem (Nash 1950)&lt;/strong&gt;: every game in which the action sets are finite has a mixed Nash equilibrium, and if there is an even number of actions then there will be an odd number of equilibria.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Extensive form game&lt;/strong&gt;: assumes that agents take turns, they can be represented as decision trees; every extensive form game can be transformed into a normal form game for which equilibria can be computed as explained before&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Sub-game perfect equilibrium (SPE)&lt;/strong&gt;: equilibrium in an extensive form game that is a Nash equilibrium in all sub-games (i.e., in all sub-trees of the game’s decision tree)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Theorem (Kuhn)&lt;/strong&gt;: every finite extensive form game has a sub-game perfect equilibrium&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Mechanism Design&lt;/strong&gt;: describes how we should design systems to encourage certain behaviours from self-interested agents&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ingredients&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$O$: set of possible outcomes&lt;/li&gt;
+      &lt;li&gt;$N$: set of $n$ agents&lt;/li&gt;
+      &lt;li&gt;Each agent has a type $\theta_i$ from a set of possible types $\Theta_i$ capturing all private information relevant to the agent’s decision making&lt;/li&gt;
+      &lt;li&gt;Utility functions $u_i(o, \theta_i)$&lt;/li&gt;
+      &lt;li&gt;Social choice function: $f: \Theta_1 \times … \times \Theta_n \rightarrow O$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mechanisms&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;A mechanism $M = (S_1, …, S_n, g(\cdot))$ is a tuple of strategy spaces (one $S_i$ for each agent $i$) and an outcome function $g: S_1 \times … \times S_n \rightarrow O$, mapping specific strategies to an outcome.&lt;/li&gt;
+      &lt;li&gt;A mechanism &lt;strong&gt;implements&lt;/strong&gt; a social choice function $f(\theta)$ if there is an equilibrium $s’ = (s’_1(\theta_1), …, s’_n(\theta_n))$ such that the mechanism’s outcome function, given the strategies of equilibrium $s’$, will lead to the same outcome as the social choice function, given the true preferences of the agents, irrespective of what these true types are: $g(s’_1(\theta_1), …, s’_n(\theta_n)) = f(\theta_1, …, \theta_n) \forall (\theta_1, …, \theta_n) \in \Theta_1 \times … \times \Theta_n$.&lt;/li&gt;
+      &lt;li&gt;A mechanism is called a &lt;strong&gt;direct&lt;/strong&gt; mechanism for social choice function $f(\theta)$ if its strategies do simply output a type (not necessarily the agent’s true type) and that the outcome for the same type profile $\theta$ is the same for social choice function $f(\theta)$ and the outcome function of the mechanism $(g(\cdot)$: $S_i = \Theta_i \forall i$ and $g(\theta) = f(\theta) \forall (\theta_1, …, \theta_n) \in \Theta_1 \times … \times \Theta_n$.&lt;/li&gt;
+      &lt;li&gt;A direct mechanism is &lt;strong&gt;incentive-compatible&lt;/strong&gt; if it has a strategy equilibrium $s’$ such that each strategy of the equilibrium outputs the agent’s true type, independent of the specific type: $s’_i(\theta_i) = \theta_i \forall i$ and $\theta_i \in \Theta_i$.&lt;/li&gt;
+      &lt;li&gt;A direct, incentive-compatible mechanism is &lt;strong&gt;strategy-proof&lt;/strong&gt; if this equilibrium is the dominant strategy such that, resulting in the agents always revealing their true type simply by acting rationally.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Revelation Principle Theorem&lt;/strong&gt;: If there is a mechanism $M$ that implements social choice function $f$ in dominant strategies, then there is a direct, strategy-proof mechanism $M’$ that implements $f$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Gibbard-Satterthwaite Theorem&lt;/strong&gt;: For any finite outcome space with more than two outcomes where each outcome can be achieved by social choice function $f$ and where the type space $\Theta$ includes all possible orderings over $O$, then $f$ is implementable in dominant strategies if and only if $f$ is dictatorial. Relaxations of these requirements may lead to non-dictatorial social choice functions that are implementable in dominant strategies such that strategy-proof mechanisms may be constructed; in particular, these restrictions can be relaxed by:
+    &lt;ul&gt;
+      &lt;li&gt;using a weaker equilibrium concept&lt;/li&gt;
+      &lt;li&gt;designing mechanisms where computing manipulations is computationally hard&lt;/li&gt;
+      &lt;li&gt;restrict the structure of agents’ preferences:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;single-peaked preferences&lt;/strong&gt; (e.g., median voter rule)&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;quasi-linear preferences&lt;/strong&gt;: introduces the concept of transfers (e.g., money) in the outcome representation ($o = (x, t_1, …, t_2)$) where the agents’ utility functions are linear in the agents’ corresponding transfer value: $u_i(o, \theta_i) = v_i(x, \theta_i) - t_i$; the following mechanisms operate with quasi-linear preferences:
+            &lt;ul&gt;
+              &lt;li&gt;&lt;strong&gt;Groves Mechanisms&lt;/strong&gt;: with choice rule $x’=\arg \max_x \sum_i v_i(x, \theta_i)$ (efficient $=$ maximizing social welfare) and transfer rules $t_i(\theta) = h_i(\theta_{-i}) - \sum_{j \neq i} v_j(x’, \theta),\theta_j)$ where $\theta_{-i}$ means all types except the one for agent $i$. The &lt;strong&gt;Vickrey-Clarke-Groves&lt;/strong&gt; (VCG) mechanism is a Groves mechanism with $h_i(\theta_{-i}) = \sum_{j \neq i} v_j(x^{-i},\theta_j)$ where $x^{-i}$ is the outcome that would have arisen if agent $i$ had not existed. This results in zero transfers for all agents for which, if they had not participated in the game, the outcome would still be the same as with them participating. An example implementation of a VCG mechanism is the Vickrey auction where the highest bidder gets the object and has to pay the second-highest bid, all the other ones do not have to pay anything.&lt;/li&gt;
+              &lt;li&gt;&lt;strong&gt;Sponsored Search&lt;/strong&gt;: bids are placed for ad placements and every ad has a quality score; ads are ranked by the product of the bid and the ad’s quality score; if an ad is clicked, the bidder has to pay the minimum amount it would have had to bid in order to have ended up in the same position in the current ranking.&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;statistical-learning&quot;&gt;Statistical Learning&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Parameter learning&lt;/strong&gt;: with complete data and Laplace smoothing using Maximum Likelihood (ML); given observations $x = (x_1, x_2, …, x_d)$ from $N$ trials, estimate parameters $\theta = (\theta_1, \theta_2, …, \theta_d)$ using $\theta_i = \frac{x_i + \alpha}{N + \alpha d}$ with $\alpha &amp;gt; 0$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Naive Bayes model&lt;/strong&gt;: with observed attribute values $x_1, x_2, …, x_n$, assuming that all attributes are independent given the class, we can compute the posterior class probability by $P(C \mid x_1, x_2, …, x_n) = \alpha P(C) \prod_i P(x_i \mid C)$&lt;/p&gt;
+
+&lt;h1 id=&quot;expectation-maximization&quot;&gt;Expectation Maximization&lt;/h1&gt;
+
+&lt;p&gt;A technique to estimate model parameters despite the fact that there may be hidden variables or missing values in the observed data points. The general algorithm goes as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Guess the parameters&lt;/strong&gt; of the maximum likelihood hypothesis $h_{ML}$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Loop&lt;/strong&gt; over the two following steps &lt;strong&gt;until&lt;/strong&gt; the &lt;strong&gt;parameters of $h_{ML}$ converge&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Expectation&lt;/strong&gt;: based on $h_{ML}$, compute expectated (missing) values&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Maximization&lt;/strong&gt;: based on expected (missing) values, compute new $h_{ML}$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/artificial-intelligence/&quot;&gt;Artificial Intelligence&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;http://localhost:4000&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 08, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Machine Learning]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/machine-learning/" />
+  <id>http://localhost:4000/machine-learning</id>
+  <published>2016-02-06T00:00:00-05:00</published>
+  <updated>2016-02-06T00:00:00-05:00</updated>
+  <author>
+    <name>Mike Schaekermann</name>
+    <uri>http://localhost:4000</uri>
+    <email>mikeschaekermann@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt; Overview&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#decision-trees&quot; id=&quot;markdown-toc-decision-trees&quot;&gt;Decision Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#k-nearest-neighbors&quot; id=&quot;markdown-toc-k-nearest-neighbors&quot;&gt;K-Nearest Neighbors&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#linear-regression&quot; id=&quot;markdown-toc-linear-regression&quot;&gt;Linear Regression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#statistical-learning&quot; id=&quot;markdown-toc-statistical-learning&quot;&gt;Statistical Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mixture-of-gaussians&quot; id=&quot;markdown-toc-mixture-of-gaussians&quot;&gt;Mixture of Gaussians&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#logistic-regression&quot; id=&quot;markdown-toc-logistic-regression&quot;&gt;Logistic Regression&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#generalized-linear-models&quot; id=&quot;markdown-toc-generalized-linear-models&quot;&gt;Generalized Linear Models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#artificial-neural-networks&quot; id=&quot;markdown-toc-artificial-neural-networks&quot;&gt;Artificial Neural Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kernel-methods&quot; id=&quot;markdown-toc-kernel-methods&quot;&gt;Kernel Methods&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gaussian-processes&quot; id=&quot;markdown-toc-gaussian-processes&quot;&gt;Gaussian Processes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#support-vector-machines&quot; id=&quot;markdown-toc-support-vector-machines&quot;&gt;Support Vector Machines&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hidden-markov-models&quot; id=&quot;markdown-toc-hidden-markov-models&quot;&gt;Hidden Markov Models&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#deep-neural-networks&quot; id=&quot;markdown-toc-deep-neural-networks&quot;&gt;Deep Neural Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#convolutional-neural-networks&quot; id=&quot;markdown-toc-convolutional-neural-networks&quot;&gt;Convolutional Neural Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#recurrent-and-recursive-neural-networks&quot; id=&quot;markdown-toc-recurrent-and-recursive-neural-networks&quot;&gt;Recurrent and Recursive Neural Networks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ensemble-learning&quot; id=&quot;markdown-toc-ensemble-learning&quot;&gt;Ensemble Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#stream-learning&quot; id=&quot;markdown-toc-stream-learning&quot;&gt;Stream Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- /#table-of-contents --&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;These notes are a result of my preparation for a midterm exam in &lt;a href=&quot;https://cs.uwaterloo.ca/~ppoupart&quot;&gt;Pascal Poupart&lt;/a&gt;’s &lt;a href=&quot;https://cs.uwaterloo.ca/~ppoupart/teaching/cs485-winter16/&quot;&gt;course on Machine Learning&lt;/a&gt; at University of Waterloo in the winter 2016 term. The contents are therefore based on the corresponding presentation slides available online.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Definition by Tom Mitchell (1988): “A computer program is said to learn from &lt;strong&gt;experience E&lt;/strong&gt; with respect to some class of &lt;strong&gt;tasks T&lt;/strong&gt; and &lt;strong&gt;performance measure P&lt;/strong&gt; if its performance for tasks in T, as measured by P, improves with experience E.”&lt;/p&gt;
+
+&lt;p&gt;Inductive Learning: given a training set of examples of the form $(x, f(X))$, return a function $h$ (&lt;strong&gt;hypothesis&lt;/strong&gt;) that approximates $f$ (&lt;strong&gt;true underlying function&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;The quality measure for hypotheses is &lt;strong&gt;generalization&lt;/strong&gt;. A good hypothesis will generalize well, i.e., predict unseen examples correctly. &lt;strong&gt;Ockham’s razor&lt;/strong&gt; suggests to prefer the simplest hypothesis consistent with the input data.&lt;/p&gt;
+
+&lt;p&gt;Two different types of inductive learning:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Classification&lt;/strong&gt;: range/output space of $f$ is categorical (or discrete)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt;: range/output space of $f$ is continuous&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Hypothesis space $H$&lt;/strong&gt;: set of all possible $h$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Consistency&lt;/strong&gt;: $h$ is consistent if it agrees with $f$ on all examples; it is not always possible to find a consistent $h$ (e.g., due to an insufficient $H$ or noisy input data)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Realizability&lt;/strong&gt;: a learning problem is realizable if and only if $f$ is in $H$&lt;/p&gt;
+
+&lt;p&gt;In general, we will observe a tradeoff between &lt;strong&gt;expressiveness&lt;/strong&gt; (i.e., the size of $H$) and the &lt;strong&gt;complexity&lt;/strong&gt; of finding a good $h$.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Overfitting&lt;/strong&gt;: given a hypothesis space $H$, a hypothesis $h \in H$ is said to overfit the training data if there exists some alternative hypothesis $h’ \in H$ such that $h$ has smaller error than $h’$ over the training examples, but $h’$ has smaller error than $h$ over the entire distribution of instances.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;$k$-fold cross-validation:&lt;/strong&gt; run $k$ experiments, each time putting aside $\frac{1}{k}$ of the data to test on and, finally, compute the average accuracy of the experiments&lt;/p&gt;
+
+&lt;h2 id=&quot;decision-trees&quot;&gt;Decision Trees&lt;/h2&gt;
+
+&lt;p&gt;Decision trees (a.k.a. &lt;strong&gt;C&lt;/strong&gt;lassification &lt;strong&gt;a&lt;/strong&gt;nd &lt;strong&gt;R&lt;/strong&gt;egression &lt;strong&gt;T&lt;/strong&gt;rees [CART]) represent disjunctions (OR) of conjunctions (AND) of constraints of attribute values.&lt;/p&gt;
+
+&lt;p&gt;Decision trees have the following &lt;strong&gt;structure&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;nodes&lt;/strong&gt;: attributes&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;edges&lt;/strong&gt;: attribute values&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;leaves&lt;/strong&gt;: classes / regression values&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Quality measure&lt;/strong&gt; for decision trees:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;small size&lt;/li&gt;
+  &lt;li&gt;high consistency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Greedy induction&lt;/strong&gt; of a decision tree:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;depth-first search like construction&lt;/li&gt;
+  &lt;li&gt;a good attribute splits the examples into subsets that are ideally all from the same class or, in other words, that minimizes the residual error&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Residual error for classification&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Error Frequency&lt;/th&gt;
+      &lt;th&gt;Gini Index&lt;/th&gt;
+      &lt;th&gt;Entropy&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Definition&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$Q_\tau=num(\tau)-max_k num(k)$&lt;/td&gt;
+      &lt;td&gt;$Q_\tau=\sum_kp_\tau(k)(1-p_\tau(k))$&lt;/td&gt;
+      &lt;td&gt;$Q_t=-\sum_kp_\tau(k) \ ld \ p_\tau(k)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Explanation&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;Number of examples in leaf $\tau$ minus maximum number of examples in leaf $\tau$ that belong to any class $k$&lt;/td&gt;
+      &lt;td&gt;Expected misclassification when choosing the class according to $p_\tau(k)$&lt;/td&gt;
+      &lt;td&gt;Expected # of bits to encode the class of an instance chosen at random according to $p_\tau(k)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Variables:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\tau$: index for leaf $\tau$&lt;/li&gt;
+  &lt;li&gt;$k$: index for class $k$&lt;/li&gt;
+  &lt;li&gt;$num(\tau)$: number of examples in leaf $\tau$&lt;/li&gt;
+  &lt;li&gt;$num(k)$: number of examples in leaf $\tau$ belonging to class $k$&lt;/li&gt;
+  &lt;li&gt;$p_\tau(k) = \frac{num(k)}{num(\tau)}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Residual error for regression&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Let $t_n = f(x_n)$ be the target for the $n^{th}$ example.&lt;/li&gt;
+  &lt;li&gt;Let $y_t$ be the value returned by leaf $\tau$.&lt;/li&gt;
+  &lt;li&gt;Let $R_\tau$ be the set of examples in leaf $\tau$.&lt;/li&gt;
+  &lt;li&gt;Euclidean error for leaf $\tau$: $Q_\tau=\sum_{n \in R_\tau}(t_n-y_n)^2$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Choosing the best attribute&lt;/strong&gt; for the next decision layer in the tree:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In leaf $\tau$, choose attribute $A$ that reduces the residual error the most when expanded:&lt;/li&gt;
+  &lt;li&gt;$A^*=argmax_AQ_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}$, where
+    &lt;ul&gt;
+      &lt;li&gt;$p_\tau(A=a)=\frac{num(A=a)}{num(\tau)}$ denotes the proportion of examples with value $a$ (in attribute $A$) inside node $\tau$&lt;/li&gt;
+      &lt;li&gt;$\tau a$ indexes the node reached by following the edge for attribute value $a$, starting from node $\tau$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Techniques to avoid overfitting:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Stop learning when the curve for testing accuracy, plotted against the tree size, has reached its global peak; in practice, this is sometimes sometimes hard to achieve because the curve might exhibit high fluctuation&lt;/li&gt;
+  &lt;li&gt;Pruning of statistically irrelevant nodes in a bottom-up fashion
+    &lt;ul&gt;
+      &lt;li&gt;Remove nodes that improve testing accuracy by less than some threshold&lt;/li&gt;
+      &lt;li&gt;Regularization: add a penalty term that reflects the tree complexity (e.g., $|T|=$ #leaves in the tree) and remove leaves with a negative “regularized” error reduction: $Q_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}-\lambda|T|$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;k-nearest-neighbors&quot;&gt;K-Nearest Neighbors&lt;/h2&gt;
+
+&lt;p&gt;In the limit, single-attribute thresholding to construct decision trees for attributes with continuous inputs will lead to a full tree with one input example per leaf. Decision boundaries will always be axis-aligned. A better approach without this restriction is $K$-Nearest Neighbors.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Let $knn(x)$ be the $K$ nearest neighbors of $x$ according to distance $d$&lt;/li&gt;
+  &lt;li&gt;Label $y_x=mode({y_x’ \mid x’ \in knn(x)})$, i.e., the most frequent label among the $K$ nearest neighbors&lt;/li&gt;
+  &lt;li&gt;$K$ controls the degree of smoothing and can be optimized using $k$-fold cross-validation (if $K$ is too small this will lead to overfitting; if $K$ is too high this will lead to underfitting)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Comparison of complexity&lt;/strong&gt; between decision trees and $K$-Nearest Neighbors with respect to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$N$: size of training set&lt;/li&gt;
+  &lt;li&gt;$M$: number of attributes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Training        &lt;/th&gt;
+      &lt;th&gt;Testing        &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Decision Tree&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$O(M^2N)$&lt;/td&gt;
+      &lt;td&gt;$O(M)$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;$K$-Nearest Neighbors&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;$O(MN)$&lt;/td&gt;
+      &lt;td&gt;$O(MN)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;A good visualization of the decision boundaries for the two-dimensional 1-Nearest Neighbor case assuming Euclidean distance is the Voronoi diagram.&lt;/p&gt;
+
+&lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Data&lt;/strong&gt;: ${(x_1, t_1),(x_2,t_2),…,(x_N,t_N)}$ where $x_n \in \mathbb{R}^D$ and $t_n \in \mathbb{R}$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Problem&lt;/strong&gt;: find linear hypothesis $h$ that maps $x$ to $t$; in other words, try to find a weight vector $w \in \mathbb{R}^{D+1}$ so that the error for $h(x,w)=w^T\overline{x}$ with $\overline{x}=\begin{pmatrix} 1 \ x \end{pmatrix}$ over all $x$ in the dataset is minimal&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Solution&lt;/strong&gt;: $ Aw=b $ with:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$A=\sum_{n=1}^N\overline{x}_n\overline{x}_n^T$ (invertible if the training instances span $\mathbb{R}^{D+1}$)&lt;/li&gt;
+  &lt;li&gt;$b=\sum_{n=1}^Nt_n\overline{x}_n$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Tikhonov Regularization&lt;/strong&gt;: a technique, applied to avoid a form of overfitting where small changes to the input data lead to big changes in the learned weight vector: $(\lambda I+A)w=b$. The greater $\lambda$ the smaller the magnitude of $w$ will be.&lt;/p&gt;
+
+&lt;h2 id=&quot;statistical-learning&quot;&gt;Statistical Learning&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Idea&lt;/strong&gt;: learning simply reduces the uncertainty in our knowledge of the world&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Marginal Probability Distribution&lt;/strong&gt;: specification of a probability for each event in our sample space; all probabilities must sum up to $1$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Joint Probability Distribution&lt;/strong&gt;: specification of probabilities for all combinations of events: $Pr(A=a
+\wedge B=b)$ for all $a$, $b$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Marginalization&lt;/strong&gt; (sumout rule): $Pr(A=a)=\sum_bPr(A=a
+\wedge B=b)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conditional Probability&lt;/strong&gt;: fraction of worlds in which $B$ is true that also have $A$ true: $Pr(A \mid B)=\frac{Pr(A \wedge B)}{Pr(B)}$; also $Pr(A \wedge B)=Pr(A \mid B) \ Pr(B)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bayes’ Rule&lt;/strong&gt;: $Pr(B \mid A)=\frac{Pr(A \mid B) \ Pr(B)}{Pr(A)}$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bayesian Inference&lt;/strong&gt;: $P(H \mid e)=kP(e \mid H) \ P(H)$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$H$: hypothesis&lt;/li&gt;
+  &lt;li&gt;$e$: evidence&lt;/li&gt;
+  &lt;li&gt;$P(H)$: &lt;strong&gt;prior&lt;/strong&gt; probability of $H$&lt;/li&gt;
+  &lt;li&gt;$P(e \mid H)=\prod_nP(e_n \mid H)$: &lt;strong&gt;likelihood&lt;/strong&gt; of observing $e$, given $H$&lt;/li&gt;
+  &lt;li&gt;$P(H \mid e)$: &lt;strong&gt;posterior&lt;/strong&gt; probability of $H$, given $e$&lt;/li&gt;
+  &lt;li&gt;$k$: normalizing factor, applied so that all posteriors sum up to $1$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bayesian Prediction&lt;/strong&gt;: $P(X \mid e)=\sum_iP(X \mid h_i) \ P(h_i \mid e)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Properties of Bayesian Learning&lt;/strong&gt;: optimal and not prone to overfitting, but potentially intractable if the hypothesis space is large&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Approximations of Bayesian Learning&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Maximum a Posteriori (MAP)&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;making predictions, based on the most probable hypothesis $h_{MAP}=argmax_{h_i}P(h_i \mid e)$&lt;/li&gt;
+      &lt;li&gt;less accurate than Bayesian prediction, but both converge in accuracy as data increases&lt;/li&gt;
+      &lt;li&gt;controlled overfitting (prior can be used to penalize complex hypotheses)&lt;/li&gt;
+      &lt;li&gt;MAP for linear regression leads to regularized least square problem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Maximum Likelihood (ML)&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;MAP with uniform prior: $h_{ML}=argmax_{h_i}P(e \mid h_i)$&lt;/li&gt;
+      &lt;li&gt;less accurate than Bayesian and MAP prediction, but all three converge in accuracy as data increases&lt;/li&gt;
+      &lt;li&gt;prone to overfitting&lt;/li&gt;
+      &lt;li&gt;ML for linear regression leads to non-regularized least square problem&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bias-Variance Decomposition&lt;/strong&gt; for linear regression: $expected \ loss = (bias)^2 + variance + noise$&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;bias increases as regularization parameter $\lambda$ increases&lt;/li&gt;
+  &lt;li&gt;variance decreases as regularization parameter $\lambda$ increases&lt;/li&gt;
+  &lt;li&gt;noise is constant&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mixture-of-gaussians&quot;&gt;Mixture of Gaussians&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: linear classification technique&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assumptions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$Pr(C=c_k)=\pi_k$: prior probability of class $k$&lt;/li&gt;
+  &lt;li&gt;$Pr(x \mid C=c_k) \propto e^{-0.5(x-\mu_k)^T\Sigma^{-1}(x-\mu_k)}$: likelihood of data point $x$, given class $k$, is a Gaussian distribution with the same covariance matrix $\Sigma$ for all classes&lt;/li&gt;
+  &lt;li&gt;$Pr(C=c_k \mid x)=kPr(x \mid C=c_k)Pr(C=c_k)$: posterior probability of class $k$, given data point $x$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;For two classes $A$ and $B$&lt;/strong&gt; (using sigmoid):&lt;/p&gt;
+
+&lt;p&gt;$Pr(C=A)=\sigma(w^Tx+w_0)$ where&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\sigma(a) = \frac{1}{1+e^{-a}}$ (sigmoid function)&lt;/li&gt;
+  &lt;li&gt;$w=\Sigma^{-1}(\mu_A-\mu_B)$&lt;/li&gt;
+  &lt;li&gt;$w_0=-0.5\mu_A^T\Sigma^{-1}\mu_A+0.5\mu_B^T\Sigma^{-1}\mu_B+ln\frac{\pi_A}{\pi_B}$&lt;/li&gt;
+  &lt;li&gt;$\pi_k:$ fraction of training examples that belong to class $k$ (via maximum likelihood)&lt;/li&gt;
+  &lt;li&gt;$\mu_k:$ empirical mean of all training examples that belong to class $k$ (via maximum likelihood)&lt;/li&gt;
+  &lt;li&gt;$\Sigma=\frac{S_A+S_B}{N}$: normalized sum of covariance matrices (via maximum likelihood)&lt;/li&gt;
+  &lt;li&gt;$S_k=\sum_{n \in c_k}(x_n-\mu_k)(x_n-\mu_k)^T$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;For multiple classes&lt;/strong&gt; (using softmax):&lt;/p&gt;
+
+&lt;p&gt;$Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Prediction&lt;/strong&gt;: best class $k^*=argmax_kPr(c_k \mid x)$&lt;/p&gt;
+
+&lt;h2 id=&quot;logistic-regression&quot;&gt;Logistic Regression&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: linear classification technique (can be viewed as a regression where the goal is to estimate a posterior probability which is continuous)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assumption&lt;/strong&gt;: $Pr(x \mid C=c_k)$ are members of the exponential family: $Pr(x \mid \Theta_k)=exp(\Theta_k^TT(x)-A(\Theta_k)+B(x))$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Derivation&lt;/strong&gt;: $Pr(C=c_k \mid x)=\sigma(w^T\overline{x})$: the posterior probability of class $k$ is a sigmoid logistic linear in $x$ (or softmax linear in $x$ for more than two classes)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Idea&lt;/strong&gt;: learning $Pr(C=c_k \mid x)$ directly by maximum likelihood&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Implementation for binary classification&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$y \in {0,1}$&lt;/li&gt;
+  &lt;li&gt;$w^*=argmax_w\prod_n\sigma(w^T\overline{x})^{y_n}(1-\sigma(w^T\overline{x}))^{1-y_n}$&lt;/li&gt;
+  &lt;li&gt;$ \ \ \ \ \ =argmin_w-\sum_nln(\sigma(w^T\overline{x}))+(1-y_n)ln(1-\sigma(w^T\overline{x}))$&lt;/li&gt;
+  &lt;li&gt;Derivative $\nabla L(w)=\sum_n(\sigma(w^T\overline{x})-y_n)\overline{x}_n$&lt;/li&gt;
+  &lt;li&gt;Solve derivative iteratively for $0$ using Newton’s method: $w_{i+1}=w_i-H^{-1}\nabla L(w)$ where
+    &lt;ul&gt;
+      &lt;li&gt;$H=\overline{X}R\overline{X}^T$ is the Hessian matrix, $X$ being the training data matrix where each column is represents one input vector&lt;/li&gt;
+      &lt;li&gt;$R$ is a diagonal matrix of size $N*N$ with entries of $\sigma_n(1-\sigma_n)$&lt;/li&gt;
+      &lt;li&gt;$\sigma_n=\sigma(w_i^T\overline{x}_n)$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;generalized-linear-models&quot;&gt;Generalized Linear Models&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: non-linear classification/regression&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Idea&lt;/strong&gt;: map inputs to a different space using a set of basis functions and do linear classification/regression in that space&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Common basis functions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Polynomial: $\theta_j(x)=x^j$&lt;/li&gt;
+  &lt;li&gt;Gaussian: $\theta_j(x)=e^{-\frac{(x-\mu_j)^2}{2s^2}}$&lt;/li&gt;
+  &lt;li&gt;Sigmoid: $\theta_j(x)=\sigma(\frac{(x-\mu_j)^2}{s})$&lt;/li&gt;
+  &lt;li&gt;Fourier, Wavelets etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;artificial-neural-networks&quot;&gt;Artificial Neural Networks&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: non-linear classification/regression&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Idea&lt;/strong&gt;: network of units similar to neurons in a human brain&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Implementation&lt;/strong&gt;: numerical output of unit $j$, $h(a_j)$ where&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$a_j=\sum_{i}W_{ji}x_i+w_0=W_j\overline{x}$&lt;/li&gt;
+  &lt;li&gt;$x_i$ is the output of unit $i$&lt;/li&gt;
+  &lt;li&gt;$W_{ji}$ denotes the strength of the link from unit $i$ to unit $j$&lt;/li&gt;
+  &lt;li&gt;$h(x)$ is the activation function (e.g., threshold, sigmoid, Gaussian, hyperbolic tangent, identity)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Structures&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;feed-forward network (directed acyclic graph)&lt;/li&gt;
+  &lt;li&gt;recurrent network (directed cyclic graph)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Perceptron&lt;/strong&gt;: single-layer feed-forward network&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Threshold Perceptron Learning&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;done separately for each unit $j$&lt;/li&gt;
+      &lt;li&gt;for each $(x,y)$ pair, correct weight $W_{ji}$ if incorrect output is produced:
+        &lt;ul&gt;
+          &lt;li&gt;if output produced is $0$ instead of $1$: $W_{ji}=W_{ji}+x_i$&lt;/li&gt;
+          &lt;li&gt;if output produced is $1$ instead of $0$: $W_{ji}=W_{ji}-x_i$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;convergence if and only if the dataset is linearly separable&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sigmoid Perceptron Learning&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;same hypothesis space as logistic regression&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Multi-layer neural networks&lt;/strong&gt;: flexible non-linear models by learning non-linear basis functions&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;examples of 2-layer feed-forward networks:
+    &lt;ul&gt;
+      &lt;li&gt;$h_1$ non-linear and $h_2$ &lt;strong&gt;sigmoid&lt;/strong&gt;: non-linear &lt;strong&gt;classification&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;$h_1$ non-linear and $h_2$ &lt;strong&gt;identity&lt;/strong&gt;: non-linear &lt;strong&gt;regression&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Back Propagation&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Purpose: learning by iteratively adjusting network’s weights to minimze output error&lt;/li&gt;
+  &lt;li&gt;Two phases:
+    &lt;ul&gt;
+      &lt;li&gt;Forward phase: compute output $z_j$ for each unit $j$&lt;/li&gt;
+      &lt;li&gt;Backward phase: compute delta $\delta_j$ at each unit $j$:
+        &lt;ul&gt;
+          &lt;li&gt;if $j$ is an output unit: $\delta_j=h’(a_j)(y_j-z_j)$&lt;/li&gt;
+          &lt;li&gt;if $j$ is a hidden unit: $\delta_j=h’(a_j)\sum_kw_{kj}\delta_k$ (recursion) where all units $k$ are the ones that receive input from unit $j$&lt;/li&gt;
+          &lt;li&gt;update weights: $w_{ji} \leftarrow w_{ji} - \alpha \ \delta_j z_i$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;kernel-methods&quot;&gt;Kernel Methods&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: use a large (possibly infinite) set of fixed, non-linear functions; normally, the computational complexity depends on the number of basis functions used, but by a “dual trick”, complexity depends on the amount of data.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kernel function&lt;/strong&gt;: $k(x, x’) = \phi(x)^T \phi(x’)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Gram matrix&lt;/strong&gt;: $K = \Phi^T \Phi$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Prediction for kernelized linear regression&lt;/strong&gt;: $y_n = k(\cdot, x_n)^T (K + \lambda I)^{-1}y$ where $k(\cdot, x_n) = k(x, x_n) \ \forall \ x$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Constructing kernels $K$&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Valid kernels must be positive semi-definite (= all eigenvalues must be $\geq 0$); in other words, the $K$ must factor into a product of a transposed matrix by itself ($K = \Phi^T \Phi$)&lt;/li&gt;
+  &lt;li&gt;There are well-defined rules that can be applied to combine kernels with each other to create new kernels, preserving the property of positive semi-definiteness&lt;/li&gt;
+  &lt;li&gt;Kernels can be defined with respect to other things than vector such as sets, strings or graphs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Common kernels ($k(x, x’) =$ …)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Polynomial&lt;/strong&gt;: $(x^T x’)^M$; feature space: all degree $M$ products of entries in $x$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;General Polynomial&lt;/strong&gt;: $(x^T x’ + c)^M$ with $c &amp;gt; 0$; feature space: all products of &lt;strong&gt;up to&lt;/strong&gt; $M$ products of entries in $x$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Gaussian&lt;/strong&gt;: $\exp({-\frac{\mid x - x’ \mid^2}{2 \sigma^2}})$; feature space: infinite!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;gaussian-processes&quot;&gt;Gaussian Processes&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: approximating the true function $f(x)$ by an infinite-dimensional Gaussian distribution over functions $P(f)$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Distribution over functions&lt;/strong&gt;: $f(x) \sim GP(m(x), k(x, x’)) \ \forall x, x’$ where&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$m(x) = E(f(x))$ is the mean (= zero because the expectation of a zero-centered Gaussian is zero)&lt;/li&gt;
+  &lt;li&gt;$k(x, x’) = E((f(x) - m(x)) (f(x’) - m(x’))) = \frac{\phi(x)^T \phi(x’)}{\alpha}$ is the kernel covariance function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Gaussian Process Regression&lt;/strong&gt;: corresponds to kernelized Bayesian linear regression with a function view instead of a weight space view, posteriors over $f$ instead of $w$ and a complexity, cubic in the number of training points instead of cubic in the number of basis functions. Prediction:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$P(y’ \mid x’, X, y) = N(\bar{f}(x’), k’(x’, x’))$ where&lt;/li&gt;
+  &lt;li&gt;$\bar{f}(\cdot) = k(\cdot, X) \ A \ y$&lt;/li&gt;
+  &lt;li&gt;$k’(\cdot, \cdot) = k(\cdot, \cdot) - k(\cdot, X) \ A \ k(X, \cdot)$&lt;/li&gt;
+  &lt;li&gt;$A = (K + \sigma^2 I)^{-1}$ (the inversion of this step is cubic in the number of training points&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;support-vector-machines&quot;&gt;Support Vector Machines&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: find the decision hyperplane that maximizes the distances to the closest data point, resulting in a unique and globally optimal max-margin separator that can be found in polynomial time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimization problem&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\max_w \frac{1}{\mid w \mid} \min_n y_n w^T \phi(x_n)$&lt;/li&gt;
+  &lt;li&gt;Alternatively, set the minimum distance to 1 and minimize $\mid w \mid$: $\min_w \frac{1}{2}{\mid w \mid}^2$ such that $y_n w^T \phi(x_n) \geq 1 \ \forall \ n$ (only the points where the distance is 1 are necessary to define the active constraints and are called &lt;strong&gt;support vectors&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;This optimization can be reformulated as a kernelized dual problem, given by: $\max_a \sum_n a_n - \frac{1}{2} \sum_n \sum_{n’} a_n a_{n’} y_n y_{n’} k(x_n, x_{n’})$ such that $\sum_n a_n y_n = 0$ and $a_n \geq 0 \ \forall \ n$ (many $a_n$ will be zero, they will be non-zero only for the support vectors)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Prediction&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Primal problem: $y_* = sign(w^T \phi(x_*))$&lt;/li&gt;
+  &lt;li&gt;Dual problem: $y_* = sign(\sum_n a_n y_n k(x_n, x_*))$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Soft margin&lt;/strong&gt;: for data that is not linearly separable, slack variables may be introduced into the optimzation problem to handle minor misclassifications: $\min_w C \sum_n \xi_n + \frac{1}{2}{\mid w \mid}^2$ such that $y_n w^T \phi(x_n) \geq 1 - \xi_n$ and $\xi_n \geq 0 \ \forall \ n$; slack variable $\xi_n$ will be $&amp;gt; 0$ for misclassified examples and $C$ controls the trade-off between the slack variable penalty and the margin; $C$ can also be interpreted as a regularization parameter; when $C \rightarrow \infty$ we arrive again at the hard margin problem; &lt;strong&gt;support vectors&lt;/strong&gt; are all points that are in the margin or misclassified;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Multiclass SMVs&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;One-Against-All&lt;/strong&gt;: for $K$ classes, train $K$ SMVs to distinguish each class from the rest; drawback: there will be regions that are either claimed by no class or by multiple classes&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pairwise Comparison&lt;/strong&gt;: train $O(K^2)$ SMVs to compare each pair of classes; drawbacks: computationally expensive and it is not obvious how the best class should be picked&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Continuous Ranking&lt;/strong&gt;: single SVM that returns a continuous value to rank all classes (most popular approach today); idea: instead of computing the sign of a linear separator, compare the values of linear functions for each class $k$; classification: $y_* = \arg\max_k w_k^T \phi(x_*)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;hidden-markov-models&quot;&gt;Hidden Markov Models&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: make use of sequential correlations between classes&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assumptions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Stationary process&lt;/strong&gt;: transition and emission distributions are identical at each time step: $P(x_t \mid y_t) = P(x_{t+1} \mid y_{t+1})$ and $P(y_t \mid y_{t-1}) = P(y_{t+1} \mid y_t) \ \forall \ t$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Markovian process&lt;/strong&gt;: next state is independent of previous states given the current state: $P(y_{t+1} \mid y_{t}, y_{t-1}, …, y_{1}) = P(y_{t+1} \mid y_{t}) \ \forall \ t$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Parametetrization&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Initial state distribution&lt;/strong&gt;: $\pi = P(y_1)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Transition distribution&lt;/strong&gt;: $\theta = P(y_{t} \mid y_{t - 1})$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Emission distribution&lt;/strong&gt;: $\phi = P(x_t \mid y_t)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Inference&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt;: $P(y_t \mid x_{1..t})$; forward algorithm has linear complexity in $t$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Prediction&lt;/strong&gt;: $P(y_{t+k} \mid x_{1..t})$; forward algorithm has linear compelxity in $t + k$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hindsight&lt;/strong&gt;: $P(y_{k} \mid x_{1..t})$ where $k &amp;lt; t$; forward-backward algorithm has linear complexity in $t$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Most likely explanation&lt;/strong&gt;: $\arg\max_{y_1,…y_t}P(y_{1..t} \mid x_{1..t})$; Viterbi algorithm has linear complexity in $t$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Maximum likelihood objectives&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Supervised&lt;/strong&gt;: $\pi’,\theta’,\phi’ = \arg\max_{\pi,\theta,\phi} P(y_{1..T},x_{1..T} \mid \pi,\theta,\phi)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Unsupervised&lt;/strong&gt;: $\pi’,\theta’,\phi’ = \arg\max_{\pi,\theta,\phi} P(x_{1..T} \mid \pi,\theta,\phi)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;deep-neural-networks&quot;&gt;Deep Neural Networks&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: neural network with many hidden layers, providing a high level of expressivity (as the number of layers is increased, the number of units needed may decrease exponentially; example: parity function)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Problems&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Gradient vanishing&lt;/strong&gt;: deep neural networks of sigmoid and hyperbolic units often suffer from vanishing gradients (because the derivative of these activation functions is always $&amp;lt; 1$); for this problem, two popular solutions exist:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Pre-training&lt;/strong&gt; of weights&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Other types of activation functions:&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Rectified Linear Units&lt;/strong&gt;:
+            &lt;ul&gt;
+              &lt;li&gt;Hard version: $g(x) = \max(0, x)$&lt;/li&gt;
+              &lt;li&gt;Soft version (“Softplus”): $g(x) = \log(1 + e^x)$&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Maxout Units&lt;/strong&gt;: operate on vector-typed weights and output the maximum value of all the linear combinations of different subsets of input weights&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Overfitting&lt;/strong&gt;: high expressivity increases the risk for overfitting; for this problem, three popular solutions exist:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Regularization&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Data augmentation&lt;/strong&gt; (to ensure that the number of parameters in the deep neural net is lower than the amount of data&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Dropout&lt;/strong&gt;: random “drop” some (input and hidden) units from the network when training; during prediction, multiply the output of each unit by one minus its dropout probability; dropout can be seen as a form of ensemble learning for neural networks&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;convolutional-neural-networks&quot;&gt;Convolutional Neural Networks&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: learn convolutional features in sequential, spatial or tensor data (e.g., pixels from an input image) in a flexible way. An equivariant representation of the learned model ensures (partial) translation invariance and handling of variable-length inputs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Convolution&lt;/strong&gt;: in neural networks, a convolution denotes the linear combination of a subset of units based on a specific pattern of weights. Convolutions are often combined with activation functions to produce a feature value.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pooling&lt;/strong&gt;: commutative mathematical operation that combines several units (e.g., max, sum, product, Euclidean norm etc.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Convolutional Neural Network (CNN)&lt;/strong&gt;: any ANN that includes an alternation of convolution and pooling layers where some of the convolution weights are shared. CNNs are also trained using backpropagation, but gradients of shared weights are combined into a single gradient.&lt;/p&gt;
+
+&lt;h2 id=&quot;recurrent-and-recursive-neural-networks&quot;&gt;Recurrent and Recursive Neural Networks&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: facilitate processing of variable-length data by instantiating recurrent or recursive patterns in the network.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Recurrent Neural Network&lt;/strong&gt;: outputs can be fed back to the network as inputs, creating a recurrent structure that can be unrolled to handle variable-length data. Recurrent neural networks are trained by backpropagation on the unrolled network, combining gradients of shared weights into a single gradient. The &lt;strong&gt;Encoder-Decoder&lt;/strong&gt; model is a model mapping input sequences to output sequences (e.g., for machine translation, question answering, dialog).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Recursive Neural Network&lt;/strong&gt;: generalize recurrent neural networks from chains to trees. Parse trees or dependency graphs are used as structures for recursive neural networks. The &lt;strong&gt;Long-Short-Term-Memory&lt;/strong&gt; (LSTM) model is a special gated structure to control memorization and forgetting in recursive neural networks, facilitating long-term memory.&lt;/p&gt;
+
+&lt;h2 id=&quot;ensemble-learning&quot;&gt;Ensemble Learning&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: combine several imperfect hypotheses into a better hypothesis&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assumptions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;each hypothesis $h_i$ makes error with probability $p$&lt;/li&gt;
+  &lt;li&gt;the hypotheses are independent&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Probabilities of making errors&lt;/strong&gt; using majority vote of $n$ hypotheses under these assumptions*:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$k \leq n$ hypotheses make an error: $p_e(k) = \binom{n}{k} p^k (1-p)^{n-k}$&lt;/li&gt;
+  &lt;li&gt;majority makes an error: $\sum_{k=\frac{1}{2}n}^n p_e(k)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Weighted majority&lt;/strong&gt;: as the above two assumptions are rarely true, hypotheses can be weighted lower if:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;they are correlated&lt;/li&gt;
+  &lt;li&gt;they have a lower classification performance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Boosting&lt;/strong&gt;: technique to “boost” a weak learner by training multiple parametrizations of the same base model using weighted variations of the training set. One popular implementation is &lt;strong&gt;AdaBoost&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Boosting algorithm&lt;/strong&gt;:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;set all instance weights $w_x$ to 1&lt;/li&gt;
+      &lt;li&gt;repeat until sufficient number of hypotheses:
+        &lt;ul&gt;
+          &lt;li&gt;$h_i \leftarrow$ learn(dataset, weights)&lt;/li&gt;
+          &lt;li&gt;increase $w_x$ of misclassified instances $x$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;ensemble hypothesis is the weighted majority of all $h_i$ with weights $z_i$ proportional to the accuracy of $h_i$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Requirement&lt;/strong&gt;: a weak learner (i.e., a model producing hypotheses at least as good as random), e.g., rules of thumb, decision stumps (= decision trees of one node), perceptrons, naive bayes models&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bagging&lt;/strong&gt; (= &lt;strong&gt;b&lt;/strong&gt;ootstrap &lt;strong&gt;agg&lt;/strong&gt;regation): technique to improve the accuracy of a weak learner by sampling a subset of both the samples and features to obtain independent classifiers; prediction is then done by a simple majority vote (without weighting). &lt;strong&gt;Random forests&lt;/strong&gt; are bags of decision trees.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Bagging algorithm&lt;/strong&gt;:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;repeat until sufficient number $K$ of hypotheses:
+        &lt;ul&gt;
+          &lt;li&gt;bootstrap sampling: $D_k \leftarrow$ sample data subset&lt;/li&gt;
+          &lt;li&gt;random projection: $F_k \leftarrow$ sample feature subset&lt;/li&gt;
+          &lt;li&gt;training: $h_k \leftarrow$ learn($D_k$, $F_k$)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;ensemble hypothesis is the (non-weighted) majority of all $h_k$ for classification or the average output for regression&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Boosting        &lt;/th&gt;
+      &lt;th&gt;Bagging        &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Sampling&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;reweight instances in dataset&lt;/td&gt;
+      &lt;td&gt;sample subset of data and features&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Classifiers obtained&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;complementary&lt;/td&gt;
+      &lt;td&gt;independent&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;Prediction&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;weighted majority vote&lt;/td&gt;
+      &lt;td&gt;majority vote (no weighting)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;stream-learning&quot;&gt;Stream Learning&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Key idea&lt;/strong&gt;: instead of training one hypothesis on a fixed dataset, continuously update a preliminary hypothesis as new data points arrive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Challenges&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;since the data is streaming, it cannot all be stored $\rightarrow$ old data cannot necessarily be revisited&lt;/li&gt;
+  &lt;li&gt;time to process new incoming data must be constant and less than the arrival time for the next batch of data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Solutions&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bayesian Learning&lt;/strong&gt;: lends itself naturally to stream learning because it stores information about training data in a product of likelihood distributions which can be updated incrementally every time a new data point comes in&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Stochastic Gradient Descent&lt;/strong&gt; (SGD): for optimization-based learners like least square regression, logistic regression, maximum likelihood, support vector machines and neural networks, gradient descent can be implemented as an incremental approach where the model parameters are updated based on every incoming data point $(x_n, y_n)$ in isolation (as opposed to all existing data points at once), weighting the corresponding loss gradient by a data point specific learning rate $\alpha_n$.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Robins-Monro conditions&lt;/strong&gt;: convergence is only guaranteed if the learning rate staisfies the Robins-Monro conditions of $\sum_{\alpha_n=1}^\infty \alpha_n = \infty$ and $\sum_{\alpha_n=1}^\infty \alpha_n^2 &amp;lt; \infty$; an example of such an update rule for learning rate $\alpha_n$ that satisfies these conditions is: $\alpha_n = \frac{1}{(\tau + n)^k}$ where $\tau \geq 0$ and $k \in (0.5, 1]$&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;AdaGrad&lt;/strong&gt;: form of SDG that is often used in backpropagation. In AdaGrad, the model parameters $\theta$ are updated as follows: $\theta_m^{(n+1)} \leftarrow \theta_m^{(n)} - \frac{\alpha}{\tau + \sqrt{s_m^{(n)}}} \frac{\delta Loss(x_n; y_n; \theta^{(n)})}{\delta \theta_m^{(n)}}$ where $s_m^{(n)} \leftarrow s_m^{(n - 1)} + (\frac{\delta Loss(x_n; y_n; \theta^{(n)})}{\delta \theta_m^{(n)}})^2$&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/machine-learning/&quot;&gt;Machine Learning&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;http://localhost:4000&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 06, 2016.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>

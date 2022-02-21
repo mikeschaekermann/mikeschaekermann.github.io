@@ -1,0 +1,984 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Machine Learning &#8211; Mike Schaekermann</title>
+<meta name="description" content="
+  
+     Overview
+  
+
+
+  
+
+
+
+">
+<meta name="keywords" content="python, notebook, Mike, Hardy, Schäkermann, Schaekermann, Shaekermann, Shaekerman, Shakerman">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Machine Learning">
+<meta name="twitter:description" content="
+  
+     Overview
+  
+
+
+  
+
+
+
+">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning">
+<meta property="og:description" content="
+  
+     Overview
+  
+
+
+  
+
+
+
+">
+<meta property="og:url" content="http://localhost:4000/machine-learning/">
+<meta property="og:site_name" content="Mike Schaekermann">
+
+<meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/machine-learning/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Mike Schaekermann Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000/">Mike Schaekermann</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://localhost:4000/bio-and-research/" >Bio & Research</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/projects/" >Projects</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/publications/" >Publications</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/presentations/" >Presentations</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/notes/" >Notes</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <a href="http://localhost:4000">
+  
+	  <img src="http://localhost:4000/images/mike-schaekermann-photo-5.jpg" class="bio-photo" alt="Mike Schaekermann bio photo">
+  
+  </a>
+
+  <a href="http://localhost:4000"><h3 itemprop="name">Mike Schaekermann</h3></a>
+  <p>Computer Science, Ph.D.<br>Engineering, B.Sc.<br>Medicine, State Exam I</p>
+  <a href="mailto:mikeschaekermann@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  <a href="https://scholar.google.com/citations?user=mwj_ldQAAAAJ" class="author-social" target="_blank"><i class="fa fa-fw fa-google"></i> Google Scholar</a>
+  
+  <a href="http://linkedin.com/in/mschaeke" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  
+  
+  
+  <a href="http://github.com/mikeschaekermann" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/machine-learning/" rel="bookmark" title="Machine Learning">Machine Learning</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Overview</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#decision-trees" id="markdown-toc-decision-trees">Decision Trees</a></li>
+  <li><a href="#k-nearest-neighbors" id="markdown-toc-k-nearest-neighbors">K-Nearest Neighbors</a></li>
+  <li><a href="#linear-regression" id="markdown-toc-linear-regression">Linear Regression</a></li>
+  <li><a href="#statistical-learning" id="markdown-toc-statistical-learning">Statistical Learning</a></li>
+  <li><a href="#mixture-of-gaussians" id="markdown-toc-mixture-of-gaussians">Mixture of Gaussians</a></li>
+  <li><a href="#logistic-regression" id="markdown-toc-logistic-regression">Logistic Regression</a></li>
+  <li><a href="#generalized-linear-models" id="markdown-toc-generalized-linear-models">Generalized Linear Models</a></li>
+  <li><a href="#artificial-neural-networks" id="markdown-toc-artificial-neural-networks">Artificial Neural Networks</a></li>
+  <li><a href="#kernel-methods" id="markdown-toc-kernel-methods">Kernel Methods</a></li>
+  <li><a href="#gaussian-processes" id="markdown-toc-gaussian-processes">Gaussian Processes</a></li>
+  <li><a href="#support-vector-machines" id="markdown-toc-support-vector-machines">Support Vector Machines</a></li>
+  <li><a href="#hidden-markov-models" id="markdown-toc-hidden-markov-models">Hidden Markov Models</a></li>
+  <li><a href="#deep-neural-networks" id="markdown-toc-deep-neural-networks">Deep Neural Networks</a></li>
+  <li><a href="#convolutional-neural-networks" id="markdown-toc-convolutional-neural-networks">Convolutional Neural Networks</a></li>
+  <li><a href="#recurrent-and-recursive-neural-networks" id="markdown-toc-recurrent-and-recursive-neural-networks">Recurrent and Recursive Neural Networks</a></li>
+  <li><a href="#ensemble-learning" id="markdown-toc-ensemble-learning">Ensemble Learning</a></li>
+  <li><a href="#stream-learning" id="markdown-toc-stream-learning">Stream Learning</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<hr />
+<p>These notes are a result of my preparation for a midterm exam in <a href="https://cs.uwaterloo.ca/~ppoupart">Pascal Poupart</a>’s <a href="https://cs.uwaterloo.ca/~ppoupart/teaching/cs485-winter16/">course on Machine Learning</a> at University of Waterloo in the winter 2016 term. The contents are therefore based on the corresponding presentation slides available online.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Definition by Tom Mitchell (1988): “A computer program is said to learn from <strong>experience E</strong> with respect to some class of <strong>tasks T</strong> and <strong>performance measure P</strong> if its performance for tasks in T, as measured by P, improves with experience E.”</p>
+
+<p>Inductive Learning: given a training set of examples of the form $(x, f(X))$, return a function $h$ (<strong>hypothesis</strong>) that approximates $f$ (<strong>true underlying function</strong>).</p>
+
+<p>The quality measure for hypotheses is <strong>generalization</strong>. A good hypothesis will generalize well, i.e., predict unseen examples correctly. <strong>Ockham’s razor</strong> suggests to prefer the simplest hypothesis consistent with the input data.</p>
+
+<p>Two different types of inductive learning:</p>
+
+<ul>
+  <li><strong>Classification</strong>: range/output space of $f$ is categorical (or discrete)</li>
+  <li><strong>Regression</strong>: range/output space of $f$ is continuous</li>
+</ul>
+
+<p><strong>Hypothesis space $H$</strong>: set of all possible $h$</p>
+
+<p><strong>Consistency</strong>: $h$ is consistent if it agrees with $f$ on all examples; it is not always possible to find a consistent $h$ (e.g., due to an insufficient $H$ or noisy input data)</p>
+
+<p><strong>Realizability</strong>: a learning problem is realizable if and only if $f$ is in $H$</p>
+
+<p>In general, we will observe a tradeoff between <strong>expressiveness</strong> (i.e., the size of $H$) and the <strong>complexity</strong> of finding a good $h$.</p>
+
+<p><strong>Overfitting</strong>: given a hypothesis space $H$, a hypothesis $h \in H$ is said to overfit the training data if there exists some alternative hypothesis $h’ \in H$ such that $h$ has smaller error than $h’$ over the training examples, but $h’$ has smaller error than $h$ over the entire distribution of instances.</p>
+
+<p><strong>$k$-fold cross-validation:</strong> run $k$ experiments, each time putting aside $\frac{1}{k}$ of the data to test on and, finally, compute the average accuracy of the experiments</p>
+
+<h2 id="decision-trees">Decision Trees</h2>
+
+<p>Decision trees (a.k.a. <strong>C</strong>lassification <strong>a</strong>nd <strong>R</strong>egression <strong>T</strong>rees [CART]) represent disjunctions (OR) of conjunctions (AND) of constraints of attribute values.</p>
+
+<p>Decision trees have the following <strong>structure</strong>:</p>
+
+<ul>
+  <li><strong>nodes</strong>: attributes</li>
+  <li><strong>edges</strong>: attribute values</li>
+  <li><strong>leaves</strong>: classes / regression values</li>
+</ul>
+
+<p><strong>Quality measure</strong> for decision trees:</p>
+
+<ul>
+  <li>small size</li>
+  <li>high consistency</li>
+</ul>
+
+<p><strong>Greedy induction</strong> of a decision tree:</p>
+
+<ul>
+  <li>depth-first search like construction</li>
+  <li>a good attribute splits the examples into subsets that are ideally all from the same class or, in other words, that minimizes the residual error</li>
+</ul>
+
+<p><strong>Residual error for classification</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Error Frequency</th>
+      <th>Gini Index</th>
+      <th>Entropy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Definition</strong></td>
+      <td>$Q_\tau=num(\tau)-max_k num(k)$</td>
+      <td>$Q_\tau=\sum_kp_\tau(k)(1-p_\tau(k))$</td>
+      <td>$Q_t=-\sum_kp_\tau(k) \ ld \ p_\tau(k)$</td>
+    </tr>
+    <tr>
+      <td><strong>Explanation</strong></td>
+      <td>Number of examples in leaf $\tau$ minus maximum number of examples in leaf $\tau$ that belong to any class $k$</td>
+      <td>Expected misclassification when choosing the class according to $p_\tau(k)$</td>
+      <td>Expected # of bits to encode the class of an instance chosen at random according to $p_\tau(k)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Variables:</strong></p>
+
+<ul>
+  <li>$\tau$: index for leaf $\tau$</li>
+  <li>$k$: index for class $k$</li>
+  <li>$num(\tau)$: number of examples in leaf $\tau$</li>
+  <li>$num(k)$: number of examples in leaf $\tau$ belonging to class $k$</li>
+  <li>$p_\tau(k) = \frac{num(k)}{num(\tau)}$</li>
+</ul>
+
+<p><strong>Residual error for regression</strong>:</p>
+
+<ul>
+  <li>Let $t_n = f(x_n)$ be the target for the $n^{th}$ example.</li>
+  <li>Let $y_t$ be the value returned by leaf $\tau$.</li>
+  <li>Let $R_\tau$ be the set of examples in leaf $\tau$.</li>
+  <li>Euclidean error for leaf $\tau$: $Q_\tau=\sum_{n \in R_\tau}(t_n-y_n)^2$</li>
+</ul>
+
+<p><strong>Choosing the best attribute</strong> for the next decision layer in the tree:</p>
+
+<ul>
+  <li>In leaf $\tau$, choose attribute $A$ that reduces the residual error the most when expanded:</li>
+  <li>$A^*=argmax_AQ_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}$, where
+    <ul>
+      <li>$p_\tau(A=a)=\frac{num(A=a)}{num(\tau)}$ denotes the proportion of examples with value $a$ (in attribute $A$) inside node $\tau$</li>
+      <li>$\tau a$ indexes the node reached by following the edge for attribute value $a$, starting from node $\tau$</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Techniques to avoid overfitting:</strong></p>
+
+<ul>
+  <li>Stop learning when the curve for testing accuracy, plotted against the tree size, has reached its global peak; in practice, this is sometimes sometimes hard to achieve because the curve might exhibit high fluctuation</li>
+  <li>Pruning of statistically irrelevant nodes in a bottom-up fashion
+    <ul>
+      <li>Remove nodes that improve testing accuracy by less than some threshold</li>
+      <li>Regularization: add a penalty term that reflects the tree complexity (e.g., $|T|=$ #leaves in the tree) and remove leaves with a negative “regularized” error reduction: $Q_\tau-\sum_{a \in A}p_\tau(A=a)Q_{\tau a}-\lambda|T|$</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="k-nearest-neighbors">K-Nearest Neighbors</h2>
+
+<p>In the limit, single-attribute thresholding to construct decision trees for attributes with continuous inputs will lead to a full tree with one input example per leaf. Decision boundaries will always be axis-aligned. A better approach without this restriction is $K$-Nearest Neighbors.</p>
+
+<p><strong>Approach:</strong></p>
+
+<ul>
+  <li>Let $knn(x)$ be the $K$ nearest neighbors of $x$ according to distance $d$</li>
+  <li>Label $y_x=mode({y_x’ \mid x’ \in knn(x)})$, i.e., the most frequent label among the $K$ nearest neighbors</li>
+  <li>$K$ controls the degree of smoothing and can be optimized using $k$-fold cross-validation (if $K$ is too small this will lead to overfitting; if $K$ is too high this will lead to underfitting)</li>
+</ul>
+
+<p><strong>Comparison of complexity</strong> between decision trees and $K$-Nearest Neighbors with respect to:</p>
+
+<ul>
+  <li>$N$: size of training set</li>
+  <li>$M$: number of attributes</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Training        </th>
+      <th>Testing        </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Decision Tree</strong></td>
+      <td>$O(M^2N)$</td>
+      <td>$O(M)$</td>
+    </tr>
+    <tr>
+      <td><strong>$K$-Nearest Neighbors</strong></td>
+      <td>$O(MN)$</td>
+      <td>$O(MN)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A good visualization of the decision boundaries for the two-dimensional 1-Nearest Neighbor case assuming Euclidean distance is the Voronoi diagram.</p>
+
+<h2 id="linear-regression">Linear Regression</h2>
+
+<p><strong>Data</strong>: ${(x_1, t_1),(x_2,t_2),…,(x_N,t_N)}$ where $x_n \in \mathbb{R}^D$ and $t_n \in \mathbb{R}$</p>
+
+<p><strong>Problem</strong>: find linear hypothesis $h$ that maps $x$ to $t$; in other words, try to find a weight vector $w \in \mathbb{R}^{D+1}$ so that the error for $h(x,w)=w^T\overline{x}$ with $\overline{x}=\begin{pmatrix} 1 \ x \end{pmatrix}$ over all $x$ in the dataset is minimal</p>
+
+<p><strong>Solution</strong>: $ Aw=b $ with:</p>
+
+<ul>
+  <li>$A=\sum_{n=1}^N\overline{x}_n\overline{x}_n^T$ (invertible if the training instances span $\mathbb{R}^{D+1}$)</li>
+  <li>$b=\sum_{n=1}^Nt_n\overline{x}_n$</li>
+</ul>
+
+<p><strong>Tikhonov Regularization</strong>: a technique, applied to avoid a form of overfitting where small changes to the input data lead to big changes in the learned weight vector: $(\lambda I+A)w=b$. The greater $\lambda$ the smaller the magnitude of $w$ will be.</p>
+
+<h2 id="statistical-learning">Statistical Learning</h2>
+
+<p><strong>Idea</strong>: learning simply reduces the uncertainty in our knowledge of the world</p>
+
+<p><strong>Marginal Probability Distribution</strong>: specification of a probability for each event in our sample space; all probabilities must sum up to $1$</p>
+
+<p><strong>Joint Probability Distribution</strong>: specification of probabilities for all combinations of events: $Pr(A=a
+\wedge B=b)$ for all $a$, $b$</p>
+
+<p><strong>Marginalization</strong> (sumout rule): $Pr(A=a)=\sum_bPr(A=a
+\wedge B=b)$</p>
+
+<p><strong>Conditional Probability</strong>: fraction of worlds in which $B$ is true that also have $A$ true: $Pr(A \mid B)=\frac{Pr(A \wedge B)}{Pr(B)}$; also $Pr(A \wedge B)=Pr(A \mid B) \ Pr(B)$</p>
+
+<p><strong>Bayes’ Rule</strong>: $Pr(B \mid A)=\frac{Pr(A \mid B) \ Pr(B)}{Pr(A)}$</p>
+
+<p><strong>Bayesian Inference</strong>: $P(H \mid e)=kP(e \mid H) \ P(H)$</p>
+
+<ul>
+  <li>$H$: hypothesis</li>
+  <li>$e$: evidence</li>
+  <li>$P(H)$: <strong>prior</strong> probability of $H$</li>
+  <li>$P(e \mid H)=\prod_nP(e_n \mid H)$: <strong>likelihood</strong> of observing $e$, given $H$</li>
+  <li>$P(H \mid e)$: <strong>posterior</strong> probability of $H$, given $e$</li>
+  <li>$k$: normalizing factor, applied so that all posteriors sum up to $1$</li>
+</ul>
+
+<p><strong>Bayesian Prediction</strong>: $P(X \mid e)=\sum_iP(X \mid h_i) \ P(h_i \mid e)$</p>
+
+<p><strong>Properties of Bayesian Learning</strong>: optimal and not prone to overfitting, but potentially intractable if the hypothesis space is large</p>
+
+<p><strong>Approximations of Bayesian Learning</strong>:</p>
+
+<ul>
+  <li><strong>Maximum a Posteriori (MAP)</strong>:
+    <ul>
+      <li>making predictions, based on the most probable hypothesis $h_{MAP}=argmax_{h_i}P(h_i \mid e)$</li>
+      <li>less accurate than Bayesian prediction, but both converge in accuracy as data increases</li>
+      <li>controlled overfitting (prior can be used to penalize complex hypotheses)</li>
+      <li>MAP for linear regression leads to regularized least square problem</li>
+    </ul>
+  </li>
+  <li><strong>Maximum Likelihood (ML)</strong>:
+    <ul>
+      <li>MAP with uniform prior: $h_{ML}=argmax_{h_i}P(e \mid h_i)$</li>
+      <li>less accurate than Bayesian and MAP prediction, but all three converge in accuracy as data increases</li>
+      <li>prone to overfitting</li>
+      <li>ML for linear regression leads to non-regularized least square problem</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Bias-Variance Decomposition</strong> for linear regression: $expected \ loss = (bias)^2 + variance + noise$</p>
+
+<ul>
+  <li>bias increases as regularization parameter $\lambda$ increases</li>
+  <li>variance decreases as regularization parameter $\lambda$ increases</li>
+  <li>noise is constant</li>
+</ul>
+
+<h2 id="mixture-of-gaussians">Mixture of Gaussians</h2>
+
+<p><strong>Purpose</strong>: linear classification technique</p>
+
+<p><strong>Assumptions</strong>:</p>
+
+<ul>
+  <li>$Pr(C=c_k)=\pi_k$: prior probability of class $k$</li>
+  <li>$Pr(x \mid C=c_k) \propto e^{-0.5(x-\mu_k)^T\Sigma^{-1}(x-\mu_k)}$: likelihood of data point $x$, given class $k$, is a Gaussian distribution with the same covariance matrix $\Sigma$ for all classes</li>
+  <li>$Pr(C=c_k \mid x)=kPr(x \mid C=c_k)Pr(C=c_k)$: posterior probability of class $k$, given data point $x$</li>
+</ul>
+
+<p><strong>For two classes $A$ and $B$</strong> (using sigmoid):</p>
+
+<p>$Pr(C=A)=\sigma(w^Tx+w_0)$ where</p>
+
+<ul>
+  <li>$\sigma(a) = \frac{1}{1+e^{-a}}$ (sigmoid function)</li>
+  <li>$w=\Sigma^{-1}(\mu_A-\mu_B)$</li>
+  <li>$w_0=-0.5\mu_A^T\Sigma^{-1}\mu_A+0.5\mu_B^T\Sigma^{-1}\mu_B+ln\frac{\pi_A}{\pi_B}$</li>
+  <li>$\pi_k:$ fraction of training examples that belong to class $k$ (via maximum likelihood)</li>
+  <li>$\mu_k:$ empirical mean of all training examples that belong to class $k$ (via maximum likelihood)</li>
+  <li>$\Sigma=\frac{S_A+S_B}{N}$: normalized sum of covariance matrices (via maximum likelihood)</li>
+  <li>$S_k=\sum_{n \in c_k}(x_n-\mu_k)(x_n-\mu_k)^T$</li>
+</ul>
+
+<p><strong>For multiple classes</strong> (using softmax):</p>
+
+<p>$Pr(C=c_k \mid x)=\frac{e^{w_k^T\overline{x}}}{\sum_je^{w_j^T\overline{x}}}$</p>
+
+<p><strong>Prediction</strong>: best class $k^*=argmax_kPr(c_k \mid x)$</p>
+
+<h2 id="logistic-regression">Logistic Regression</h2>
+
+<p><strong>Purpose</strong>: linear classification technique (can be viewed as a regression where the goal is to estimate a posterior probability which is continuous)</p>
+
+<p><strong>Assumption</strong>: $Pr(x \mid C=c_k)$ are members of the exponential family: $Pr(x \mid \Theta_k)=exp(\Theta_k^TT(x)-A(\Theta_k)+B(x))$</p>
+
+<p><strong>Derivation</strong>: $Pr(C=c_k \mid x)=\sigma(w^T\overline{x})$: the posterior probability of class $k$ is a sigmoid logistic linear in $x$ (or softmax linear in $x$ for more than two classes)</p>
+
+<p><strong>Idea</strong>: learning $Pr(C=c_k \mid x)$ directly by maximum likelihood</p>
+
+<p><strong>Implementation for binary classification</strong>:</p>
+
+<ul>
+  <li>$y \in {0,1}$</li>
+  <li>$w^*=argmax_w\prod_n\sigma(w^T\overline{x})^{y_n}(1-\sigma(w^T\overline{x}))^{1-y_n}$</li>
+  <li>$ \ \ \ \ \ =argmin_w-\sum_nln(\sigma(w^T\overline{x}))+(1-y_n)ln(1-\sigma(w^T\overline{x}))$</li>
+  <li>Derivative $\nabla L(w)=\sum_n(\sigma(w^T\overline{x})-y_n)\overline{x}_n$</li>
+  <li>Solve derivative iteratively for $0$ using Newton’s method: $w_{i+1}=w_i-H^{-1}\nabla L(w)$ where
+    <ul>
+      <li>$H=\overline{X}R\overline{X}^T$ is the Hessian matrix, $X$ being the training data matrix where each column is represents one input vector</li>
+      <li>$R$ is a diagonal matrix of size $N*N$ with entries of $\sigma_n(1-\sigma_n)$</li>
+      <li>$\sigma_n=\sigma(w_i^T\overline{x}_n)$</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="generalized-linear-models">Generalized Linear Models</h2>
+
+<p><strong>Purpose</strong>: non-linear classification/regression</p>
+
+<p><strong>Idea</strong>: map inputs to a different space using a set of basis functions and do linear classification/regression in that space</p>
+
+<p><strong>Common basis functions</strong>:</p>
+
+<ul>
+  <li>Polynomial: $\theta_j(x)=x^j$</li>
+  <li>Gaussian: $\theta_j(x)=e^{-\frac{(x-\mu_j)^2}{2s^2}}$</li>
+  <li>Sigmoid: $\theta_j(x)=\sigma(\frac{(x-\mu_j)^2}{s})$</li>
+  <li>Fourier, Wavelets etc.</li>
+</ul>
+
+<h2 id="artificial-neural-networks">Artificial Neural Networks</h2>
+
+<p><strong>Purpose</strong>: non-linear classification/regression</p>
+
+<p><strong>Idea</strong>: network of units similar to neurons in a human brain</p>
+
+<p><strong>Implementation</strong>: numerical output of unit $j$, $h(a_j)$ where</p>
+
+<ul>
+  <li>$a_j=\sum_{i}W_{ji}x_i+w_0=W_j\overline{x}$</li>
+  <li>$x_i$ is the output of unit $i$</li>
+  <li>$W_{ji}$ denotes the strength of the link from unit $i$ to unit $j$</li>
+  <li>$h(x)$ is the activation function (e.g., threshold, sigmoid, Gaussian, hyperbolic tangent, identity)</li>
+</ul>
+
+<p><strong>Structures</strong>:</p>
+
+<ul>
+  <li>feed-forward network (directed acyclic graph)</li>
+  <li>recurrent network (directed cyclic graph)</li>
+</ul>
+
+<p><strong>Perceptron</strong>: single-layer feed-forward network</p>
+
+<ul>
+  <li><strong>Threshold Perceptron Learning</strong>:
+    <ul>
+      <li>done separately for each unit $j$</li>
+      <li>for each $(x,y)$ pair, correct weight $W_{ji}$ if incorrect output is produced:
+        <ul>
+          <li>if output produced is $0$ instead of $1$: $W_{ji}=W_{ji}+x_i$</li>
+          <li>if output produced is $1$ instead of $0$: $W_{ji}=W_{ji}-x_i$</li>
+        </ul>
+      </li>
+      <li>convergence if and only if the dataset is linearly separable</li>
+    </ul>
+  </li>
+  <li><strong>Sigmoid Perceptron Learning</strong>:
+    <ul>
+      <li>same hypothesis space as logistic regression</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Multi-layer neural networks</strong>: flexible non-linear models by learning non-linear basis functions</p>
+
+<ul>
+  <li>examples of 2-layer feed-forward networks:
+    <ul>
+      <li>$h_1$ non-linear and $h_2$ <strong>sigmoid</strong>: non-linear <strong>classification</strong></li>
+      <li>$h_1$ non-linear and $h_2$ <strong>identity</strong>: non-linear <strong>regression</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Back Propagation</strong>:</p>
+
+<ul>
+  <li>Purpose: learning by iteratively adjusting network’s weights to minimze output error</li>
+  <li>Two phases:
+    <ul>
+      <li>Forward phase: compute output $z_j$ for each unit $j$</li>
+      <li>Backward phase: compute delta $\delta_j$ at each unit $j$:
+        <ul>
+          <li>if $j$ is an output unit: $\delta_j=h’(a_j)(y_j-z_j)$</li>
+          <li>if $j$ is a hidden unit: $\delta_j=h’(a_j)\sum_kw_{kj}\delta_k$ (recursion) where all units $k$ are the ones that receive input from unit $j$</li>
+          <li>update weights: $w_{ji} \leftarrow w_{ji} - \alpha \ \delta_j z_i$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="kernel-methods">Kernel Methods</h2>
+
+<p><strong>Key idea</strong>: use a large (possibly infinite) set of fixed, non-linear functions; normally, the computational complexity depends on the number of basis functions used, but by a “dual trick”, complexity depends on the amount of data.</p>
+
+<p><strong>Kernel function</strong>: $k(x, x’) = \phi(x)^T \phi(x’)$</p>
+
+<p><strong>Gram matrix</strong>: $K = \Phi^T \Phi$</p>
+
+<p><strong>Prediction for kernelized linear regression</strong>: $y_n = k(\cdot, x_n)^T (K + \lambda I)^{-1}y$ where $k(\cdot, x_n) = k(x, x_n) \ \forall \ x$</p>
+
+<p><strong>Constructing kernels $K$</strong>:</p>
+
+<ul>
+  <li>Valid kernels must be positive semi-definite (= all eigenvalues must be $\geq 0$); in other words, the $K$ must factor into a product of a transposed matrix by itself ($K = \Phi^T \Phi$)</li>
+  <li>There are well-defined rules that can be applied to combine kernels with each other to create new kernels, preserving the property of positive semi-definiteness</li>
+  <li>Kernels can be defined with respect to other things than vector such as sets, strings or graphs.</li>
+</ul>
+
+<p><strong>Common kernels ($k(x, x’) =$ …)</strong>:</p>
+
+<ul>
+  <li><strong>Polynomial</strong>: $(x^T x’)^M$; feature space: all degree $M$ products of entries in $x$</li>
+  <li><strong>General Polynomial</strong>: $(x^T x’ + c)^M$ with $c &gt; 0$; feature space: all products of <strong>up to</strong> $M$ products of entries in $x$</li>
+  <li><strong>Gaussian</strong>: $\exp({-\frac{\mid x - x’ \mid^2}{2 \sigma^2}})$; feature space: infinite!</li>
+</ul>
+
+<h2 id="gaussian-processes">Gaussian Processes</h2>
+
+<p><strong>Key idea</strong>: approximating the true function $f(x)$ by an infinite-dimensional Gaussian distribution over functions $P(f)$</p>
+
+<p><strong>Distribution over functions</strong>: $f(x) \sim GP(m(x), k(x, x’)) \ \forall x, x’$ where</p>
+
+<ul>
+  <li>$m(x) = E(f(x))$ is the mean (= zero because the expectation of a zero-centered Gaussian is zero)</li>
+  <li>$k(x, x’) = E((f(x) - m(x)) (f(x’) - m(x’))) = \frac{\phi(x)^T \phi(x’)}{\alpha}$ is the kernel covariance function</li>
+</ul>
+
+<p><strong>Gaussian Process Regression</strong>: corresponds to kernelized Bayesian linear regression with a function view instead of a weight space view, posteriors over $f$ instead of $w$ and a complexity, cubic in the number of training points instead of cubic in the number of basis functions. Prediction:</p>
+
+<ul>
+  <li>$P(y’ \mid x’, X, y) = N(\bar{f}(x’), k’(x’, x’))$ where</li>
+  <li>$\bar{f}(\cdot) = k(\cdot, X) \ A \ y$</li>
+  <li>$k’(\cdot, \cdot) = k(\cdot, \cdot) - k(\cdot, X) \ A \ k(X, \cdot)$</li>
+  <li>$A = (K + \sigma^2 I)^{-1}$ (the inversion of this step is cubic in the number of training points</li>
+</ul>
+
+<h2 id="support-vector-machines">Support Vector Machines</h2>
+
+<p><strong>Key idea</strong>: find the decision hyperplane that maximizes the distances to the closest data point, resulting in a unique and globally optimal max-margin separator that can be found in polynomial time.</p>
+
+<p><strong>Optimization problem</strong>:</p>
+
+<ul>
+  <li>$\max_w \frac{1}{\mid w \mid} \min_n y_n w^T \phi(x_n)$</li>
+  <li>Alternatively, set the minimum distance to 1 and minimize $\mid w \mid$: $\min_w \frac{1}{2}{\mid w \mid}^2$ such that $y_n w^T \phi(x_n) \geq 1 \ \forall \ n$ (only the points where the distance is 1 are necessary to define the active constraints and are called <strong>support vectors</strong>)</li>
+  <li>This optimization can be reformulated as a kernelized dual problem, given by: $\max_a \sum_n a_n - \frac{1}{2} \sum_n \sum_{n’} a_n a_{n’} y_n y_{n’} k(x_n, x_{n’})$ such that $\sum_n a_n y_n = 0$ and $a_n \geq 0 \ \forall \ n$ (many $a_n$ will be zero, they will be non-zero only for the support vectors)</li>
+</ul>
+
+<p><strong>Prediction</strong>:</p>
+
+<ul>
+  <li>Primal problem: $y_* = sign(w^T \phi(x_*))$</li>
+  <li>Dual problem: $y_* = sign(\sum_n a_n y_n k(x_n, x_*))$</li>
+</ul>
+
+<p><strong>Soft margin</strong>: for data that is not linearly separable, slack variables may be introduced into the optimzation problem to handle minor misclassifications: $\min_w C \sum_n \xi_n + \frac{1}{2}{\mid w \mid}^2$ such that $y_n w^T \phi(x_n) \geq 1 - \xi_n$ and $\xi_n \geq 0 \ \forall \ n$; slack variable $\xi_n$ will be $&gt; 0$ for misclassified examples and $C$ controls the trade-off between the slack variable penalty and the margin; $C$ can also be interpreted as a regularization parameter; when $C \rightarrow \infty$ we arrive again at the hard margin problem; <strong>support vectors</strong> are all points that are in the margin or misclassified;</p>
+
+<p><strong>Multiclass SMVs</strong>:</p>
+
+<ul>
+  <li><strong>One-Against-All</strong>: for $K$ classes, train $K$ SMVs to distinguish each class from the rest; drawback: there will be regions that are either claimed by no class or by multiple classes</li>
+  <li><strong>Pairwise Comparison</strong>: train $O(K^2)$ SMVs to compare each pair of classes; drawbacks: computationally expensive and it is not obvious how the best class should be picked</li>
+  <li><strong>Continuous Ranking</strong>: single SVM that returns a continuous value to rank all classes (most popular approach today); idea: instead of computing the sign of a linear separator, compare the values of linear functions for each class $k$; classification: $y_* = \arg\max_k w_k^T \phi(x_*)$</li>
+</ul>
+
+<h2 id="hidden-markov-models">Hidden Markov Models</h2>
+
+<p><strong>Key idea</strong>: make use of sequential correlations between classes</p>
+
+<p><strong>Assumptions</strong>:</p>
+
+<ul>
+  <li><strong>Stationary process</strong>: transition and emission distributions are identical at each time step: $P(x_t \mid y_t) = P(x_{t+1} \mid y_{t+1})$ and $P(y_t \mid y_{t-1}) = P(y_{t+1} \mid y_t) \ \forall \ t$</li>
+  <li><strong>Markovian process</strong>: next state is independent of previous states given the current state: $P(y_{t+1} \mid y_{t}, y_{t-1}, …, y_{1}) = P(y_{t+1} \mid y_{t}) \ \forall \ t$</li>
+</ul>
+
+<p><strong>Parametetrization</strong>:</p>
+
+<ul>
+  <li><strong>Initial state distribution</strong>: $\pi = P(y_1)$</li>
+  <li><strong>Transition distribution</strong>: $\theta = P(y_{t} \mid y_{t - 1})$</li>
+  <li><strong>Emission distribution</strong>: $\phi = P(x_t \mid y_t)$</li>
+</ul>
+
+<p><strong>Inference</strong>:</p>
+
+<ul>
+  <li><strong>Monitoring</strong>: $P(y_t \mid x_{1..t})$; forward algorithm has linear complexity in $t$</li>
+  <li><strong>Prediction</strong>: $P(y_{t+k} \mid x_{1..t})$; forward algorithm has linear compelxity in $t + k$</li>
+  <li><strong>Hindsight</strong>: $P(y_{k} \mid x_{1..t})$ where $k &lt; t$; forward-backward algorithm has linear complexity in $t$</li>
+  <li><strong>Most likely explanation</strong>: $\arg\max_{y_1,…y_t}P(y_{1..t} \mid x_{1..t})$; Viterbi algorithm has linear complexity in $t$</li>
+</ul>
+
+<p><strong>Maximum likelihood objectives</strong>:</p>
+
+<ul>
+  <li><strong>Supervised</strong>: $\pi’,\theta’,\phi’ = \arg\max_{\pi,\theta,\phi} P(y_{1..T},x_{1..T} \mid \pi,\theta,\phi)$</li>
+  <li><strong>Unsupervised</strong>: $\pi’,\theta’,\phi’ = \arg\max_{\pi,\theta,\phi} P(x_{1..T} \mid \pi,\theta,\phi)$</li>
+</ul>
+
+<h2 id="deep-neural-networks">Deep Neural Networks</h2>
+
+<p><strong>Definition</strong>: neural network with many hidden layers, providing a high level of expressivity (as the number of layers is increased, the number of units needed may decrease exponentially; example: parity function)</p>
+
+<p><strong>Problems</strong>:</p>
+
+<ul>
+  <li>
+    <p><strong>Gradient vanishing</strong>: deep neural networks of sigmoid and hyperbolic units often suffer from vanishing gradients (because the derivative of these activation functions is always $&lt; 1$); for this problem, two popular solutions exist:</p>
+
+    <ul>
+      <li><strong>Pre-training</strong> of weights</li>
+      <li>
+        <p>Other types of activation functions:</p>
+
+        <ul>
+          <li><strong>Rectified Linear Units</strong>:
+            <ul>
+              <li>Hard version: $g(x) = \max(0, x)$</li>
+              <li>Soft version (“Softplus”): $g(x) = \log(1 + e^x)$</li>
+            </ul>
+          </li>
+          <li><strong>Maxout Units</strong>: operate on vector-typed weights and output the maximum value of all the linear combinations of different subsets of input weights</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Overfitting</strong>: high expressivity increases the risk for overfitting; for this problem, three popular solutions exist:</p>
+
+    <ul>
+      <li><strong>Regularization</strong></li>
+      <li><strong>Data augmentation</strong> (to ensure that the number of parameters in the deep neural net is lower than the amount of data</li>
+      <li><strong>Dropout</strong>: random “drop” some (input and hidden) units from the network when training; during prediction, multiply the output of each unit by one minus its dropout probability; dropout can be seen as a form of ensemble learning for neural networks</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="convolutional-neural-networks">Convolutional Neural Networks</h2>
+
+<p><strong>Key idea</strong>: learn convolutional features in sequential, spatial or tensor data (e.g., pixels from an input image) in a flexible way. An equivariant representation of the learned model ensures (partial) translation invariance and handling of variable-length inputs.</p>
+
+<p><strong>Convolution</strong>: in neural networks, a convolution denotes the linear combination of a subset of units based on a specific pattern of weights. Convolutions are often combined with activation functions to produce a feature value.</p>
+
+<p><strong>Pooling</strong>: commutative mathematical operation that combines several units (e.g., max, sum, product, Euclidean norm etc.)</p>
+
+<p><strong>Convolutional Neural Network (CNN)</strong>: any ANN that includes an alternation of convolution and pooling layers where some of the convolution weights are shared. CNNs are also trained using backpropagation, but gradients of shared weights are combined into a single gradient.</p>
+
+<h2 id="recurrent-and-recursive-neural-networks">Recurrent and Recursive Neural Networks</h2>
+
+<p><strong>Key idea</strong>: facilitate processing of variable-length data by instantiating recurrent or recursive patterns in the network.</p>
+
+<p><strong>Recurrent Neural Network</strong>: outputs can be fed back to the network as inputs, creating a recurrent structure that can be unrolled to handle variable-length data. Recurrent neural networks are trained by backpropagation on the unrolled network, combining gradients of shared weights into a single gradient. The <strong>Encoder-Decoder</strong> model is a model mapping input sequences to output sequences (e.g., for machine translation, question answering, dialog).</p>
+
+<p><strong>Recursive Neural Network</strong>: generalize recurrent neural networks from chains to trees. Parse trees or dependency graphs are used as structures for recursive neural networks. The <strong>Long-Short-Term-Memory</strong> (LSTM) model is a special gated structure to control memorization and forgetting in recursive neural networks, facilitating long-term memory.</p>
+
+<h2 id="ensemble-learning">Ensemble Learning</h2>
+
+<p><strong>Key idea</strong>: combine several imperfect hypotheses into a better hypothesis</p>
+
+<p><strong>Assumptions</strong>:</p>
+
+<ul>
+  <li>each hypothesis $h_i$ makes error with probability $p$</li>
+  <li>the hypotheses are independent</li>
+</ul>
+
+<p><strong>Probabilities of making errors</strong> using majority vote of $n$ hypotheses under these assumptions*:</p>
+
+<ul>
+  <li>$k \leq n$ hypotheses make an error: $p_e(k) = \binom{n}{k} p^k (1-p)^{n-k}$</li>
+  <li>majority makes an error: $\sum_{k=\frac{1}{2}n}^n p_e(k)$</li>
+</ul>
+
+<p><strong>Weighted majority</strong>: as the above two assumptions are rarely true, hypotheses can be weighted lower if:</p>
+
+<ul>
+  <li>they are correlated</li>
+  <li>they have a lower classification performance</li>
+</ul>
+
+<p><strong>Boosting</strong>: technique to “boost” a weak learner by training multiple parametrizations of the same base model using weighted variations of the training set. One popular implementation is <strong>AdaBoost</strong>.</p>
+
+<ul>
+  <li>
+    <p><strong>Boosting algorithm</strong>:</p>
+
+    <ul>
+      <li>set all instance weights $w_x$ to 1</li>
+      <li>repeat until sufficient number of hypotheses:
+        <ul>
+          <li>$h_i \leftarrow$ learn(dataset, weights)</li>
+          <li>increase $w_x$ of misclassified instances $x$</li>
+        </ul>
+      </li>
+      <li>ensemble hypothesis is the weighted majority of all $h_i$ with weights $z_i$ proportional to the accuracy of $h_i$</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Requirement</strong>: a weak learner (i.e., a model producing hypotheses at least as good as random), e.g., rules of thumb, decision stumps (= decision trees of one node), perceptrons, naive bayes models</p>
+  </li>
+</ul>
+
+<p><strong>Bagging</strong> (= <strong>b</strong>ootstrap <strong>agg</strong>regation): technique to improve the accuracy of a weak learner by sampling a subset of both the samples and features to obtain independent classifiers; prediction is then done by a simple majority vote (without weighting). <strong>Random forests</strong> are bags of decision trees.</p>
+
+<ul>
+  <li>
+    <p><strong>Bagging algorithm</strong>:</p>
+
+    <ul>
+      <li>repeat until sufficient number $K$ of hypotheses:
+        <ul>
+          <li>bootstrap sampling: $D_k \leftarrow$ sample data subset</li>
+          <li>random projection: $F_k \leftarrow$ sample feature subset</li>
+          <li>training: $h_k \leftarrow$ learn($D_k$, $F_k$)</li>
+        </ul>
+      </li>
+      <li>ensemble hypothesis is the (non-weighted) majority of all $h_k$ for classification or the average output for regression</li>
+    </ul>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Boosting        </th>
+      <th>Bagging        </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Sampling</strong></td>
+      <td>reweight instances in dataset</td>
+      <td>sample subset of data and features</td>
+    </tr>
+    <tr>
+      <td><strong>Classifiers obtained</strong></td>
+      <td>complementary</td>
+      <td>independent</td>
+    </tr>
+    <tr>
+      <td><strong>Prediction</strong></td>
+      <td>weighted majority vote</td>
+      <td>majority vote (no weighting)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="stream-learning">Stream Learning</h2>
+
+<p><strong>Key idea</strong>: instead of training one hypothesis on a fixed dataset, continuously update a preliminary hypothesis as new data points arrive.</p>
+
+<p><strong>Challenges</strong>:</p>
+
+<ul>
+  <li>since the data is streaming, it cannot all be stored $\rightarrow$ old data cannot necessarily be revisited</li>
+  <li>time to process new incoming data must be constant and less than the arrival time for the next batch of data</li>
+</ul>
+
+<p><strong>Solutions</strong>:</p>
+
+<ul>
+  <li><strong>Bayesian Learning</strong>: lends itself naturally to stream learning because it stores information about training data in a product of likelihood distributions which can be updated incrementally every time a new data point comes in</li>
+  <li>
+    <p><strong>Stochastic Gradient Descent</strong> (SGD): for optimization-based learners like least square regression, logistic regression, maximum likelihood, support vector machines and neural networks, gradient descent can be implemented as an incremental approach where the model parameters are updated based on every incoming data point $(x_n, y_n)$ in isolation (as opposed to all existing data points at once), weighting the corresponding loss gradient by a data point specific learning rate $\alpha_n$.</p>
+
+    <ul>
+      <li>
+        <p><strong>Robins-Monro conditions</strong>: convergence is only guaranteed if the learning rate staisfies the Robins-Monro conditions of $\sum_{\alpha_n=1}^\infty \alpha_n = \infty$ and $\sum_{\alpha_n=1}^\infty \alpha_n^2 &lt; \infty$; an example of such an update rule for learning rate $\alpha_n$ that satisfies these conditions is: $\alpha_n = \frac{1}{(\tau + n)^k}$ where $\tau \geq 0$ and $k \in (0.5, 1]$</p>
+      </li>
+      <li>
+        <p><strong>AdaGrad</strong>: form of SDG that is often used in backpropagation. In AdaGrad, the model parameters $\theta$ are updated as follows: $\theta_m^{(n+1)} \leftarrow \theta_m^{(n)} - \frac{\alpha}{\tau + \sqrt{s_m^{(n)}}} \frac{\delta Loss(x_n; y_n; \theta^{(n)})}{\delta \theta_m^{(n)}}$ where $s_m^{(n)} \leftarrow s_m^{(n - 1)} + (\frac{\delta Loss(x_n; y_n; \theta^{(n)})}{\delta \theta_m^{(n)}})^2$</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/machine-learning/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/machine-learning/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/machine-learning/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+        <p class="byline"><strong>Machine Learning</strong> was published on <time datetime="2016-02-06T00:00:00-05:00">February 06, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://localhost:4000/experiment-design-and-analysis/" title="Experiment Design & Analysis">Experiment Design & Analysis</a></li>
+    
+      <li><a href="http://localhost:4000/ethical-dilemmas-in-artificial-intelligence/" title="Ethical Dilemmas in Artificial Intelligence">Ethical Dilemmas in Artificial Intelligence</a></li>
+    
+      <li><a href="http://localhost:4000/artificial-intelligence/" title="Artificial Intelligence">Artificial Intelligence</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-41409977-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+<script>
+$('.force-full-width-keep-aspect-ratio').each(function() {
+  var iFrame = $(this);
+  var originalWidth = $(this).width();
+  var originalHeight = $(this).height();
+  iFrame.css('width', '100%');
+  $(window).resize(function() {
+    iFrame.css('height', Math.ceil(iFrame.width() / originalWidth * originalHeight * 0.975) + 'px');
+  });
+});
+$(window).resize();
+</script>
+
+</body>
+</html>

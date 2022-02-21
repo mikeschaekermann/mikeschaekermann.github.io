@@ -1,0 +1,1065 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Artificial Intelligence &#8211; Mike Schaekermann</title>
+<meta name="description" content="
+  
+     Overview
+  
+
+
+  
+
+
+
+">
+<meta name="keywords" content="python, notebook, Mike, Hardy, Schäkermann, Schaekermann, Shaekermann, Shaekerman, Shakerman">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Artificial Intelligence">
+<meta name="twitter:description" content="
+  
+     Overview
+  
+
+
+  
+
+
+
+">
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Artificial Intelligence">
+<meta property="og:description" content="
+  
+     Overview
+  
+
+
+  
+
+
+
+">
+<meta property="og:url" content="http://localhost:4000/artificial-intelligence/">
+<meta property="og:site_name" content="Mike Schaekermann">
+
+<meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/artificial-intelligence/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Mike Schaekermann Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000/">Mike Schaekermann</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://localhost:4000/bio-and-research/" >Bio & Research</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/projects/" >Projects</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/publications/" >Publications</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/presentations/" >Presentations</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/notes/" >Notes</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <a href="http://localhost:4000">
+  
+	  <img src="http://localhost:4000/images/mike-schaekermann-photo-5.jpg" class="bio-photo" alt="Mike Schaekermann bio photo">
+  
+  </a>
+
+  <a href="http://localhost:4000"><h3 itemprop="name">Mike Schaekermann</h3></a>
+  <p>Computer Science, Ph.D.<br>Engineering, B.Sc.<br>Medicine, State Exam I</p>
+  <a href="mailto:mikeschaekermann@gmail.com" class="author-social" target="_blank"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
+  
+  
+  <a href="https://scholar.google.com/citations?user=mwj_ldQAAAAJ" class="author-social" target="_blank"><i class="fa fa-fw fa-google"></i> Google Scholar</a>
+  
+  <a href="http://linkedin.com/in/mschaeke" class="author-social" target="_blank"><i class="fa fa-fw fa-linkedin-square"></i> LinkedIn</a>
+  
+  
+  
+  <a href="http://github.com/mikeschaekermann" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/artificial-intelligence/" rel="bookmark" title="Artificial Intelligence">Artificial Intelligence</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+      <section id="table-of-contents" class="toc">
+  <header>
+    <h3><i class="fa fa-book"></i> Overview</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#search" id="markdown-toc-search">Search</a></li>
+  <li><a href="#uninformed-search" id="markdown-toc-uninformed-search">Uninformed Search</a></li>
+  <li><a href="#informed-search" id="markdown-toc-informed-search">Informed Search</a></li>
+  <li><a href="#constraint-satisfaction-problems" id="markdown-toc-constraint-satisfaction-problems">Constraint Satisfaction Problems</a></li>
+  <li><a href="#local-search" id="markdown-toc-local-search">Local Search</a></li>
+  <li><a href="#planning" id="markdown-toc-planning">Planning</a></li>
+  <li><a href="#adversarial-search" id="markdown-toc-adversarial-search">Adversarial Search</a></li>
+  <li><a href="#decision-making" id="markdown-toc-decision-making">Decision Making</a></li>
+  <li><a href="#markov-decision-processes" id="markdown-toc-markov-decision-processes">Markov Decision Processes</a></li>
+  <li><a href="#reinforcement-learning" id="markdown-toc-reinforcement-learning">Reinforcement Learning</a></li>
+  <li><a href="#bayes-nets" id="markdown-toc-bayes-nets">Bayes Nets</a></li>
+  <li><a href="#decision-networks" id="markdown-toc-decision-networks">Decision Networks</a></li>
+  <li><a href="#multiagent-systems" id="markdown-toc-multiagent-systems">Multiagent Systems</a></li>
+  <li><a href="#statistical-learning" id="markdown-toc-statistical-learning">Statistical Learning</a></li>
+  <li><a href="#expectation-maximization" id="markdown-toc-expectation-maximization">Expectation Maximization</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<hr />
+<p>These notes are a result of my preparation for a midterm exam in <a href="https://cs.uwaterloo.ca/~klarson/">Kate Larson</a>’s introductory <a href="https://cs.uwaterloo.ca/~klarson/teaching/W16-486/">course on Artificial Intelligence</a> at University of Waterloo in the winter 2016 term. The contents are therefore based on the corresponding presentation slides available online.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><strong>Definition dimensions</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Reasoning</th>
+      <th>Behavior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Human-like</strong></td>
+      <td>Thinking like a human</td>
+      <td>Acting like a human</td>
+    </tr>
+    <tr>
+      <td><strong>Rational</strong></td>
+      <td>Thinking rationally</td>
+      <td>Acting rationally (course focuses on this field)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Rational agents</strong>:</p>
+
+<ul>
+  <li>Agent: entity that perceives and acts</li>
+  <li>Rationality: acting optimally towards a specific goal in a given environment</li>
+  <li>Task environment: performance measure, environment, sensors and actuators</li>
+</ul>
+
+<p><strong>Properties of the Task Environment</strong>:</p>
+
+<ul>
+  <li>Fully observable vs Partially observable</li>
+  <li>Deterministic vs Stochastic</li>
+  <li>Episodic vs Dynamic</li>
+  <li>Discrete vs Continuous</li>
+  <li>Single agent vs Multi agent</li>
+</ul>
+
+<h2 id="search">Search</h2>
+
+<p><strong>Task environment</strong>:</p>
+
+<ul>
+  <li>Fully observable</li>
+  <li>Deterministic</li>
+  <li>Episodic</li>
+  <li>Discrete</li>
+  <li>Single Agent</li>
+</ul>
+
+<h2 id="uninformed-search">Uninformed Search</h2>
+
+<p><strong>Techniques</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Depth First</th>
+      <th>Breadh First</th>
+      <th>Iterative Deepening</th>
+      <th>Uniform Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>acronym</strong></td>
+      <td>DFS</td>
+      <td>BFS</td>
+      <td>IDS</td>
+      <td>UCS</td>
+    </tr>
+    <tr>
+      <td><strong>dequeuing method</strong></td>
+      <td>LIFO</td>
+      <td>FIFO</td>
+      <td>alternating LIFO and FIFO</td>
+      <td>minimal backward cost of path</td>
+    </tr>
+    <tr>
+      <td><strong>complete?</strong></td>
+      <td>no</td>
+      <td>yes</td>
+      <td>yes</td>
+      <td>if all $\epsilon &gt; 0$ and $C^*&lt;\infty$</td>
+    </tr>
+    <tr>
+      <td><strong>optimal?</strong></td>
+      <td>no</td>
+      <td>for ident. cost</td>
+      <td>for ident. cost</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><strong>time complexity</strong></td>
+      <td>$O(b^m)$</td>
+      <td>$O(b^d)$</td>
+      <td>$O(b^d)$</td>
+      <td>$O(b^{C^*/\epsilon})$</td>
+    </tr>
+    <tr>
+      <td><strong>space complexity</strong></td>
+      <td>$O(bm)$</td>
+      <td>$O(b^d)$</td>
+      <td>$O(bd)$</td>
+      <td>$O(b^{C^*/\epsilon})$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Variables</strong>:</p>
+
+<ul>
+  <li>$b$: branching factor of search tree</li>
+  <li>$m$: maximum depth of search tree</li>
+  <li>$d$: depth of shallowest goal node</li>
+  <li>$C^*$: cheapest solution cost</li>
+  <li>$\epsilon$: minimum edge cost</li>
+</ul>
+
+<p><strong>Helper technique</strong>:</p>
+
+<p>If the state space graph is cyclic the search tree will be infinite. In this case, a “closed list” may be used to keep track of nodes which have already been expanded in order to avoid infinite traversals of cyclic structures</p>
+
+<h2 id="informed-search">Informed Search</h2>
+
+<p><strong>Heuristic function</strong>: function $h(n)$ that estimates the cost of reaching a goal from a given state (requirement: $h(n_{goal})=0$)</p>
+
+<p><strong>Admissibility</strong>: a heuristic is admissible if $0 \leq h(n) \leq h’(n)$ where $h’(n)$ is the true shortest path from node $n$ to one of the goal states</p>
+
+<p><strong>Consistency</strong>: a heuristic is consistent if $h(n) \leq cost(n,n’)+h(n’)$</p>
+
+<p><strong>Backward cost</strong>: function $g(n)$ that tells how expensive it was to reach node $n$ from the start node</p>
+
+<p><strong>Estimate of cost of entire path</strong>: function $f(n)=g(n)+h(n)$</p>
+
+<p><strong>Greedy Best First Search</strong>: expand the most promising node according to the heuristic only; only complete when used with a closed-list</p>
+
+<p><strong>Techniques</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Greedy Best First</th>
+      <th>A*</th>
+      <th>Iterative Deepening A*</th>
+      <th>Simplified Memory-bounded A*</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>acronym</strong></td>
+      <td>GBFS</td>
+      <td>A*</td>
+      <td>IDA*</td>
+      <td>SMA*</td>
+    </tr>
+    <tr>
+      <td><strong>dequeuing method</strong></td>
+      <td>minimal $h(n)$</td>
+      <td>minimal $f(n)$</td>
+      <td>minimal $f(n)$ with f-limit</td>
+      <td>see A*</td>
+    </tr>
+    <tr>
+      <td><strong>complete?</strong></td>
+      <td>no</td>
+      <td>yes</td>
+      <td>see A*</td>
+      <td>if memory needed for path to shallowest goal node $\leq$ memory size</td>
+    </tr>
+    <tr>
+      <td><strong>optimal?</strong></td>
+      <td>no</td>
+      <td>only for graph-search and a consistent $h(n)$</td>
+      <td>see A*</td>
+      <td>see above</td>
+    </tr>
+    <tr>
+      <td><strong>time complexity</strong></td>
+      <td>$O(b^m)$</td>
+      <td>$O(b^m)$</td>
+      <td>see A*</td>
+      <td>see A*</td>
+    </tr>
+    <tr>
+      <td><strong>space complexity</strong></td>
+      <td>$O(b^m)$</td>
+      <td>$O(b^m)$</td>
+      <td>less than A*</td>
+      <td>will drop nodes from memory if it runs out of memory</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="constraint-satisfaction-problems">Constraint Satisfaction Problems</h2>
+
+<p>A special subset of search problems where:</p>
+
+<ul>
+  <li><strong>States</strong> are defined by (continuous or discrete) <strong>variables</strong> $X_i$ with values from (finite or infinite) <strong>domains</strong> $D_i$</li>
+  <li><strong>Goal test</strong> is a set of (unary, binary, higher-order or soft) <strong>constraints</strong> specifying allowable combinations of values for subsets of variables</li>
+  <li><strong>Commutativity</strong> is in place, i.e., the order of actions taken does not effect the outcome; variables can be assigned in any order</li>
+</ul>
+
+<p><strong>Formal abstraction</strong> as a search problem:</p>
+
+<ul>
+  <li><strong>States</strong>: partial assignments of values to variables</li>
+  <li><strong>Initial State</strong>: empty assignment ${}$</li>
+  <li><strong>Successor Function</strong>: assign a value to an unassigned variable</li>
+  <li><strong>Goal Test</strong>: the current assignment is complete and satisfies all constraints</li>
+</ul>
+
+<p><strong>Backtracking</strong>:</p>
+
+<ul>
+  <li>Select unassigned variable $X$ and try out first valid assignment $x_i$</li>
+  <li>If a valid assignment is found move to next variable</li>
+  <li>If no valid assignment is found back up and try a different assignment for $X$</li>
+</ul>
+
+<p><strong>Improvements</strong> to backtracking using:</p>
+
+<ul>
+  <li><strong>Ordering</strong>:
+    <ul>
+      <li><strong>Most Constrained Variable</strong>: choose the variable which has the fewest legal moves</li>
+      <li><strong>Most Constraining Variable</strong>: choose variable with most constraints on unassigned variables (tie-breaker for most constrained variable)</li>
+      <li><strong>Least Constraining Value</strong>: given a variable, choose the value that rules out the fewest values in unassigned variables</li>
+    </ul>
+  </li>
+  <li><strong>Filtering</strong>:
+    <ul>
+      <li><strong>Forward Checking</strong>: keep track of remaining legal values for unassigned variables and terminate search if any variable has no legal values</li>
+      <li><strong>Arc Consistency</strong>: given two domains $D_1$ and $D_2$, an arc from $D_1$ to $D_2$ is consistent if, for all $x$ in $D_1$, there is a $y$ in $D_2$ such that $x$ and $y$ are consistent</li>
+    </ul>
+  </li>
+  <li><strong>Structure</strong>:
+    <ul>
+      <li><strong>Independent Subproblems</strong>: break down constraint graph into connected components and solve them separately; can reduce time complexity from $O(d^n)$ to $O(d^c n/c)$ where $d$ is the domain size, $n$ is the total number of variables and $c$ is the average number of variables per component</li>
+      <li><strong>Tree Structures</strong>: perform topological sort; back to front: make mutually consistent between children and parents; front to back: assign values consistent with parent; time complexity is $O(nd^2)$</li>
+      <li><strong>Cutsets</strong>: choose a subset $S$ of variables such that the constraint graph becomes a tree when $S$ is removed ($S$ is the cycle subset); for each possible valid assignment to the variables of $S$: remove from the domains of remaining variables all values that are inconsistent with $S$; if the remaining CSP has a solution, return it; time complexity is $O(d^c(n-c)d^2)$ where $c$ is the size of the cutset</li>
+      <li><strong>Tree Decomposition</strong>: decompose graph into subproblems that constitute a tree structure; solve each subproblem independently; solve constraints connecting the subproblems using the tree-based algorithm; time complexity is $O(nd^w)$ where $w$ is the size of the largest subproblem</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="local-search">Local Search</h2>
+
+<p>For many problems, the search path is unimportant. Instead, oftentimes it is simply important to find a viable/good comnbinatorial solution without knowing the path to get there.</p>
+
+<p><strong>Iterative Improvement</strong></p>
+
+<ul>
+  <li><strong>Approach</strong>:
+    <ul>
+      <li>Start at some random point</li>
+      <li>Generate all possible points to move to (i.e., the moveset)</li>
+      <li>If the set is empty, restart</li>
+      <li>If the set is not empty, choose point from it and move to it</li>
+    </ul>
+  </li>
+  <li><strong>Methods</strong>:
+    <ul>
+      <li><strong>Hill Climbing / Gradient Descent</strong>
+        <ul>
+          <li><strong>Idea</strong>: always take a step in the direction that improves the current solution value the most</li>
+          <li><strong>Pros:</strong>
+            <ul>
+              <li>straightforward implementation</li>
+              <li>low memory consumption</li>
+            </ul>
+          </li>
+          <li><strong>Cons</strong>:
+            <ul>
+              <li>not complete</li>
+              <li>not optimal (can get stuck in local optima/plateaus)</li>
+            </ul>
+          </li>
+          <li><strong>Modifications</strong>:
+            <ul>
+              <li>allow sideway moves to escape plateaus</li>
+              <li>random restarts to escape local optima</li>
+              <li>random selection of next move, but only take the step if it improves the solution</li>
+              <li>allow bad moves to escape local optima (see simulated annealing)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Simulated Annealing</strong>
+        <ul>
+          <li><strong>Idea</strong>:
+            <ul>
+              <li>choose random move from moveset</li>
+              <li>if it improves the solution make the move</li>
+              <li>if not (bad move) take it anyways with probability $p$</li>
+              <li>$p=e^\frac{V(S_i)-V(S)}{T}$ (Boltzmann distribution)</li>
+              <li>$T$ is a temperature parameter which will decrease over time:
+                <ul>
+                  <li>exploration phase when $T$ is high (random walk)</li>
+                  <li>exploitation phase when $T$ is low (randomized hill climbing)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><strong>Properties</strong>:
+            <ul>
+              <li>optimal if $T$ decreases slowly enough</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Genetic Algorithms</strong></p>
+
+<ul>
+  <li><strong>Idea</strong>: simluation of natural evolutionary processes to approach a global optimum</li>
+  <li><strong>Requirements</strong>:
+    <ul>
+      <li><strong>Encoding representation</strong> of individuals (normally a bitstring)</li>
+      <li><strong>Fitness function</strong> to evaluate the quality of an individual</li>
+      <li><strong>Operations</strong>:
+        <ul>
+          <li><strong>Selection</strong>: selection of candidates for reproduction may be…
+            <ul>
+              <li>fitness-proportionate (can lead to overcrowding)</li>
+              <li>tournament-based (select two individuals at random and, with constant probability, choose the fitter one)</li>
+              <li>rank-based</li>
+              <li>softmax-based</li>
+            </ul>
+          </li>
+          <li><strong>Crossover</strong></li>
+          <li><strong>Mutation</strong> (normally done with a low probability)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Algorithm</strong>:
+    <ul>
+      <li>Initialize population randomly</li>
+      <li>Compute fitness for each individual</li>
+      <li>$N$ times do:
+        <ul>
+          <li>Select two parents</li>
+          <li>Crossover the parents to create new child</li>
+          <li>With low probability, mutate child</li>
+          <li>Add child to population</li>
+        </ul>
+      </li>
+      <li>Return “fittest” individual in population</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="planning">Planning</h2>
+
+<p><strong>Purpose</strong>: construct a sequence of actions for performing some task / reaching some goal</p>
+
+<p><strong>Stanford Research Institute Problem Solver (STRIPS)</strong> language:</p>
+
+<ul>
+  <li><strong>Domain</strong>: set of typed, concrete objects (no variables allowed)</li>
+  <li><strong>States</strong>: conjunctions of first-order predicates over objects (no variables allowed)</li>
+  <li><strong>Goals</strong>: conjunctions of <strong>positive</strong> ground literals (no negative ground literals allowed)</li>
+  <li><strong>Closed-World Assumption</strong>: any conditions not mentioned in a state are assumed to be false (see Frame Problem)</li>
+  <li><strong>Actions</strong>: tuples of preconditions (conjunction of function-free positive literals) and effects (description of how the state changes when the action is executed, sometimes defined as <strong>delete- and add-lists</strong>)</li>
+</ul>
+
+<p><strong>Planning as Search</strong>: planning is a specific type of search in which the search space is reduced significantly by the use of a highly structured and restriced planning language (e.g., Planning Domain Definition Language <strong>PDDL</strong>, a generalization of STRIPS):</p>
+
+<ul>
+  <li>Progression Planning (Forward Planning): classical search which can strongly benefit from good heuristics</li>
+  <li>Regression Planning (Backward Planning): <strong>start from goal state</strong> and find a sequence of <strong>consistent</strong> (i.e., must not undo any desired state), <strong>relevant</strong> (i.e., must achieve one of the conjuncts of the goal) actions</li>
+</ul>
+
+<p><strong>Frame Problem</strong>: when the consequences of an action are described the frame problem poses the question what has happened to components of the world that were not mentioned in this description</p>
+
+<p><strong>Sussman’s Anomaly</strong>: stack-based regression planning might not work if a problem is decomposed into sub-problems that are interdependent</p>
+
+<p><strong>Planning Graphs</strong>: a form of representation of a planning problem</p>
+
+<ul>
+  <li><strong>Levels</strong>:
+    <ul>
+      <li>$S_0$ has a node for each literal that holds in the initial state</li>
+      <li>$A_0$ has a node for each action that could be taken in $S_0$</li>
+      <li>$S_i$ contains all literals that could hold given the actions taken in level $A_{i-1}$</li>
+      <li>$A_i$ contains all actions whose preconditions could hold in $S_i$</li>
+    </ul>
+  </li>
+  <li><strong>Persistence Actions (no-op)</strong>: literal will persist until an action negates it</li>
+  <li><strong>Mutual Exclusion (Mutex) links</strong>: record conflicts between actions or states that cannot occur together for one of the following reasons:
+    <ul>
+      <li>Inconsistent Effects (actions)</li>
+      <li>Interference (actions)</li>
+      <li>Competing Needs (actions)</li>
+      <li>Inconsistent Support (states)</li>
+    </ul>
+  </li>
+  <li><strong>Heuristics</strong>:
+    <ul>
+      <li>Level-cost: for a single goal literal, the level in which it appears first</li>
+      <li>Max-level: $argmax_i levelcost(g_i)$</li>
+      <li>Sum-level: $\sum_i levelcost(g_i)$ (may be inadmissible!)</li>
+      <li>Set-level: for multiple goal literals, the first level where all appear and are not mutex (dominates max-level)</li>
+    </ul>
+  </li>
+  <li><strong>GraphPlan</strong>:
+    <ul>
+      <li>Forward construction of the planning graph (in polynomial time)</li>
+      <li>Solution extraction (backward search through the graph, may be intractable because PSPACE-complete)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="adversarial-search">Adversarial Search</h2>
+
+<p><strong>Task environment</strong>: multi-agent</p>
+
+<p><strong>Types of Games</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Perfect Information</th>
+      <th>Imperfect Information</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Deterministic</strong></td>
+      <td>Chess</td>
+      <td>Other Card Games</td>
+    </tr>
+    <tr>
+      <td><strong>Stochastic</strong></td>
+      <td>Rolling the Dice</td>
+      <td>Poker</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Zero-sum Perfect Information Games</strong>:</p>
+
+<ul>
+  <li><strong>Agents</strong>:
+    <ul>
+      <li>MAX: aims to maximize the utility of the terminal node (i.e., win the game)</li>
+      <li>MIN: aims to minimize the utility of the terminal node (i.e., make MAX lose the game)</li>
+    </ul>
+  </li>
+  <li><strong>Goal</strong>: finding an optimal strategy for MAX (i.e., a strategy that leads to outcomes at least as good for MAX as any other strategy, given that MIN is playing optimally)</li>
+  <li><strong>Minimax</strong>: a search algorithm to extract the optimal strategy
+    <ul>
+      <li>Complete if tree is finite</li>
+      <li>Time complexity: $O(b^m)$</li>
+      <li>Space complexity: $O(bm)$ (DFS)</li>
+    </ul>
+  </li>
+  <li><strong>Alpha-Beta Pruning</strong>: elimination of large parts of the minimax search tree
+    <ul>
+      <li>$\alpha$: value of best choice (highest value) we have found so far on path for MAX</li>
+      <li>$\beta$: value of best choice (lowest value) we have found so far on path for MIN</li>
+      <li>Prune branches that are worse than $\alpha$ or $\beta$ for MAX and MIN respectively</li>
+    </ul>
+  </li>
+  <li><strong>Evaluation Functions</strong>: compute expected utility for non-terminal states (and actual utility for terminal states) to allow for real-time decisions instead of going down the search tree for part of the search space</li>
+</ul>
+
+<p><strong>Stochastic Games</strong>:</p>
+
+<ul>
+  <li><strong>Agents</strong>:
+    <ul>
+      <li>MIN and MAX like above</li>
+      <li>CHANCE</li>
+    </ul>
+  </li>
+  <li><strong>Expectiminimax</strong>:
+    <ul>
+      <li>CHANCE will compute the expected value</li>
+      <li>MIN will compute the minimum</li>
+      <li>MAX will compute the maximum</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="decision-making">Decision Making</h2>
+
+<p>A decision problem under uncertainty is $&lt;D,S,U,P&gt;$ where:</p>
+
+<ul>
+  <li>$D$ is a set of decisions</li>
+  <li>$S$ is a set of states</li>
+  <li>$U$ is a function that maps a real utility value to every state $\in S$ (unique up to a positive affine transformation)</li>
+  <li>$P$ is a probability distribution which will tell how likely it is that decision $d$ will lead to state $s$</li>
+</ul>
+
+<p><strong>Expected Utility</strong>: $EU(d)=\sum_{s \in S}P_d(s)U(s)$</p>
+
+<p><strong>Solution</strong>: any $d’ \in D$ such that $EU(d’) \geq EU(d)$ for all $d \in D$</p>
+
+<p><strong>Policies</strong>: for a sequence of actions, a policy assigns an action decision to each state; policies may be obtained by bottom-up analysis of decision trees, incorporating a NATURE agent, representing probability distributions of outcomes for actions, taken in states</p>
+
+<h2 id="markov-decision-processes">Markov Decision Processes</h2>
+
+<p><strong>Markov Chain</strong>:</p>
+
+<ul>
+  <li>A set of probability distributions of the next state given the current state (may be represented as a <strong>transition probability matrix</strong>)</li>
+  <li><strong>History Independence (Markov Property)</strong>: the probability of reaching state $s_{t+1}$ from state $s_t$ does not depend on how the agent got to the current state $s_t$</li>
+  <li><strong>Discounted sum of future rewards</strong> $U’(s)$ of state $s$: is the sum of the reward for state $s$ and of all future rewards that can be reached from state $s$ where the utility of each future state $x$ which is $n$ steps away will be discounted by a factor of $\gamma^n$, $\gamma$ being a constant discount factor with $0 &lt; \gamma &lt; 1$:
+    <ul>
+      <li>$U’(s_i)=r_i+\gamma\sum_{j=1}^nP_{ij}U’(s_j)$</li>
+      <li>$U=(I-\gamma P)^{-1}R$ ($P$ being the transition probability matrix and $R$ being the rewards vector)</li>
+      <li>This system may be solved directly by <strong>matrix inversion</strong> or, if this is too costly, approximated by <strong>Value Iteration</strong>:
+        <ul>
+          <li>Compute $U^n(s)$ values for each state $s$ and step length $n$ (starting with $n=1$)</li>
+          <li>Use dynamic programming by computing $U^n(s)$ using the previously computed and stored values of $U^{n-1}(s)$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Markov Decision Process (MDP)</strong>: similar to a Markov Chain, but incorporating the notion of actions. In every state $s_i$, the agent may decide to take an action $a_k$ which may lead to state $s_j$ with probability $P(s_j \mid s_i,a_k)$</p>
+
+<ul>
+  <li><strong>Expected discounted sum of future rewards</strong> assuming the optimal policy and a step length of $t$, starting from state $s_i$, $V^t(s_i)$:
+    <ul>
+      <li>$V^{t+1}(s_i)=max_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_j)$</li>
+      <li>$V^*(s_i)$ is $V^t(s_i)$ with $t=\infty$</li>
+    </ul>
+  </li>
+  <li><strong>Policy Optimization</strong>: for every MDP, there is an optimal policy (i.e., a mapping from state to action) such that for every possible start state, there is no better option than to follow the policy; it can be found in polynomial time (in the number of states) by:
+    <ul>
+      <li><strong>Value Iteration</strong>: iteratively compute $V^*(s_i)$ for all $s_i$ and select the best action $k$ according to $argmax_k r_i+\gamma\sum_{j=1}^nP_{ij}^kV^t(s_j)$</li>
+      <li><strong>Policy Iteration</strong>:
+        <ul>
+          <li><strong>Policy Evaluation</strong>: given policy $\pi$, compute $V_i^\pi$ for all states $s_i$</li>
+          <li><strong>Policy Improvement</strong>: calculate a new policy $\pi_{i+1}$ using 1-step lookahead</li>
+          <li>Repeat both steps until $V^\pi(s_i)$ converges</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Partially Observable MDP (POMDP)</strong>: in a POMDP, the agent does not know for sure what state it is in; therefore, it also stores a set of observations $O={o_1,…,o_k}$, an observation model $P(o_t \mid s_t)$ and a belief state $b$ which is a probability distribution over all possible states; $b(s)$ is the probability assigned to state $s$; here, a policy is a mapping from a belief state to an action; generally, finding an approximately optimal policy is PSPACE-hard</p>
+
+<h2 id="reinforcement-learning">Reinforcement Learning</h2>
+
+<p><strong>Task Environment</strong>:</p>
+
+<ul>
+  <li>Fully observable</li>
+  <li>Stochastic</li>
+  <li>Dynamic</li>
+  <li>Discrete</li>
+  <li>Single Agent</li>
+</ul>
+
+<p><strong>Characteristics</strong>:</p>
+
+<ul>
+  <li>the agent learns a policy to act with the aim to maximize the resulting reinforcement signals (numerical reward)</li>
+  <li>the reinforcement signals may be delayed (credit assignment problem)</li>
+  <li>the goal is to find the optimal policy, but we start without knowing the underlying Markov Decision Process (MDP), i.e., the rewards and transition probabilities are not known</li>
+  <li>formally, we can describe this as the following problem: learn policy $\pi:S \mapsto A$ that maximizes $E[r_t+\gamma r_{t+1}+\gamma^2r_{t+2}+…]$ from any starting state $\in S$</li>
+</ul>
+
+<p><strong>Forms of Reinforcement Learning</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Passive (evaluate a given policy)</th>
+      <th>Active (learning to act optimally)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Model-based</strong></td>
+      <td><strong>Adaptive Dynamic Programming</strong> (ADP): evaluate a given policy, based on observations after running the policy a number of times</td>
+      <td>${}$</td>
+    </tr>
+    <tr>
+      <td><strong>Model-free</strong></td>
+      <td><strong>Temporal Difference</strong>: use observed transitions to adjust values of observed states so that they satisfy Bellman equations according to the following update rule: $V^\pi(s_i) \rightarrow V^\pi(s_i) + \alpha \sum_{m=i}^\infty \lambda^{m-i} [r(s_m) + \gamma V^\pi(s_{m+1} - V^\pi(s_{m})]$; empirically, $\lambda=0.7$ works well</td>
+      <td><strong>Q-Learning</strong>: learn a function $Q: SxA \rightarrow R$, then, if the Q values are learned correctly, the optimal policy is defined as $\pi’(s)=\arg!\max_aQ(s,a)$ and the expected utility is defined as $V’(s)=\max_aQ(s,a)$; algorithm: loop over the following steps: 1. select action $a$ with probability $p(a)=\frac{e^{Q(s,a)/T}}{\sum_ae^{Q(s,a)/T}}$ (Boltzmann exploration); 2. receive immediate reward $r$; 3. observe new state $s’$; 4. update according to the following update rule: $Q(s,a) = Q(s,a) + \alpha(r + \gamma \max_{a’}Q(s’,a’) - Q(s,a))$; 4. set $s = s’$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Reward Shaping</strong>: consider delays in rewards and add additional rewards for “making progress” using domain knowledge about important steps for reaching the final reward; this bears the risk of the agent optimizing for the pseudo rewards</p>
+
+<h1 id="bayes-nets">Bayes Nets</h1>
+
+<p>A Bayes Net (BN) is a <strong>graphical representation</strong> of direct dependencies over a set of variables + a set of <strong>conditional probability distributions</strong> (CPTs) quantifying the strength of the influences.</p>
+
+<p>The structure of the BN means: every $X_i$ is conditionally independent of all of its nondescendents given its parents.</p>
+
+<p>Determining conditional independence in a Bayes net:</p>
+
+<ul>
+  <li>
+    <p><strong>Non-descendents</strong>: a node is conditionally independent of its non-descendents, given its parents</p>
+  </li>
+  <li>
+    <p><strong>Markov blanket</strong>: a node is conditionally independent of all other nodes in the network, given its parents, its children and its children’s parents</p>
+  </li>
+  <li>
+    <p><strong>D-separation</strong>: two nodes are conditionally independent from each other, given evidence E if E blocks all undirected paths P between the two nodes (E blocks p in P if there is a node z in p which is also in E and where at least one arc in p goes out of z, or if there is a node z in p two arcs in p go into with neither z nor any of its descendents being in E)</p>
+  </li>
+</ul>
+
+<p><strong>Inference in BNs</strong>:</p>
+
+<ul>
+  <li>Forward with upstream evidence</li>
+  <li>Backward with downstream evidence</li>
+</ul>
+
+<p><strong>Variable elimination</strong>: algorithm, representing conditional probability tables (CPTs) in BNs as factors and defining ways to answer arbitrary queries involving the variables of a given BN in an algorithmic manner. Solving queries is linear in the number of variables (i.e., nodes) in the BN and exponential in the size of the largest CPT.</p>
+
+<h1 id="decision-networks">Decision Networks</h1>
+
+<p>Decision Networks provide a representation for decision making, consisting of:</p>
+
+<ul>
+  <li><strong>random variables</strong> like in Bayes Nets</li>
+  <li><strong>decision variables</strong> controlled by the agent, parent nodes reflect information available at time of decision; decisions are made in sequence; information available to previous decisions remains available for current decision;</li>
+  <li><strong>utility variables</strong> stating how good certain states are, value only depends on state of parents, generally only one utility node per network</li>
+</ul>
+
+<p><strong>Policies</strong>: a policy $\delta$ is a set of mappings $\delta_i$, one for each decision node $D_i$, associating a decision for each parent assignment of $D_i$. The value of a policy $\delta$ is the expected utility given that decision nodes are executed according to $\delta$.</p>
+
+<p><strong>Optimal Policy</strong>: an optimal policy $\delta’$ is such that $EU(\delta’) \geq EU(\delta) \forall \delta$; optimal policies can be constructed working from the last decision backwards</p>
+
+<p><strong>Value of Information</strong>: information has value to the extent that it is likely to cause a change of plan and that the new plan will be better than the old plan; for any single-agent decision-theoretic scenario, the value of information is non-negative!</p>
+
+<h1 id="multiagent-systems">Multiagent Systems</h1>
+
+<p><strong>Game Theory</strong>: describes how self-interested agents should behave; per definition, it is a formal way to analyze interactions among a group of rational agents that behave strategically:</p>
+
+<ul>
+  <li><strong>Normal form game</strong>: also known as matrix or strategic game, assumes that agents are playing simultaneously
+    <ul>
+      <li><strong>Ingredients</strong>:
+        <ul>
+          <li>$I$: set of agents ${1, …, N}$</li>
+          <li>$A_i$: set of actions for each agent ${a_i^1, a_i^2, …, a_i^m}$</li>
+          <li>Outcome of a game, defined by a profile: $o = (a_1, …, a_n)$</li>
+          <li>Utility functions: $u_i: O \rightarrow \mathbb{R}$</li>
+        </ul>
+      </li>
+      <li><strong>Zero-sum games</strong>: $\sum_{i=1}^N u_i(o) = 0 \forall o$</li>
+      <li><strong>Dominant strategies</strong>: strategy $a_i’$ strictly dominates strategy $a_i$ if $u_i(a_i’,a_{-i}) &gt; u_i(a_i,a_{-i}) \ \forall \ a_{-i}$; dominated strategies will never be played!</li>
+      <li><strong>Nash Equlibrium (NE)</strong>:
+        <ul>
+          <li><strong>Pure NE</strong>: an action profile $a^e$ is a Nash equilibrium if $\forall \ i \ u_i(a^e_i,a^e_{-i}) \geq u_i(a_i,a^e_{-i}) \ \forall \ a_i$, i.e., if no agent has incentive to change given that others do not change.</li>
+          <li><strong>Mixed NE</strong>: for probabilistic decision making, a notion of mixed NE was defined as follows:
+            <ul>
+              <li>mixed strategy: $s_i$ is a probability distribution over $A_i$</li>
+              <li>strategy profile: $s = (s_1, …, s_N)$</li>
+              <li>expected utility: $u_i(s) = \sum_a p(a) u_i(a)$ where $p(a) = \prod_j s(a_j)$</li>
+              <li>Nash equilibrium: $s^e$ is a mixed Nash equilibrium if $\forall \ i \ u_i(s^e_i,s^e_{-i}) \geq u_i(s_i,s^e_{-i}) \ \forall \ s_i$</li>
+            </ul>
+          </li>
+          <li><strong>Theorem (Nash 1950)</strong>: every game in which the action sets are finite has a mixed Nash equilibrium, and if there is an even number of actions then there will be an odd number of equilibria.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Extensive form game</strong>: assumes that agents take turns, they can be represented as decision trees; every extensive form game can be transformed into a normal form game for which equilibria can be computed as explained before</p>
+
+    <ul>
+      <li><strong>Sub-game perfect equilibrium (SPE)</strong>: equilibrium in an extensive form game that is a Nash equilibrium in all sub-games (i.e., in all sub-trees of the game’s decision tree)</li>
+      <li><strong>Theorem (Kuhn)</strong>: every finite extensive form game has a sub-game perfect equilibrium</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Mechanism Design</strong>: describes how we should design systems to encourage certain behaviours from self-interested agents</p>
+
+<ul>
+  <li><strong>Ingredients</strong>:
+    <ul>
+      <li>$O$: set of possible outcomes</li>
+      <li>$N$: set of $n$ agents</li>
+      <li>Each agent has a type $\theta_i$ from a set of possible types $\Theta_i$ capturing all private information relevant to the agent’s decision making</li>
+      <li>Utility functions $u_i(o, \theta_i)$</li>
+      <li>Social choice function: $f: \Theta_1 \times … \times \Theta_n \rightarrow O$</li>
+    </ul>
+  </li>
+  <li><strong>Mechanisms</strong>:
+    <ul>
+      <li>A mechanism $M = (S_1, …, S_n, g(\cdot))$ is a tuple of strategy spaces (one $S_i$ for each agent $i$) and an outcome function $g: S_1 \times … \times S_n \rightarrow O$, mapping specific strategies to an outcome.</li>
+      <li>A mechanism <strong>implements</strong> a social choice function $f(\theta)$ if there is an equilibrium $s’ = (s’_1(\theta_1), …, s’_n(\theta_n))$ such that the mechanism’s outcome function, given the strategies of equilibrium $s’$, will lead to the same outcome as the social choice function, given the true preferences of the agents, irrespective of what these true types are: $g(s’_1(\theta_1), …, s’_n(\theta_n)) = f(\theta_1, …, \theta_n) \forall (\theta_1, …, \theta_n) \in \Theta_1 \times … \times \Theta_n$.</li>
+      <li>A mechanism is called a <strong>direct</strong> mechanism for social choice function $f(\theta)$ if its strategies do simply output a type (not necessarily the agent’s true type) and that the outcome for the same type profile $\theta$ is the same for social choice function $f(\theta)$ and the outcome function of the mechanism $(g(\cdot)$: $S_i = \Theta_i \forall i$ and $g(\theta) = f(\theta) \forall (\theta_1, …, \theta_n) \in \Theta_1 \times … \times \Theta_n$.</li>
+      <li>A direct mechanism is <strong>incentive-compatible</strong> if it has a strategy equilibrium $s’$ such that each strategy of the equilibrium outputs the agent’s true type, independent of the specific type: $s’_i(\theta_i) = \theta_i \forall i$ and $\theta_i \in \Theta_i$.</li>
+      <li>A direct, incentive-compatible mechanism is <strong>strategy-proof</strong> if this equilibrium is the dominant strategy such that, resulting in the agents always revealing their true type simply by acting rationally.</li>
+    </ul>
+  </li>
+  <li><strong>Revelation Principle Theorem</strong>: If there is a mechanism $M$ that implements social choice function $f$ in dominant strategies, then there is a direct, strategy-proof mechanism $M’$ that implements $f$.</li>
+  <li><strong>Gibbard-Satterthwaite Theorem</strong>: For any finite outcome space with more than two outcomes where each outcome can be achieved by social choice function $f$ and where the type space $\Theta$ includes all possible orderings over $O$, then $f$ is implementable in dominant strategies if and only if $f$ is dictatorial. Relaxations of these requirements may lead to non-dictatorial social choice functions that are implementable in dominant strategies such that strategy-proof mechanisms may be constructed; in particular, these restrictions can be relaxed by:
+    <ul>
+      <li>using a weaker equilibrium concept</li>
+      <li>designing mechanisms where computing manipulations is computationally hard</li>
+      <li>restrict the structure of agents’ preferences:
+        <ul>
+          <li><strong>single-peaked preferences</strong> (e.g., median voter rule)</li>
+          <li><strong>quasi-linear preferences</strong>: introduces the concept of transfers (e.g., money) in the outcome representation ($o = (x, t_1, …, t_2)$) where the agents’ utility functions are linear in the agents’ corresponding transfer value: $u_i(o, \theta_i) = v_i(x, \theta_i) - t_i$; the following mechanisms operate with quasi-linear preferences:
+            <ul>
+              <li><strong>Groves Mechanisms</strong>: with choice rule $x’=\arg \max_x \sum_i v_i(x, \theta_i)$ (efficient $=$ maximizing social welfare) and transfer rules $t_i(\theta) = h_i(\theta_{-i}) - \sum_{j \neq i} v_j(x’, \theta),\theta_j)$ where $\theta_{-i}$ means all types except the one for agent $i$. The <strong>Vickrey-Clarke-Groves</strong> (VCG) mechanism is a Groves mechanism with $h_i(\theta_{-i}) = \sum_{j \neq i} v_j(x^{-i},\theta_j)$ where $x^{-i}$ is the outcome that would have arisen if agent $i$ had not existed. This results in zero transfers for all agents for which, if they had not participated in the game, the outcome would still be the same as with them participating. An example implementation of a VCG mechanism is the Vickrey auction where the highest bidder gets the object and has to pay the second-highest bid, all the other ones do not have to pay anything.</li>
+              <li><strong>Sponsored Search</strong>: bids are placed for ad placements and every ad has a quality score; ads are ranked by the product of the bid and the ad’s quality score; if an ad is clicked, the bidder has to pay the minimum amount it would have had to bid in order to have ended up in the same position in the current ranking.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="statistical-learning">Statistical Learning</h1>
+
+<p><strong>Parameter learning</strong>: with complete data and Laplace smoothing using Maximum Likelihood (ML); given observations $x = (x_1, x_2, …, x_d)$ from $N$ trials, estimate parameters $\theta = (\theta_1, \theta_2, …, \theta_d)$ using $\theta_i = \frac{x_i + \alpha}{N + \alpha d}$ with $\alpha &gt; 0$</p>
+
+<p><strong>Naive Bayes model</strong>: with observed attribute values $x_1, x_2, …, x_n$, assuming that all attributes are independent given the class, we can compute the posterior class probability by $P(C \mid x_1, x_2, …, x_n) = \alpha P(C) \prod_i P(x_i \mid C)$</p>
+
+<h1 id="expectation-maximization">Expectation Maximization</h1>
+
+<p>A technique to estimate model parameters despite the fact that there may be hidden variables or missing values in the observed data points. The general algorithm goes as follows:</p>
+
+<ul>
+  <li><strong>Guess the parameters</strong> of the maximum likelihood hypothesis $h_{ML}$</li>
+  <li><strong>Loop</strong> over the two following steps <strong>until</strong> the <strong>parameters of $h_{ML}$ converge</strong>:
+    <ul>
+      <li><strong>Expectation</strong>: based on $h_{ML}$, compute expectated (missing) values</li>
+      <li><strong>Maximization</strong>: based on expected (missing) values, compute new $h_{ML}$</li>
+    </ul>
+  </li>
+</ul>
+
+      <hr />
+      <footer role="contentinfo">
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/artificial-intelligence/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/artificial-intelligence/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/artificial-intelligence/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+        <p class="byline"><strong>Artificial Intelligence</strong> was published on <time datetime="2016-02-08T00:00:00-05:00">February 08, 2016</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+  
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/posts/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://localhost:4000/experiment-design-and-analysis/" title="Experiment Design & Analysis">Experiment Design & Analysis</a></li>
+    
+      <li><a href="http://localhost:4000/ethical-dilemmas-in-artificial-intelligence/" title="Ethical Dilemmas in Artificial Intelligence">Ethical Dilemmas in Artificial Intelligence</a></li>
+    
+      <li><a href="http://localhost:4000/machine-learning/" title="Machine Learning">Machine Learning</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+  <footer>
+    
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl =
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-41409977-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+<script>
+$('.force-full-width-keep-aspect-ratio').each(function() {
+  var iFrame = $(this);
+  var originalWidth = $(this).width();
+  var originalHeight = $(this).height();
+  iFrame.css('width', '100%');
+  $(window).resize(function() {
+    iFrame.css('height', Math.ceil(iFrame.width() / originalWidth * originalHeight * 0.975) + 'px');
+  });
+});
+$(window).resize();
+</script>
+
+</body>
+</html>
