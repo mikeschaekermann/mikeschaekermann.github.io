@@ -10,7 +10,8 @@ share: false
 <b>Engineering, B.Sc.</b>, <a href="https://www.fh-salzburg.ac.at/en/study/design-media-and-arts/multimediatechnology-bachelor" target="_blank">Salzburg Univ. of Applied Sciences</a>, Austria (2014)<br>
 <b>Medicine, State Exam I</b>, <a href="https://www.uni-marburg.de/en/fb20" target="_blank">University of Marburg</a>, Germany (2011)<br>
 
-<b>Applied Scientist</b> at <a href="https://aws.amazon.com/ai/" target="_blank">Amazon AI</a> (Since 2020)<br>
+<b>Research Scientist</b> at <a href="https://health.google/health-research/" target="_blank">Google Research</a> (Since 2022)<br>
+<b>Applied Scientist</b> at <a href="https://aws.amazon.com/ai/" target="_blank">Amazon AI</a> (2020-2022)<br>
 <b>Student Researcher</b> at <a href="https://health.google/health-research/" target="_blank">Google Health</a> (2018-2020)<br>
 <b>Research Intern</b> at <a href="https://research.google/teams/brain/" target="_blank">Google Brain</a> (2018)<br>
 <b>Software Engineering Intern</b> at <a href="https://blog.google/" target="_blank">Google</a> (2017)<br>
@@ -28,6 +29,7 @@ My research is located at the intersection of **human-computer interaction**, **
 
 # News
 
+* **02/2022:** I accepted a new position as Research Scientist at <a href="https://health.google/health-research/" target="_blank">**Google Research**</a> starting at the end of March.
 * **05/2021:** My PhD thesis was awarded the <a href="https://cscan-infocan.ca/feature/mike-schaekermann-announcement/" target="_blank">**Canadian Computer Science Distinguished Dissertation Award**</a> and the <a href="https://cs.uwaterloo.ca/news/mike-schaekermann-hong-zhou-fiodar-kazhamiaka-win-cheriton-distinguished-dissertation-awards" target="_blank">**Cheriton Distinguished Dissertation Award**</a>. Thank you! :)
 * **10/2020:** I started a new position as Applied Scientist at <a href="https://aws.amazon.com/ai/" target="_blank">**Amazon AI**</a>.
 * **09/2020:** I have defended my thesis on <a href="https://uwspace.uwaterloo.ca/handle/10012/16284" target="_blank">**Human-AI Interaction in the Presence of Ambiguity**</a>.
