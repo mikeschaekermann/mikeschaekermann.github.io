@@ -2,26 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Mike Schaekermann</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="https://mikeschaekermann.github.io/feed.xml" />
-<link rel="alternate" type="text/html" href="https://mikeschaekermann.github.io" />
-<updated>2022-02-20T21:41:14-05:00</updated>
-<id>https://mikeschaekermann.github.io/</id>
+<link rel="self" type="application/atom+xml" href="https://mikeshake.me/feed.xml" />
+<link rel="alternate" type="text/html" href="https://mikeshake.me" />
+<updated>2022-02-21T03:16:02-05:00</updated>
+<id>https://mikeshake.me/</id>
 <author>
   <name>Mike Schaekermann</name>
-  <uri>https://mikeschaekermann.github.io/</uri>
+  <uri>https://mikeshake.me/</uri>
   <email>mikeschaekermann@gmail.com</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Experiment Design & Analysis]]></title>
-  <link rel="alternate" type="text/html" href="https://mikeschaekermann.github.io/experiment-design-and-analysis/" />
-  <id>https://mikeschaekermann.github.io/experiment-design-and-analysis</id>
+  <link rel="alternate" type="text/html" href="https://mikeshake.me/experiment-design-and-analysis/" />
+  <id>https://mikeshake.me/experiment-design-and-analysis</id>
   <published>2017-10-05T00:00:00-04:00</published>
   <updated>2017-10-05T00:00:00-04:00</updated>
   <author>
     <name>Mike Schaekermann</name>
-    <uri>https://mikeschaekermann.github.io</uri>
+    <uri>https://mikeshake.me</uri>
     <email>mikeschaekermann@gmail.com</email>
   </author>
   <content type="html">
@@ -648,20 +648,20 @@
   &lt;li&gt;followed by post-hoc pairwise comparisons if omnibus test permits&lt;/li&gt;
 &lt;/ul&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://mikeschaekermann.github.io/experiment-design-and-analysis/&quot;&gt;Experiment Design &amp; Analysis&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeschaekermann.github.io&quot;&gt;Mike Schaekermann&lt;/a&gt; on October 05, 2017.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://mikeshake.me/experiment-design-and-analysis/&quot;&gt;Experiment Design &amp; Analysis&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeshake.me&quot;&gt;Mike Schaekermann&lt;/a&gt; on October 05, 2017.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Ethical Dilemmas in Artificial Intelligence]]></title>
-  <link rel="alternate" type="text/html" href="https://mikeschaekermann.github.io/ethical-dilemmas-in-artificial-intelligence/" />
-  <id>https://mikeschaekermann.github.io/ethical-dilemmas-in-artificial-intelligence</id>
+  <link rel="alternate" type="text/html" href="https://mikeshake.me/ethical-dilemmas-in-artificial-intelligence/" />
+  <id>https://mikeshake.me/ethical-dilemmas-in-artificial-intelligence</id>
   <published>2016-02-22T00:00:00-05:00</published>
   <updated>2016-02-22T00:00:00-05:00</updated>
   <author>
     <name>Mike Schaekermann</name>
-    <uri>https://mikeschaekermann.github.io</uri>
+    <uri>https://mikeshake.me</uri>
     <email>mikeschaekermann@gmail.com</email>
   </author>
   <content type="html">
@@ -701,20 +701,20 @@
   &lt;li&gt;[10] &lt;a href=&quot;https://en.wikipedia.org/wiki/Utilitarianism&quot;&gt;Utilitarianism&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://mikeschaekermann.github.io/ethical-dilemmas-in-artificial-intelligence/&quot;&gt;Ethical Dilemmas in Artificial Intelligence&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeschaekermann.github.io&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 22, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://mikeshake.me/ethical-dilemmas-in-artificial-intelligence/&quot;&gt;Ethical Dilemmas in Artificial Intelligence&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeshake.me&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 22, 2016.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Artificial Intelligence]]></title>
-  <link rel="alternate" type="text/html" href="https://mikeschaekermann.github.io/artificial-intelligence/" />
-  <id>https://mikeschaekermann.github.io/artificial-intelligence</id>
+  <link rel="alternate" type="text/html" href="https://mikeshake.me/artificial-intelligence/" />
+  <id>https://mikeshake.me/artificial-intelligence</id>
   <published>2016-02-08T00:00:00-05:00</published>
   <updated>2016-02-08T00:00:00-05:00</updated>
   <author>
     <name>Mike Schaekermann</name>
-    <uri>https://mikeschaekermann.github.io</uri>
+    <uri>https://mikeshake.me</uri>
     <email>mikeschaekermann@gmail.com</email>
   </author>
   <content type="html">
@@ -1507,20 +1507,20 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://mikeschaekermann.github.io/artificial-intelligence/&quot;&gt;Artificial Intelligence&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeschaekermann.github.io&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 08, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://mikeshake.me/artificial-intelligence/&quot;&gt;Artificial Intelligence&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeshake.me&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 08, 2016.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Machine Learning]]></title>
-  <link rel="alternate" type="text/html" href="https://mikeschaekermann.github.io/machine-learning/" />
-  <id>https://mikeschaekermann.github.io/machine-learning</id>
+  <link rel="alternate" type="text/html" href="https://mikeshake.me/machine-learning/" />
+  <id>https://mikeshake.me/machine-learning</id>
   <published>2016-02-06T00:00:00-05:00</published>
   <updated>2016-02-06T00:00:00-05:00</updated>
   <author>
     <name>Mike Schaekermann</name>
-    <uri>https://mikeschaekermann.github.io</uri>
+    <uri>https://mikeshake.me</uri>
     <email>mikeschaekermann@gmail.com</email>
   </author>
   <content type="html">
@@ -2232,7 +2232,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-    &lt;p&gt;&lt;a href=&quot;https://mikeschaekermann.github.io/machine-learning/&quot;&gt;Machine Learning&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeschaekermann.github.io&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 06, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;https://mikeshake.me/machine-learning/&quot;&gt;Machine Learning&lt;/a&gt; was originally published by Mike Schaekermann at &lt;a href=&quot;https://mikeshake.me&quot;&gt;Mike Schaekermann&lt;/a&gt; on February 06, 2016.&lt;/p&gt;
   </content>
 </entry>
 
